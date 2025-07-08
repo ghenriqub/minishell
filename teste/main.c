@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 19:50:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/06 21:01:11 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:32:07 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,8 @@ void	ft_loop(void)
 
 int main (int argc, char **argv)
 {
+	if (ft_strncmp(argv[1], "echo") == 0)
+		ft_echo(argv);
 	ft_loop();
 	return (EXIT_SUCCESS);
 }
