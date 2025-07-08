@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/03 21:35:48 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/06 20:38:04 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

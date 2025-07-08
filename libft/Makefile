@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/11 14:55:02 by lgertrud          #+#    #+#              #
-#    Updated: 2025/05/21 18:15:39 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/06 20:38:59 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,7 @@ LIBFT_SRCS = ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.
              ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_strcmp.c ft_swap.c ft_sort_int_tab.c \
 			 get_next_line_utils.c get_next_line.c
 
-PRINTF_SRCS =	ft_printf/ft_printf.c ft_printf/ft_iputchar_fd.c ft_printf/ft_iputnbr_base.c \
-				ft_printf/ft_iputstr_fd.c ft_printf/ft_print_pointer.c ft_printf/functions.c
-
-OBJS = $(LIBFT_SRCS:.c=.o) $(PRINTF_SRCS:.c=.o)
+OBJS = $(LIBFT_SRCS:.c=.o)
 
 HEADERS = -I.
 

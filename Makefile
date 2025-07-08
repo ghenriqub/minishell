@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/03 21:40:23 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/06 20:50:53 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 #compiler and flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 #directories
 SRC_DIR = src
@@ -28,7 +28,7 @@ INCLUDES = -I$(I_DIR) -I$(LIBFT_DIR)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 #sources
-SRC = $(SRC_DIR)/main.c
+SRC = teste/main.c
 
 #objects
 OBJS = $(SRC:.c=.o)
