@@ -1,36 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/09 20:03:52 by ghenriqu         ###   ########.fr       */
+/*   Created: 2025/07/08 17:17:29 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/08 17:49:46 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include "libft.h"
-# include <errno.h>
-# include <string.h>
-
-
-
-
-
-
-
-
-
-
-
-
-// ====== Execution ======
-
-// built in:
-int	ft_echo(char **args);
-
-#endif
