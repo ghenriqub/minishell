@@ -18,6 +18,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 #directories
 SRC_DIR = src
+PARSER_DIR = src/parser
 I_DIR = includes
 LIBFT_DIR = libft
 
@@ -28,7 +29,7 @@ INCLUDES = -I$(I_DIR) -I$(LIBFT_DIR)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 #sources
-SRC = teste/main.c
+SRC = $(PARSER_DIR)/main.c $(PARSER_DIR)/token.c $(PARSER_DIR)/utils.c
 
 #objects
 OBJS = $(SRC:.c=.o)
