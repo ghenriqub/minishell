@@ -6,12 +6,15 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/09 20:11:37 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:33:27 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/// @brief 
+/// @param  
+/// @return 
 static char	*get_current_dir(void)
 {
 	char	*cwd;
@@ -41,13 +44,18 @@ static char	*get_current_dir(void)
 	return (cwd);
 }
 
+/// @brief 
+/// @param  
 static void	print_pwd_error(void)
 {
-	write(STDERR_FILENO, "pwd: ", 5);
-	write(STDERR_FILENO, strerror(errno), ft_strlen(strerror(errno)));
-	write(STDERR_FILENO, "\n", 1);
+	ft_putstr_fd("pwd: ", STDERR_FILENO);
+	ft_putstr_fd(strerror(errno), STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 }
 
+/// @brief 
+/// @param  
+/// @return 
 int	ft_pwd(void)
 {
 	char	*cwd;
@@ -58,8 +66,8 @@ int	ft_pwd(void)
 		print_pwd_error();
 		return (1);
 	}
-	write(STDOUT_FILENO, cwd, ft_strlen(cwd));
-	write(STDOUT_FILENO, "\n", 1);
+	ft_putstr_fd(cwd, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	free(cwd);
 	return (0);
 }

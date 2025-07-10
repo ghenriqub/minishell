@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/09 14:54:05 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:35:29 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,4 @@
 
 
 
-int	ft_builtin(char **args, t_env *env)
+//int	ft_builtin(char **args, t_env *env)
