@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/10 14:52:13 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/10 16:52:43 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ INCLUDES = -I$(I_DIR) -I$(LIBFT_DIR)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 #sources
-SRC = $(PARSER_DIR)/main.c $(PARSER_DIR)/token.c $(PARSER_DIR)/utils.c
+SRC = $(PARSER_DIR)/main.c $(PARSER_DIR)/token.c $(PARSER_DIR)/utils.c $(PARSER_DIR)/token_utils.c
 
 #objects
 OBJS = $(SRC:.c=.o)

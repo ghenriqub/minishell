@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/09 20:42:35 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:57:42 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,19 @@ void	ft_free_tokens(t_token *token)
 	}
 }
 
-// provisorie function
+/// @brief function for errors
+/// @param token token for free
+/// @param message message error
+/// @param code exit code
+void	ft_error(t_token *token, char *message, int code)
+{
+	if (token)
+		ft_free_tokens(token);
+	ft_putendl_fd(message, 2);
+	exit (code);
+}
+
+// provisorie function, we will delete it latter
 char	*name_type(int type)
 {
 	if (type == 0)
@@ -43,7 +55,7 @@ char	*name_type(int type)
 	return ("HEREDOC");
 }
 
-// provisorie function
+// provisorie function, we will delete it latter
 void	print_token(t_token *token)
 {
 	t_token	*current;

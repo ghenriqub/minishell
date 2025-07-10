@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/09 20:03:52 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:53:00 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define MALLOC_ERROR "Error: failed in memory allocate\n"
+# define INPUT_ERROR "Error: input incorrect\n"
 
 # include "libft.h"
 # include <errno.h>
@@ -54,6 +56,7 @@ char	*ft_get_value(const char *s, int *i);
 int		ft_is_delimiter(char c);
 //utils
 void	ft_free_tokens(t_token *token);
+void	ft_error(t_token *token, char *message, int code);
 
 
 // ====== Exection ======

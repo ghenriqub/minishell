@@ -6,13 +6,16 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 16:33:19 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 20:50:03 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_token(t_token *token);
+static int	ft_init_token_2(t_token *new, t_token *head, char *line, int *i);
+static void	ft_init_token_3(t_token **new, t_token **head, t_token **current);
+
+void		print_token(t_token *token);
 
 /// @brief init token and call built functons
 /// @param line is the param that user write
@@ -23,15 +26,17 @@ t_token	*ft_tokenizer(char *line)
 
 	token = ft_init_token(line);
 	if (!token)
-		printf("invalid input\n");
+	{
+		printf(INPUT_ERROR);
+	}
 	else
 		print_token(token);
 	return (token);
 }
 
-/// @brief 
-/// @param token 
-/// @return 
+/// @brief tokenization, alloc the memory and call functions for value and type
+/// @param line is the user input
+/// @return return token created or NULL if input is invalid
 t_token	*ft_init_token(char *line)
 {
 	t_token	*head;
@@ -50,112 +55,64 @@ t_token	*ft_init_token(char *line)
 		{
 			new = malloc(sizeof(t_token));
 			if (!new)
+				ft_error(head, MALLOC_ERROR, 1);
+			if (!ft_init_token_2(new, head, line, &i))
 				return (NULL);
-			if ((line[i] == '>' && line[i + 1] == '>')
-				|| (line[i] == '<' && line[i + 1] == '<'))
-			{
-				new->value = ft_substr(line, i, 2);
-				i += 2;
-			}
-			else if (ft_is_delimiter(line[i]))
-			{
-				new->value = ft_substr(line, i, 1);
-				i++;
-			}
-			else
-				new->value = ft_get_value(line, &i);
-			if (!new->value)
-			{
-				ft_free_tokens(head);
-				free(new);
-				return (NULL);
-			}
-			new->type = ft_get_type(new->value);
-			new->next = NULL;
-			if (!head)
-			{
-				head = new;
-				current = new;
-			}
-			else
-			{
-				current->next = new;
-				current = new;
-			}
+			printf("aqui\n");
+			ft_init_token_3(&new, &head, &current);
 		}
 	}
 	return (head);
 }
 
-/// @brief Extracts the next token
-///			(word or quoted string) from the input string.
-/// @param s The input string to parse.
-/// @param i A pointer to the current position in the string (will be updated).
-/// @return A newly allocated substring containing the extracted token.
-char	*ft_get_value(const char *s, int *i)
+/// @brief if the atual character is a delimiter, created a token
+/// 		else, call function get value.
+/// @param new is a new node
+/// @param head head to linked list
+/// @param line input user
+/// @param i interator that we used to walk string
+/// @return return 0 for error or 1 if was been succeed
+static int	ft_init_token_2(t_token *new, t_token *head, char *line, int *i)
 {
-	char	*result;
-	char	*part;
-	char	quote;
-	int		start;
-	char	*tmp;
-
-	result = NULL;
-	while (s[*i] && s[*i] != ' ' && s[*i] != '\t' && !ft_is_delimiter(s[*i]))
+	if ((line[*i] == '>' && line[*i + 1] == '>')
+		|| (line[*i] == '<' && line[*i + 1] == '<'))
 	{
-		if (s[*i] == '"' || s[*i] == '\'')
-		{
-			quote = s[(*i)++];
-			start = *i;
-			while (s[*i] && s[*i] != quote)
-				(*i)++;
-			if (s[*i] != quote)
-			{
-				free(result);
-				return (NULL);
-			}
-			part = ft_substr(s, start, (*i) - start);
-			(*i)++;
-		}
-		else
-		{
-			start = *i;
-			while (s[*i] && s[*i] != '"' && s[*i] != '\'' && s[*i] != ' '
-				&& s[*i] != '\t' && !ft_is_delimiter(s[*i]))
-				(*i)++;
-			part = ft_substr(s, start, *i - start);
-		}
-		tmp = result;
-		if (result)
-			result = ft_strjoin(result, part);
-		else
-			result = ft_strdup(part);
-		free(tmp);
-		free(part);
+		new->value = ft_substr(line, *i, 2);
+		(*i)++;
+		(*i)++;
 	}
-	return (result);
-}
-
-/// @brief this functions define the type of the value
-/// @param value value of type that we will find
-/// @return The type of the argument
-t_type	ft_get_type(char *value)
-{
-	if (!ft_strncmp(">", value, ft_strlen(value)) && value[0])
-		return (T_REDIRECT_OUT);
-	else if (!ft_strncmp(">>", value, ft_strlen(value)) && value[0])
-		return (T_APPEND);
-	else if (!ft_strncmp("<", value, ft_strlen(value)) && value[0])
-		return (T_REDIRECT_IN);
-	else if (!ft_strncmp("|", value, ft_strlen(value)) && value[0])
-		return (T_PIPE);
-	else if (!ft_strncmp("<<", value, ft_strlen(value)) && value[0])
-		return (T_HEREDOC);
+	else if (ft_is_delimiter(line[*i]))
+	{
+		new->value = ft_substr(line, (*i), 1);
+		(*i)++;
+	}
 	else
-		return (T_WORD);
+		new->value = ft_get_value(line, i);
+	if (!new->value)
+	{
+		ft_free_tokens(head);
+		free(new);
+		return (0);
+	}
+	return (1);
 }
 
-int	ft_is_delimiter(char c)
+/// @brief call the get type and update current
+/// @param new new node
+/// @param head declare head, if it has not been declared
+/// @param current variable used to walk inside list
+static void	ft_init_token_3(t_token **new, t_token **head, t_token **current)
 {
-	return (c == '>' || c == '<' || c == '|');
+	(*new)->type = ft_get_type((*new)->value);
+	(*new)->next = NULL;
+	if (!*head)
+	{
+		*head = *new;
+		*current = *new;
+	}
+	else
+	{
+		(*current)->next = *new;
+		*current = *new;
+	}
 }
