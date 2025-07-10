@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/09 20:41:17 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 15:45:36 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_token	*ft_tokenizer(char *line)
 	t_token	*token;
 
 	token = ft_init_token(line);
-	print_token(token);
+	if (!token)
+		printf("invalid input\n");
+	else
+		print_token(token);
 	return (token);
 }
 
@@ -61,6 +64,11 @@ t_token	*ft_init_token(char *line)
 			}
 			else
 				new->value = ft_get_value(line, &i);
+			if (!new->value)
+			{
+				ft_free_tokens(new);
+				return (NULL);
+			}
 			new->type = ft_get_type(new->value);
 			new->next = NULL;
 			if (!head)
@@ -89,7 +97,6 @@ char	*ft_get_value(const char *s, int *i)
 	char	*part;
 	char	quote;
 	int		start;
-	int		len;
 	char	*tmp;
 
 	result = NULL;
@@ -99,14 +106,12 @@ char	*ft_get_value(const char *s, int *i)
 		{
 			quote = s[(*i)++];
 			start = *i;
-			len = 0;
 			while (s[*i] && s[*i] != quote)
-			{
 				(*i)++;
-				len++;
-			}
-			(*i) += (s[*i] == quote);
-			part = ft_substr(s, start, len);
+			if (s[*i] != quote)
+				return (NULL);
+			part = ft_substr(s, start, (*i) - start);
+			(*i)++;
 		}
 		else
 		{
@@ -132,10 +137,10 @@ char	*ft_get_value(const char *s, int *i)
 /// @return The type of the argument
 t_type	ft_get_type(char *value)
 {
-	if (!ft_strncmp(">>", value, ft_strlen(value)))
-		return (T_APPEND);
-	else if (!ft_strncmp(">", value, ft_strlen(value)))
+	if (!ft_strncmp(">", value, ft_strlen(value)))
 		return (T_REDIRECT_OUT);
+	else if (!ft_strncmp(">>", value, ft_strlen(value)))
+		return (T_APPEND);
 	else if (!ft_strncmp("<", value, ft_strlen(value)))
 		return (T_REDIRECT_IN);
 	else if (!ft_strncmp("|", value, ft_strlen(value)))

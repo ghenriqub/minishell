@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
+#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/06 20:50:53 by ghenriqu         ###   ########.fr        #
+#    Updated: 2025/07/10 14:52:13 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 #compiler and flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -lreadline -g
 
 #directories
 SRC_DIR = src
