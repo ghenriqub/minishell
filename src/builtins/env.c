@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:29 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/10 21:05:56 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:16:20 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ static void	print_env_error(char *arg)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
+/// @brief 
+/// @param env 
+/// @return 
 int	env_size(char **env)
 {
 	int	i;
