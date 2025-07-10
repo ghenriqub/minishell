@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 15:45:36 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:33:19 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ t_token	*ft_init_token(char *line)
 				new->value = ft_get_value(line, &i);
 			if (!new->value)
 			{
-				ft_free_tokens(new);
+				ft_free_tokens(head);
+				free(new);
 				return (NULL);
 			}
 			new->type = ft_get_type(new->value);
@@ -109,7 +110,10 @@ char	*ft_get_value(const char *s, int *i)
 			while (s[*i] && s[*i] != quote)
 				(*i)++;
 			if (s[*i] != quote)
+			{
+				free(result);
 				return (NULL);
+			}
 			part = ft_substr(s, start, (*i) - start);
 			(*i)++;
 		}
@@ -137,15 +141,15 @@ char	*ft_get_value(const char *s, int *i)
 /// @return The type of the argument
 t_type	ft_get_type(char *value)
 {
-	if (!ft_strncmp(">", value, ft_strlen(value)))
+	if (!ft_strncmp(">", value, ft_strlen(value)) && value[0])
 		return (T_REDIRECT_OUT);
-	else if (!ft_strncmp(">>", value, ft_strlen(value)))
+	else if (!ft_strncmp(">>", value, ft_strlen(value)) && value[0])
 		return (T_APPEND);
-	else if (!ft_strncmp("<", value, ft_strlen(value)))
+	else if (!ft_strncmp("<", value, ft_strlen(value)) && value[0])
 		return (T_REDIRECT_IN);
-	else if (!ft_strncmp("|", value, ft_strlen(value)))
+	else if (!ft_strncmp("|", value, ft_strlen(value)) && value[0])
 		return (T_PIPE);
-	else if (!ft_strncmp("<<", value, ft_strlen(value)))
+	else if (!ft_strncmp("<<", value, ft_strlen(value)) && value[0])
 		return (T_HEREDOC);
 	else
 		return (T_WORD);

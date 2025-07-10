@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 14:51:28 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:22:00 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	main(void)
 			add_history(line);
 		tokens = ft_tokenizer(line);
 		free(line);
+		ft_free_tokens(tokens);
 	}
-	ft_free_tokens(tokens);
 	rl_clear_history();
 	return (0);
 }
