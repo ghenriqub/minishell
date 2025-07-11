@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 17:53:00 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:11:21 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,9 @@ void	ft_error(t_token *token, char *message, int code);
 
 // built in:
 int	ft_echo(char **args);
+int	ft_unset(char **args, char **env);
+int	ft_env(char **args, char **env);
+int	env_size(char **env);
+
 
 #endif

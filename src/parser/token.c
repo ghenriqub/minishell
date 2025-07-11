@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 20:50:03 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 12:49:36 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ t_token	*ft_init_token(char *line)
 				ft_error(head, MALLOC_ERROR, 1);
 			if (!ft_init_token_2(new, head, line, &i))
 				return (NULL);
-			printf("aqui\n");
 			ft_init_token_3(&new, &head, &current);
 		}
 	}
