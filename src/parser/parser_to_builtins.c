@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 16:48:11 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:00:40 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@
 /// @return return 1 if succed, or 0 if is fail
 int	call_builtins(t_token *token, char **env)
 {
-	char **args;
+	char	**args;
 
 	args = ft_array_struct(token);
-	if(!ft_strncmp(token->value, "pwd", 3) && ft_strlen(token->value) == 3)
+	if (!ft_strncmp(token->value, "pwd", 3) && ft_strlen(token->value) == 3)
 	{
 		ft_pwd(args);
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
+	if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
 	{
 		ft_echo(args);
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
+	if (!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
 	{
 		ft_env(args, env);
 		ft_free_split(args);
@@ -57,15 +57,15 @@ char	**ft_array_struct(t_token *token)
 	len = ft_lstsize(token);
 	i = 0;
 	args = malloc(sizeof(char *) * len);
-	if(!args)
+	if (!args)
 		return (NULL);
-	if(len == 1)
+	if (len == 1)
 	{
 		args[0] = NULL;
 		return (args);
 	}
 	token = token ->next;
-	while(token)
+	while (token)
 	{
 		args[i] = ft_strdup(token->value);
 		token = token->next;

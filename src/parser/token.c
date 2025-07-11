@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 15:34:23 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:00:51 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token	*ft_tokenizer(char *line, char **env)
 {
 	t_token	*token;
 
-	if(!line[0])
+	if (!line[0])
 		return (NULL);
 	token = ft_init_token(line);
 	if (!token)
@@ -34,7 +34,6 @@ t_token	*ft_tokenizer(char *line, char **env)
 	}
 	else
 		call_builtins(token, env);
-	//print_token(token);
 	return (token);
 }
 
