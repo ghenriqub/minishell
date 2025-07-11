@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/10 16:52:43 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/11 16:50:50 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FLAGS = -Wall -Wextra -Werror -lreadline -g
 #directories
 SRC_DIR = src
 PARSER_DIR = src/parser
+BUILTINS_DIR = src/builtins
 I_DIR = includes
 LIBFT_DIR = libft
 
@@ -29,7 +30,14 @@ INCLUDES = -I$(I_DIR) -I$(LIBFT_DIR)
 LIBFT = $(LIBFT_DIR)/libft.a
 
 #sources
-SRC = $(PARSER_DIR)/main.c $(PARSER_DIR)/token.c $(PARSER_DIR)/utils.c $(PARSER_DIR)/token_utils.c
+SRC = $(PARSER_DIR)/main.c \
+		$(PARSER_DIR)/token.c \
+		$(PARSER_DIR)/utils.c \
+		$(PARSER_DIR)/token_utils.c \
+		$(PARSER_DIR)/parser_to_builtins.c \
+	$(BUILTINS_DIR)/pwd.c \
+		$(BUILTINS_DIR)/echo.c \
+		$(BUILTINS_DIR)/env.c \
 
 #objects
 OBJS = $(SRC:.c=.o)

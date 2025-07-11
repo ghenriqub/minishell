@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 15:54:59 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:48:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**ft_array_struct(t_token *token)
 
 /// @brief free any array of the arrays
 /// @param arr array of the arrays
-void	**ft_free_split(char **arr)
+void	ft_free_split(char **arr)
 {
 	int	i;
 
