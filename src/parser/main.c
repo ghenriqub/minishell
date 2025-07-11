@@ -6,20 +6,21 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 12:49:33 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:09:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /// @brief Read line, create history, check signal ctrl-C and call tokenizer
-/// @param nothing
 /// @return value exit
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
 	char	*line;
 	t_token	*tokens;
 
+	(void)argc;
+	(void)argv;
 	ft_setup_signals();
 	while (1)
 	{
@@ -28,7 +29,7 @@ int	main(void)
 			break ;
 		if (*line)
 			add_history(line);
-		tokens = ft_tokenizer(line);
+		tokens = ft_tokenizer(line, env);
 		free(line);
 		ft_free_tokens(tokens);
 	}
