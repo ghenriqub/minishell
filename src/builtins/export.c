@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 18:04:48 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:13:12 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	is_valid(char *str)
 	i = 0;
 	if (!str || !*str)
 		return (0);
-	if (!ft_isalpha(str[0]) && str[0] != '_')
+	if (!ft_isalpha(str[0]) && str[0] != '_' )
 		return (0);
 	while (str[i] && str[i] != '=')
 	{
@@ -47,7 +47,7 @@ static void	print_all(char **env)
 }
 
 
-int	ft_export(char **args, char **env)
+int	ft_export(char **args, t_shell *shell)
 {
 	int		i;
 	int		status;
@@ -56,7 +56,7 @@ int	ft_export(char **args, char **env)
 	i = 0;
 	if (!args[i])
 	{
-		print_all(env);
+		print_all(shell->env);
 		return(0);
 	}
 	while (args[i])
@@ -69,7 +69,7 @@ int	ft_export(char **args, char **env)
 			status = 1;
 		}
 		else
-			set_var(args[i], &env);
+			set_var(args[i], &shell->env);
 		i++;
 	}
 	return (status);

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 19:50:39 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:10:14 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 	}
 	if(!ft_strncmp(token->value, "export", 6) && ft_strlen(token->value) == 6)
 	{
-		ft_export(args, shell->env);
+		ft_export(args, shell);
 		ft_free_split(args);
 		return (1);
 	}

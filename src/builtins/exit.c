@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 17:28:20 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 20:03:55 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ static void	cleanup_exit(char **args, t_shell *shell, int exit_code, int is_mult
 
 int	ft_exit(char **args, t_shell *shell)
 {
-	int	exit_code;
-	int	arg_count;
+	long	exit_code;
+	int		arg_count;
 
 	ft_putstr_fd("exit\n", 1);
 	arg_count = count_args(args);
 	if (arg_count == 0)
 	{
-		exit_code = shell->exit_status;
+		exit_code = (long)shell->exit_status;
 	}
 	else if (arg_count == 1)
 	{
