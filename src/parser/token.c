@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 20:50:03 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:00:51 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ void		print_token(t_token *token);
 
 /// @brief init token and call built functons
 /// @param line is the param that user write
+/// @param env ambient variable
 /// @return the token created
-t_token	*ft_tokenizer(char *line)
+t_token	*ft_tokenizer(char *line, char **env)
 {
 	t_token	*token;
 
+	if (!line[0])
+		return (NULL);
 	token = ft_init_token(line);
 	if (!token)
 	{
 		printf(INPUT_ERROR);
 	}
 	else
-		print_token(token);
+		call_builtins(token, env);
 	return (token);
 }
 
@@ -58,7 +61,6 @@ t_token	*ft_init_token(char *line)
 				ft_error(head, MALLOC_ERROR, 1);
 			if (!ft_init_token_2(new, head, line, &i))
 				return (NULL);
-			printf("aqui\n");
 			ft_init_token_3(&new, &head, &current);
 		}
 	}

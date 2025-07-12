@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 20:57:42 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/11 16:03:17 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ void	ft_error(t_token *token, char *message, int code)
 		ft_free_tokens(token);
 	ft_putendl_fd(message, 2);
 	exit (code);
+}
+
+/// @brief this function counts how many nodes there are in a struct
+/// @param env ambient variable
+/// @return the count
+int	ft_lstsize(t_token *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
 // provisorie function, we will delete it latter

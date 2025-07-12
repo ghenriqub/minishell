@@ -6,9 +6,15 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/10 21:06:12 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/12 10:41:02 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+
+
+
+
+
+int	ft_exit(char **args, )
