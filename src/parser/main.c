@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 14:13:44 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:19:28 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	main(int argc, char **argv, char **env)
 {
 	char	*line;
 	t_token	*tokens;
+	t_shell *shell;
 
+	shell = ft_init_shell(shell, env);
 	(void)argc;
 	(void)argv;
 	ft_setup_signals();
@@ -29,8 +31,9 @@ int	main(int argc, char **argv, char **env)
 			break ;
 		if (*line)
 			add_history(line);
-		tokens = ft_tokenizer(line, env);
+		tokens = ft_tokenizer(shell, line, env);
 		free(line);
+		//free(shell);
 		ft_free_tokens(tokens);
 	}
 	rl_clear_history();

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 16:03:17 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:18:53 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ int	ft_lstsize(t_token *lst)
 		i++;
 	}
 	return (i);
+}
+
+t_shell	*ft_init_shell(t_shell *shell, char **env)
+{
+	shell = malloc(sizeof(t_shell));
+	shell->exit_status = 0;
+	shell->env = env;
+	return (shell);
 }
 
 // provisorie function, we will delete it latter

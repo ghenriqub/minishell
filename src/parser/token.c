@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 17:00:51 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:19:24 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		print_token(t_token *token);
 /// @param line is the param that user write
 /// @param env ambient variable
 /// @return the token created
-t_token	*ft_tokenizer(char *line, char **env)
+t_token	*ft_tokenizer(t_shell *shell, char *line, char **env)
 {
 	t_token	*token;
 
@@ -33,7 +33,7 @@ t_token	*ft_tokenizer(char *line, char **env)
 		printf(INPUT_ERROR);
 	}
 	else
-		call_builtins(token, env);
+		call_builtins(token, shell, env);
 	return (token);
 }
 

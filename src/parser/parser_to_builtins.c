@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 17:00:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:13:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param token tokens of the input
 /// @param env variable ambient 
 /// @return return 1 if succed, or 0 if is fail
-int	call_builtins(t_token *token, char **env)
+int	call_builtins(t_token *token, t_shell *shell, char **env)
 {
 	char	**args;
 
@@ -29,7 +29,7 @@ int	call_builtins(t_token *token, char **env)
 	}
 	if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
 	{
-		ft_echo(args);
+		ft_echo(args, 0);
 		ft_free_split(args);
 		return (1);
 	}
@@ -39,7 +39,12 @@ int	call_builtins(t_token *token, char **env)
 		ft_free_split(args);
 		return (1);
 	}
-	ft_free_split(args);
+	if(!ft_strncmp(token->value, "exit", 4) && ft_strlen(token->value) == 4)
+	{
+		ft_exit(args, shell);
+		ft_free_split(args);
+		return (1);
+	}
 	return (0);
 }
 
