@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 10:41:02 by ghenriqu         ###   ########.fr       */
+/*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
+/*   Updated: 2025/07/03 21:37:35 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-
-
-
-
-int	ft_exit(char **args, )
+int	main(void)
+{
+	ft_putendl_fd("Teste Makefile", 1);
+	return (0);
+}
