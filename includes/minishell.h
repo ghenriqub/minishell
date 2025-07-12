@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 17:01:58 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 15:10:06 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct s_shell
+{
+	char	**args;
+	char	**env;
+	char	**history;
+	int		exit_status;
+}		t_shell;
+
 // ====== Parser ======
 
 // signals:
@@ -63,10 +71,11 @@ void	ft_free_split(char **arr);
 // ====== Exection ======
 
 // built in:
-int		ft_echo(char **args);
+int		ft_echo(char **args, int exit_status);
 int		ft_pwd(char **args);
 int		ft_unset(char **args, char **env);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
+int		ft_exit(char **args, t_shell *shell);
 
 #endif

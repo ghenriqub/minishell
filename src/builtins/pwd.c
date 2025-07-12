@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/10 20:33:27 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/12 14:56:21 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,18 @@ static char	*get_current_dir(void)
 static void	print_pwd_error(void)
 {
 	ft_putstr_fd("pwd: ", STDERR_FILENO);
-	ft_putstr_fd(strerror(errno), STDERR_FILENO);
+	ft_putstr_fd("too many arguments", STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
 }
 
 /// @brief 
 /// @param  
 /// @return 
-int	ft_pwd(void)
+int	ft_pwd(char **args)
 {
 	char	*cwd;
 
+	(void)args;
 	cwd = get_current_dir();
 	if (!cwd)
 	{
