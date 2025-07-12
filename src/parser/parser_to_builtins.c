@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_to_builtins.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/11 17:00:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:07:06 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param token tokens of the input
 /// @param env variable ambient 
 /// @return return 1 if succed, or 0 if is fail
-int	call_builtins(t_token *token, char **env)
+int	call_builtins(t_token *token, t_shell *shell, char **env)
 {
 	char	**args;
 
@@ -29,7 +29,7 @@ int	call_builtins(t_token *token, char **env)
 	}
 	if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
 	{
-		ft_echo(args);
+		ft_echo(args, shell->exit_status);
 		ft_free_split(args);
 		return (1);
 	}

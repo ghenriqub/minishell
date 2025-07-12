@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 15:10:06 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/12 17:44:23 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ int		ft_unset(char **args, char **env);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
 int		ft_exit(char **args, t_shell *shell);
+int		ft_export(char **args, char **env);
+void	set_var(char *variable, char ***env);
 
 #endif
