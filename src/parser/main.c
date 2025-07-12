@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 17:19:28 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:42:56 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int argc, char **argv, char **env)
 			add_history(line);
 		tokens = ft_tokenizer(shell, line, env);
 		free(line);
-		//free(shell);
+		ft_free_split(shell->env);
+		free(shell);
 		ft_free_tokens(tokens);
 	}
 	rl_clear_history();

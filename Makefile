@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/12 16:16:11 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/12 18:03:54 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ SRC = $(PARSER_DIR)/main.c \
 	$(BUILTINS_DIR)/pwd.c \
 		$(BUILTINS_DIR)/echo.c \
 		$(BUILTINS_DIR)/env.c \
-		$(BUILTINS_DIR)/exit.c 
+		$(BUILTINS_DIR)/exit.c \
+		$(BUILTINS_DIR)/export.c \
+		$(BUILTINS_DIR)/export_utils.c \
+		$(BUILTINS_DIR)/unset.c
 
 #objects
 OBJS = $(SRC:.c=.o)

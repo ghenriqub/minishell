@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 17:18:53 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:56:00 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,32 @@ int	ft_lstsize(t_token *lst)
 	}
 	return (i);
 }
+char	**copy_env(char **envp)
+{
+	int		i;
+	char	**new_env;
+
+	i = 0;
+	while (envp[i])
+		i++;
+	new_env = malloc(sizeof(char *) * (i + 1));
+	if (!new_env)
+		return (NULL);
+	i = 0;
+	while (envp[i])
+	{
+		new_env[i] = ft_strdup(envp[i]); // agora você tem mallocs próprios
+		i++;
+	}
+	new_env[i] = NULL;
+	return (new_env);
+}
 
 t_shell	*ft_init_shell(t_shell *shell, char **env)
 {
 	shell = malloc(sizeof(t_shell));
 	shell->exit_status = 0;
-	shell->env = env;
+	shell->env = copy_env(env);
 	return (shell);
 }
 

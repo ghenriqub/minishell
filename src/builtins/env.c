@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:29 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 14:10:30 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:47:58 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	ft_env(char **args, char **env)
 	int	i;
 
 	i = 0;
-	if (args[1])
+	if (args && args[0])
 	{
-		print_env_error(args[1]);
+		print_env_error(args[0]);
 		return (1);
 	}
 	if (!env)

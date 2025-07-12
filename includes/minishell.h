@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 17:18:37 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:38:45 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,11 @@ void	ft_free_split(char **arr);
 // built in:
 int		ft_echo(char **args, int exit_status);
 int		ft_pwd(char **args);
-int		ft_unset(char **args, char **env);
+int		ft_unset(char **args, t_shell *shell);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
 int		ft_exit(char **args, t_shell *shell);
+int		ft_export(char **args, char **env);
+void	set_var(char *variable, char ***env);
 
 #endif

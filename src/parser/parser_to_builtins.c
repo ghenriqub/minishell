@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 17:13:11 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/12 19:50:39 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,31 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 	}
 	if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
 	{
-		ft_echo(args, 0);
+		ft_echo(args, shell->exit_status);
 		ft_free_split(args);
 		return (1);
 	}
 	if (!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
 	{
-		ft_env(args, env);
+		ft_env(args, shell->env);
 		ft_free_split(args);
 		return (1);
 	}
 	if(!ft_strncmp(token->value, "exit", 4) && ft_strlen(token->value) == 4)
 	{
 		ft_exit(args, shell);
+		ft_free_split(args);
+		return (1);
+	}
+	if(!ft_strncmp(token->value, "export", 6) && ft_strlen(token->value) == 6)
+	{
+		ft_export(args, shell->env);
+		ft_free_split(args);
+		return (1);
+	}
+	if(!ft_strncmp(token->value, "unset", 5) && ft_strlen(token->value) == 5)
+	{
+		ft_unset(args, shell);
 		ft_free_split(args);
 		return (1);
 	}
