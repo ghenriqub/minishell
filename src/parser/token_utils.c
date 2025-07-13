@@ -6,13 +6,14 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:48:31 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 17:40:34 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:37:08 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 static char	*ft_get_value_2(t_shell *shell, const char *s, int *i);
+static char	*ft_expand_variables(char *part, t_shell *shell, char quote);
 
 /// @brief Extracts the next token
 ///			(word or quoted string) from the input string.
@@ -60,7 +61,6 @@ static char	*ft_get_value_2(t_shell *shell, const char *s, int *i)
 	char	*part;
 	char	*pointer;
 
-	quote = 'a';
 	if (s[*i] == '"' || s[*i] == '\'')
 	{
 		quote = s[(*i)++];
@@ -69,8 +69,7 @@ static char	*ft_get_value_2(t_shell *shell, const char *s, int *i)
 			(*i)++;
 		if (s[*i] != quote)
 			return (NULL);
-		part = ft_substr(s, start, (*i) - start);
-		(*i)++;
+		part = ft_substr(s, start, (*i)++ - start);
 	}
 	else
 	{
@@ -80,14 +79,21 @@ static char	*ft_get_value_2(t_shell *shell, const char *s, int *i)
 			(*i)++;
 		part = ft_substr(s, start, *i - start);
 	}
-	while(quote && quote != '\'' && ft_strchr(part, '$'))
+	part = ft_expand_variables(part, shell, quote);
+	return (part);
+}
+
+static char	*ft_expand_variables(char *part, t_shell *shell, char quote)
+{
+	char	*pointer;
+
+	while (quote != '\'' && ft_strchr(part, '$'))
 	{
 		pointer = ft_strchr(part, '$');
-		if(!pointer[1] || pointer[1] == ' ' || ft_is_delimiter(pointer[1]))
+		if (!pointer[1] || pointer[1] == ' ' || ft_is_delimiter(pointer[1]))
 			break ;
 		part = ft_get_variable(shell->env, part, shell->exit_status);
 	}
-
 	return (part);
 }
 

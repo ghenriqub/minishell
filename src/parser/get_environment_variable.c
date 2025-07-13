@@ -6,12 +6,18 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:47:03 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 19:04:20 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:27:59 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/// @brief this funcion take a environment variable and
+///			set in one string 
+/// @param env envinornment
+/// @param part string where are the variable
+/// @param code_exit exit code, if viariable is '?'
+/// @return return new string, whit variable.
 char	*ft_get_variable(char **env, char *part, int code_exit)
 {
 	char	*start;
@@ -22,7 +28,6 @@ char	*ft_get_variable(char **env, char *part, int code_exit)
 
 	start = ft_strchr(part, '$');
 	i = 1;
-
 	if (!start[1])
 		return (part);
 	if (start[1] == '?')
@@ -74,11 +79,17 @@ char	*ft_concat(char *start, char *part, char *var_value, int i)
 	return (result);
 }
 
+/// @brief 
+/// @param env 
+/// @param part 
+/// @param start 
+/// @return 
 char	*ft_get_brace(char **env, char *part, char *start)
 {
 	char	*end_brace;
 	char	*var_name;
 	char	*var_value;
+	int		len;
 
 	end_brace = ft_strchr(start + 2, '}');
 	if (!end_brace)
@@ -86,7 +97,7 @@ char	*ft_get_brace(char **env, char *part, char *start)
 		free(part);
 		return (strdup(""));
 	}
-	int len = end_brace - (start + 2);
+	len = end_brace - (start + 2);
 	if (len == 0)
 	{
 		free(part);
