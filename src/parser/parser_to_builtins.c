@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 18:10:31 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:10:40 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,55 +18,30 @@
 /// @return return 1 if succed, or 0 if is fail
 int	call_builtins(t_token *token, t_shell *shell, char **env)
 {
-	char	**args;	args = ft_array_struct(token);
-	if (!ft_strncmp(token->value, "pwd", 3) && ft_strlen(token->value) == 3)
-	{
+	char	**args;
+
+	args = ft_array_struct(token);
+	if (!ft_strcmp(token->value, "pwd"))
 		ft_pwd(args);
-		ft_free_split(args);
-		return (1);
-	}
-	else if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
-	{
+	else if (!ft_strcmp(token->value, "echo"))
 		ft_echo(args, shell->exit_status);
-		ft_free_split(args);
-		return (1);
-	}
-	else if (!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
-	{
+	else if (!ft_strcmp(token->value, "env"))
 		ft_env(args, shell->env);
-		ft_free_split(args);
-		return (1);
-	}
-	else if(!ft_strncmp(token->value, "exit", 4) && ft_strlen(token->value) == 4)
-	{
+	else if (!ft_strcmp(token->value, "exit"))
 		ft_exit(args, shell);
-		ft_free_split(args);
-		return (1);
-	}
-	else if(!ft_strncmp(token->value, "export", 6) && ft_strlen(token->value) == 6)
-	{
-		if (ft_export(args, shell))
-			shell->exit_status = 1;
-		ft_free_split(args);
-		return (1);
-	}
-	else if(!ft_strncmp(token->value, "unset", 5) && ft_strlen(token->value) == 5)
-	{
+	else if (!ft_strcmp(token->value, "export"))
+		ft_export(args, shell);
+	else if (!ft_strcmp(token->value, "unset"))
 		ft_unset(args, shell);
-		ft_free_split(args);
-		return (1);
-	}
-	else if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
+	else if (!ft_strcmp(token->value, "cd"))
+		shell->exit_status = ft_cd(args, shell);
+	else
 	{
-		if (ft_cd(args, shell))
-			shell->exit_status = 1;
 		ft_free_split(args);
-		return (1);
+		return (0);
 	}
-	ft_putendl_fd(" command not found", STDERR_FILENO);
-	shell->exit_status = 127;
 	ft_free_split(args);
-	return (0);
+	return (1);
 }
 
 /// @brief This function create the array of the args,
@@ -78,7 +53,9 @@ char	**ft_array_struct(t_token *token)
 {
 	char	**args;
 	int		i;
-	int		len;	len = ft_lstsize(token);
+	int		len;
+
+	len = ft_lstsize(token);
 	i = 0;
 	args = malloc(sizeof(char *) * len);
 	if (!args)
@@ -103,7 +80,9 @@ char	**ft_array_struct(t_token *token)
 /// @param arr array of the arrays
 void	ft_free_split(char **arr)
 {
-	int	i;	i = 0;
+	int	i;
+
+	i = 0;
 	while (arr[i])
 	{
 		free(arr[i]);

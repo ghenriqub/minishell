@@ -6,16 +6,16 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 17:20:53 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:11:54 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_token	*ft_init_token_2(t_shell *shell, t_token *head, char *line, int *i);
-static void	ft_init_token_3(t_token **new, t_token **head, t_token **current);
-
-void		print_token(t_token *token);
+static t_token	*ft_init_token_2(t_shell *shell, t_token *head,
+					char *line, int *i);
+static void		ft_init_token_3(t_token **new, t_token **head,
+					t_token **current);
 
 /// @brief init token and call built functons
 /// @param line is the param that user write
@@ -33,8 +33,13 @@ t_token	*ft_tokenizer(t_shell *shell, char *line, char **env)
 		printf(INPUT_ERROR);
 	}
 	else
-		call_builtins(token, shell, env);
-	//print_token(token);
+	{
+		if (!call_builtins(token, shell, env))
+		{
+			ft_putendl_fd(" command not found", STDERR_FILENO);
+			shell->exit_status = 127;
+		}
+	}
 	return (token);
 }
 
@@ -58,7 +63,7 @@ t_token	*ft_init_token(t_shell *shell, char *line)
 		else
 		{
 			new = ft_init_token_2(shell, head, line, &i);
-			if(!new)
+			if (!new)
 				return (NULL);
 			ft_init_token_3(&new, &head, &current);
 		}
@@ -73,7 +78,8 @@ t_token	*ft_init_token(t_shell *shell, char *line)
 /// @param line input user
 /// @param i interator that we used to walk string
 /// @return return 0 for error or 1 if was been succeed
-static t_token	*ft_init_token_2(t_shell *shell, t_token *head, char *line, int *i)
+static t_token	*ft_init_token_2(t_shell *shell, t_token *head,
+					char *line, int *i)
 {
 	t_token	*new;
 
@@ -84,8 +90,7 @@ static t_token	*ft_init_token_2(t_shell *shell, t_token *head, char *line, int *
 		|| (line[*i] == '<' && line[*i + 1] == '<'))
 	{
 		new->value = ft_substr(line, *i, 2);
-		(*i)++;
-		(*i)++;
+		(*i) += 2;
 	}
 	else if (ft_is_delimiter(line[*i]))
 	{
