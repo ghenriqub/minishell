@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 19:24:48 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:27:26 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief 
 /// @param arg 
 /// @param type 
-static void	print_exit_error(char *arg, int type)
+static void	print_exit_error(char *arg, int type, t_shell *shell)
 {
 	if (type == 1)
 	{
@@ -27,30 +27,9 @@ static void	print_exit_error(char *arg, int type)
 	{
 		ft_putendl_fd("minishell: exit: too many arguments", STDERR_FILENO);
 	}
+	if (!arg)
+		shell->exit_status = 1;
 	return ;
-}
-
-/// @brief 
-/// @param nbr 
-/// @return 
-static int	is_valid_number(char *nbr)
-{
-	int	i;
-
-	i = 0;
-	if (!nbr || !*nbr)
-		return (0);
-	if (nbr[i] == '+' || nbr[i] == '-')
-		i++;
-	if (!nbr[i])
-		return (0);
-	while (nbr[i])
-	{
-		if (!ft_isdigit(nbr[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 /// @brief 
@@ -76,8 +55,40 @@ static int	count_args(char **args)
 static void	clean_exit(char **args, t_shell *shell, int exit_code, int is_mult)
 {
 	if (is_mult)
-		shell->exit_status = 1;
+		shell->exit_status = 2;
 	exit(exit_code & 255);
+}
+
+/// @brief 
+/// @param arg 
+/// @return 
+static int	is_valid_arg(char *arg)
+{
+	unsigned long long	num[2];
+	int					i[2];
+
+	i[0] = 0;
+	i[1] = 1;
+	num[1] = 0;
+	num[0] = LLONG_MAX;
+	if (arg[i[0]] == '-' || arg[i[0]] == '+')
+	{
+		if (arg[i[0]] == '-')
+			i[1] *= -1;
+		i[0]++;
+	}
+	if (i[1] == -1)
+		num[0] = (unsigned long long)LLONG_MAX + 1;
+	while (arg[i[0]])
+	{
+		if (!ft_isdigit(arg[i[0]]))
+			return (0);
+		if (num[1] > (num[0] - (arg[i[0]] - '0')) / 10)
+			return (0);
+		num[1] = num[1] * 10 + (arg[i[0]] - '0');
+		i[0]++;
+	}
+	return (1);
 }
 
 /// @brief 
@@ -91,25 +102,22 @@ int	ft_exit(char **args, t_shell *shell)
 
 	ft_putstr_fd("exit\n", 1);
 	arg_count = count_args(args);
-	if (arg_count == 0)
-		exit_code = (long)shell->exit_status;
-	else if (arg_count == 1)
+	if (arg_count == 1)
 	{
-		if (!is_valid_number(args[0]) || (!ft_strncmp(args[0], "--", 2)))
+		if (!is_valid_arg(args[0]) || (!ft_strncmp(args[0], "--", 2)))
 		{
-			if(!ft_strncmp(args[0], "--", 2))
-				exit(0);
-			print_exit_error(args[0], 1);
+			if (!ft_strncmp(args[0], "--", 2))
+				exit (0);
+			print_exit_error(args[0], 1, shell);
 			clean_exit(args, shell, 2, 1);
 		}
 		exit_code = ft_atoi(args[0]);
 	}
 	else
 	{
-		if (!is_valid_number(args[0]))
+		if (!is_valid_arg(args[0]))
 			clean_exit(args, shell, 1, 1);
-		print_exit_error(NULL, 2);
-		shell->exit_status = 1;
+		print_exit_error(NULL, 2, shell);
 		return (1);
 	}
 	clean_exit(args, shell, exit_code, 0);
