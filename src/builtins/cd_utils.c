@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 14:45:28 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:36:54 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*get_target_dir(char **args, t_shell *shell)
 			return (target_error("HOME"));
 		target = ft_strdup(env_value);
 	}
-	else if (ft_strcmp(args[1], "-") == 0)
+	else if (ft_strncmp(args[0], "-", 1) == 0)
 	{
 		env_value = get_env_var(shell, "OLDPWD");
 		if (!env_value)

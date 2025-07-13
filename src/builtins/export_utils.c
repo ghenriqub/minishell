@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 14:19:38 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:42:45 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	set_var(char *variable, char ***env)
 	i = find_index(*env, name);
 	if (i != -1)
 	{
-		free(env[i]);
+		free((*env)[i]);
 		(*env)[i] = ft_strdup(variable);
 	}
 	else

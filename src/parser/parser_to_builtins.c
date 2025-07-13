@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 14:27:44 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 16:11:17 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,43 +25,50 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 		ft_free_split(args);
 		return (1);
 	}
-	if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
+	else if (!ft_strncmp(token->value, "echo", 4) && ft_strlen(token->value) == 4)
 	{
 		ft_echo(args, shell->exit_status);
 		ft_free_split(args);
 		return (1);
 	}
-	if (!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
+	else if (!ft_strncmp(token->value, "env", 3) && ft_strlen(token->value) == 3)
 	{
 		ft_env(args, shell->env);
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "exit", 4) && ft_strlen(token->value) == 4)
+	else if(!ft_strncmp(token->value, "exit", 4) && ft_strlen(token->value) == 4)
 	{
 		ft_exit(args, shell);
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "export", 6) && ft_strlen(token->value) == 6)
+	else if(!ft_strncmp(token->value, "export", 6) && ft_strlen(token->value) == 6)
 	{
 		if (ft_export(args, shell))
 			shell->exit_status = 1;
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "unset", 5) && ft_strlen(token->value) == 5)
+	else if(!ft_strncmp(token->value, "unset", 5) && ft_strlen(token->value) == 5)
 	{
 		ft_unset(args, shell);
 		ft_free_split(args);
 		return (1);
 	}
-	if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
+	else if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
 	{
 		ft_cd(args, shell);
 		ft_free_split(args);
 		return (1);
 	}
+	else
+	{
+		ft_putstr_fd(" command not found", STDERR_FILENO);
+		shell->exit_status = 127;
+		return (0);
+	}
+	ft_free_split(args);
 	return (0);
 }
 
