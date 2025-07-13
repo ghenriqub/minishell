@@ -6,20 +6,20 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:48:31 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/10 20:58:50 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 17:40:34 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*ft_get_value_2(const char *s, int *i);
+static char	*ft_get_value_2(t_shell *shell, const char *s, int *i);
 
 /// @brief Extracts the next token
 ///			(word or quoted string) from the input string.
 /// @param s The input string to parse.
 /// @param i A pointer to the current position in the string (will be updated).
 /// @return A newly allocated substring containing the extracted token.
-char	*ft_get_value(const char *s, int *i)
+char	*ft_get_value(t_shell *shell, const char *s, int *i)
 {
 	char	*result;
 	char	*part;
@@ -28,7 +28,7 @@ char	*ft_get_value(const char *s, int *i)
 	result = NULL;
 	while (s[*i] && s[*i] != ' ' && s[*i] != '\t' && !ft_is_delimiter(s[*i]))
 	{
-		part = ft_get_value_2(s, i);
+		part = ft_get_value_2(shell, s, i);
 		if (!part)
 		{
 			free(result);
@@ -53,12 +53,14 @@ char	*ft_get_value(const char *s, int *i)
 /// @param i A pointer to the current index in the string. Will be updated.
 /// @return A newly allocated substring for this part
 ///				or NULL if unterminated quote or malloc fails.
-static char	*ft_get_value_2(const char *s, int *i)
+static char	*ft_get_value_2(t_shell *shell, const char *s, int *i)
 {
 	int		start;
 	char	quote;
 	char	*part;
+	char	*pointer;
 
+	quote = 'a';
 	if (s[*i] == '"' || s[*i] == '\'')
 	{
 		quote = s[(*i)++];
@@ -78,6 +80,14 @@ static char	*ft_get_value_2(const char *s, int *i)
 			(*i)++;
 		part = ft_substr(s, start, *i - start);
 	}
+	while(quote && quote != '\'' && ft_strchr(part, '$'))
+	{
+		pointer = ft_strchr(part, '$');
+		if(!pointer[1] || pointer[1] == ' ' || ft_is_delimiter(pointer[1]))
+			break ;
+		part = ft_get_variable(shell->env, part, shell->exit_status);
+	}
+
 	return (part);
 }
 

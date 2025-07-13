@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 18:56:00 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 13:03:15 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	ft_lstsize(t_token *lst)
 	}
 	return (i);
 }
+
+/// @brief this function create a copy of env whit memory alloc
+/// @param envp envp
+/// @return copy
 char	**copy_env(char **envp)
 {
 	int		i;
@@ -68,7 +72,7 @@ char	**copy_env(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		new_env[i] = ft_strdup(envp[i]); // agora você tem mallocs próprios
+		new_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
 	new_env[i] = NULL;

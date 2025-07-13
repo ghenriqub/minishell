@@ -2,6 +2,9 @@
 	"files.associations": {
 		"chrono": "c",
 		"functional": "c",
-		"readline.h": "c"
+		"readline.h": "c",
+		"minishell.h": "c",
+		"signal.h": "c",
+		"history.h": "c"
 	}
 }

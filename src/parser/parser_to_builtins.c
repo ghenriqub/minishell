@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_to_builtins.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 20:51:22 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:45:51 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 		ft_free_split(args);
 		return (1);
 	}
+	if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
+	{
+		ft_unset(args, shell);
+		ft_free_split(args);
+		return (1);
+	
+	}
+	ft_free_split(args);
 	return (0);
 }
 
