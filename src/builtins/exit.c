@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 20:03:55 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:31:35 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ static void	print_exit_error(char *arg, int type)
 	{
 		ft_putstr_fd("exit: ", STDERR_FILENO);
 		ft_putstr_fd(arg, STDERR_FILENO);
-		ft_putstr_fd(": numeric argument required", STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);
+		ft_putstr_fd(": numeric argument required\n", STDERR_FILENO);
 	}
 	else if (type == 2)
 	{
 		ft_putstr_fd("exit: ", STDERR_FILENO);
 		ft_putstr_fd(arg, STDERR_FILENO);
-		ft_putstr_fd(": too many arguments", STDERR_FILENO);
-		ft_putstr_fd("\n", STDERR_FILENO);		
+		ft_putstr_fd(": too many argument\n", STDERR_FILENO);
 	}
 	return ;
 }
@@ -85,19 +83,17 @@ int	ft_exit(char **args, t_shell *shell)
 	ft_putstr_fd("exit\n", 1);
 	arg_count = count_args(args);
 	if (arg_count == 0)
-	{
 		exit_code = (long)shell->exit_status;
-	}
 	else if (arg_count == 1)
 	{
-		if (!is_valid_number(args[0]))
+		if (!is_valid_number(args[0]) && ft_strncmp(args[0], "--", 2))
 			cleanup_exit(args, shell, 2, 1);
 		exit_code = ft_atoi(args[0]);
 	}
 	else
 	{
 		if (!is_valid_number(args[0]))
-			cleanup_exit(args, shell, 2, 1);
+			cleanup_exit(args, shell, 1, 1);
 		print_exit_error(NULL, 2);
 		return (1);
 	}

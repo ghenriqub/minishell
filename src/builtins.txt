@@ -1,0 +1,627 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 14:09:06 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+#include <string.h>
+#include <errno.h>
+
+
+
+
+
+
+
+int	ft_builtin(char **args, t_shell *env)
+{
+	
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:26 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 15:09:43 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+/// @brief we iterate until is a valid flag, 
+/// @param arg the argument that should be verified 
+/// @return 1 = valid flag || 0 = invalid flag
+static int	n_flag(char *arg)
+{
+	int	i;
+
+	if (!arg || arg[0] != '-')
+		return (0);
+	if (arg[1] != 'n')
+		return (0);
+	i = 1;
+	while (arg[i])
+	{
+		if (arg[i] != 'n')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/// @brief the verification if the args are -n (-nnnn or -n -n too)
+/// @param args the arguments we got from the STDIN_FILENO
+/// @param new_line the variable that will tell if we'll have a nl or not
+/// @return returns how many iterations we made until we got a valid string
+static int	process_flags(char **args, int *new_line)
+{
+	int	i;
+
+	i = 0;
+	*new_line = 1;
+	while (args[i] && n_flag(args[i]))
+	{
+		*new_line = 0;
+		i++;
+	}
+	return (i);
+}
+
+/// @brief built-in echo implementation, with -n flag, whole string with write
+/// @param args the arguments we got from the STDIN_FILENO
+/// @return returns 0 on success (and it always succeeds)
+int	ft_echo(char **args, int exit_status)
+{
+	int	new_line;
+	int	i;
+
+	if (!args || !args[0])
+		return (0);
+	if(!ft_strncmp(args[0], "$?", 2))
+	{
+		ft_putnbr_fd(exit_status, 1);
+		return (0);
+	}
+	i = process_flags(args, &new_line);
+	while (args[i])
+	{
+		write (STDOUT_FILENO, args[i], ft_strlen(args[i]));
+		if (args[i + 1])
+			write(STDOUT_FILENO, " ", 1);
+		i++;
+	}
+	if (new_line)
+		write(STDOUT_FILENO, "\n", 1);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:29 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 14:10:30 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+/// @brief 
+/// @param  
+static void	print_env_error(char *arg)
+{
+	ft_putstr_fd("env: ", STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(": too many arguments", STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
+}
+
+/// @brief 
+/// @param env 
+/// @return 
+int	env_size(char **env)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+		i++;
+	return (i);
+}
+
+/// @brief 
+/// @param args 
+/// @param env 
+/// @return 
+int	ft_env(char **args, char **env)
+{
+	int	i;
+
+	i = 0;
+	if (args[1])
+	{
+		print_env_error(args[1]);
+		return (1);
+	}
+	if (!env)
+		return (0);
+	while (env[i])
+	{
+		ft_putstr_fd(env[i], 1);
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 11:26:51 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+
+static void	print_exit_error(char *arg, int type)
+{
+	if (type == 0)
+	{
+		ft_putstr_fd("exit: ", STDERR_FILENO);
+		ft_putstr_fd(arg, STDERR_FILENO);
+		ft_putstr_fd(": numeric argument required", STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
+	}
+	else if (type == 1)
+	{
+		ft_putstr_fd("exit: ", STDERR_FILENO);
+		ft_putstr_fd(arg, STDERR_FILENO);
+		ft_putstr_fd(": too many arguments", STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);		
+	}
+	return ;
+}
+
+
+static int	is_valid_number(char *nbr)
+{
+	int	i;
+
+	i = 0;
+	if (!nbr || !*nbr)
+		return (0);
+	if (nbr[i] == '+' || nbr[i] == '-')
+		i++;
+	if (!nbr[i])
+		return (0);
+	while (nbr[i])
+	{
+		if (!ft_isdigit(nbr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+static int	count_args(char **args)
+{
+	int	count;
+
+	count = 0;
+	while (args[count])
+		count++;
+	return (count);
+}
+
+
+static void	cleanup_exit(char **args, t_shell *shell, int exit_code, int is_mult)
+{
+	if (!is_mult)
+		print_exit_error(args, 0);
+	free_env(shell->env);
+	free_history(shell->history);
+	exit(exit_code & 255);
+}
+
+
+int	ft_exit(char **args, t_shell *shell)
+{
+	long	exit_code;
+	int		arg_count;
+
+	ft_putchar_fd("exit\n", 2);
+	arg_count = count_args(args);
+	if (arg_count == 1)
+		exit_code = shell->exit_status;
+	else if (arg_count = 2)
+	{
+		if (!is_valid_number(args[1]))
+			cleanup_exit(args, shell, 2, 0);
+		exit_code = ft_atoi(args[1]);
+	}
+	else
+	{
+		if (!is_valid_number(args[1]))
+			cleanup_exit(args, shell, 2, 0);
+		print_exit_error(NULL, 1);
+		return (1);
+	}
+	cleanup_exit(args, shell, exit_code, 1);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 17:45:04 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+
+static int	is_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !*str)
+		return (0);
+	if (!ft_isalpha(str[0]) && str[0] != '_')
+		return (0);
+	while (str[i] && str[i] != '=')
+	{
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+static void	print_all(char **env)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd(env[i], 1);
+		ft_putchar_fd('\n', 1);
+		i++;
+	}
+}
+
+
+int	ft_export(char **args, char **env)
+{
+	int		i;
+	int		status;
+
+	status = 0;
+	i = 0;
+	if (!args[1])
+	{
+		print_all(env);
+		return(0);
+	}
+	while (args[i])
+	{
+		if (!is_valid(args[i]))
+		{
+			ft_putstr_fd("export: ", 2);
+			ft_putstr_fd(args[i], 2);
+			ft_putstr_fd(": not a valid identifier\n", 2);
+			status = 1;
+		}
+		else
+			set_var(args[i], &env);
+		i++;
+	}
+	return (status);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 17:43:49 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+
+static int	find_index(char **env, char *variable)
+{
+	int	i;
+	int	len;
+
+	len = ft_strlen(variable);
+	i = 0;
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], variable, len) == 0 &&
+			env[i][len] == '=')
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+
+static char	*get_var(char *variable)
+{
+	int		i;
+	char	*name;
+
+	i = 0;
+	while (variable[i] && variable[i] != '=')
+		i++;
+	name = malloc(sizeof(char) * (i + 1));
+	if (!name)
+		return (NULL);
+	ft_strlcpy(name, variable, i + 1);
+	return (name);
+}
+
+
+static void	set_env(char *variable, char ***env)
+{
+	char	**new_env;
+	int		size;
+	int		i;
+
+	size = 0;
+	i = 0;
+	while ((*env)[size])
+		size++;
+	new_env = malloc(sizeof(char *) * (size + 2));
+	if (!new_env)
+		return ;
+	while (i < size)
+	{
+		new_env[i] = (*env)[i];
+		i++;
+	}
+	new_env[i] = ft_strdup(variable);
+	new_env[i + 1] = NULL;
+	free(*env);
+	*env = new_env;
+}
+
+
+void	set_var(char *variable, char ***env)
+{
+	char	*name;
+	int		i;
+
+	name = get_var(variable);
+	i = find_index(env, name);
+	if (i != -1)
+	{
+		free(env[i]);
+		env[i] = ft_strdup(variable);
+	}
+	else
+		set_env(variable, env);
+	free(name);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pwd.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 14:56:21 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+/// @brief 
+/// @param  
+/// @return 
+static char	*get_current_dir(void)
+{
+	char	*cwd;
+	char	*temp;
+	size_t	size;
+
+	size = 1024;
+	cwd = malloc(size);
+	if (!cwd)
+		return (NULL);
+	while (getcwd(cwd, size) == NULL)
+	{
+		if (errno != ERANGE)
+		{
+			free (cwd);
+			return (NULL);
+		}
+		size *= 2;
+		temp = realloc(cwd, size);
+		if (!temp)
+		{
+			free (cwd);
+			return (NULL);
+		}
+		cwd = temp;
+	}
+	return (cwd);
+}
+
+/// @brief 
+/// @param  
+static void	print_pwd_error(void)
+{
+	ft_putstr_fd("pwd: ", STDERR_FILENO);
+	ft_putstr_fd("too many arguments", STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+}
+
+/// @brief 
+/// @param  
+/// @return 
+int	ft_pwd(char **args)
+{
+	char	*cwd;
+
+	(void)args;
+	cwd = get_current_dir();
+	if (!cwd)
+	{
+		print_pwd_error();
+		return (1);
+	}
+	ft_putstr_fd(cwd, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+	free(cwd);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
+/*   Updated: 2025/07/12 17:18:39 by ghenriqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+/// @brief 
+/// @param  
+static void	print_unset_error(char *arg)
+{
+	ft_putstr_fd("unset: ", STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(": invalid parameter name", STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+}
+
+/// @brief 
+/// @param env 
+/// @param command 
+/// @return 
+static int	find_command(char **env, char *command)
+{
+	int	i;
+
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], command, ft_strlen(command)))
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+/// @brief 
+/// @param command 
+/// @param env 
+static void	update_env(char *command, char **env)
+{
+	int		i;
+	int		j;
+	char	**new_env;
+
+	i = find_command(*env, command);
+	if (i == -1)
+		return ;
+	new_env = malloc(sizeof(char *) * env_size(*env));
+	if (!new_env)
+		return ;
+	i = 0;
+	j = 0;
+	while ((*env)[i])
+	{
+		if (ft_strncmp((*env)[i], command, ft_strlen(command)))
+			new_env[j++] = ft_strdup((*env)[i]);
+		free((*env)[i]);
+		i++;
+	}
+	new_env[j] = NULL;
+	free(*env);
+	*env = new_env;
+}
+
+/// @brief 
+/// @param str 
+/// @return 
+static int	is_valid(char *str)
+{
+	int	i;
+
+	i = 1;
+	if (!str || !*str)
+		return (0);
+	if (!ft_isalpha(str[0]) && str[0] != '_')
+		return (0);
+	while (str[i])
+	{
+		if (!ft_isalnum(str[i] && str[i] != '_'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+/// @brief 
+/// @param args 
+/// @param env 
+/// @return 
+int	ft_unset(char **args, char **env)
+{
+	int	i;
+	int	status;
+
+	i = 1;
+	status = 0;
+	if (!args[1])
+		return (0);
+	while (args[i])
+	{
+		if (!is_valid(args[i]))
+		{
+			print_unset_error(args[i]);
+			status = 1;
+		}
+		else
+			update_env(args[i], env);
+		i++;
+	}
+	return (status);
+}

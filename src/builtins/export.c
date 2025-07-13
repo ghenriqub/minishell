@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 20:13:12 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:31:02 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	print_export_error(char arg)
+{
+	ft_putstr_fd("export: ", STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(": not a valid identifier\n", STDERR_FILENO);
+}
 
 
 static int	is_valid(char *str)
@@ -20,7 +27,7 @@ static int	is_valid(char *str)
 	i = 0;
 	if (!str || !*str)
 		return (0);
-	if (!ft_isalpha(str[0]) && str[0] != '_' )
+	if (!ft_isalpha(str[0]) && str[0] != '_')
 		return (0);
 	while (str[i] && str[i] != '=')
 	{
@@ -63,9 +70,7 @@ int	ft_export(char **args, t_shell *shell)
 	{
 		if (!is_valid(args[i]))
 		{
-			ft_putstr_fd("export: ", 2);
-			ft_putstr_fd(args[i], 2);
-			ft_putstr_fd(": not a valid identifier\n", 2);
+			print_export_error(args[i]);
 			status = 1;
 		}
 		else

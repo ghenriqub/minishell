@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 19:44:38 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:32:33 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ static void	print_unset_error(char *arg)
 {
 	ft_putstr_fd("unset: ", STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
-	ft_putstr_fd(": invalid parameter name", STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+	ft_putstr_fd(": invalid parameter name\n", STDERR_FILENO);
 }
 
 /// @brief 
