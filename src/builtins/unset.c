@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 15:53:38 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:26:38 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,6 @@ int	ft_unset(char **args, t_shell *shell)
 			update_env(args[i], &shell->env);
 		i++;
 	}
+	shell->exit_status = status;
 	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 14:18:58 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:26:58 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	is_valid(char *str)
 		return (0);
 	while (str[i] && str[i] != '=')
 	{
+		if (str[i] == '+' && str[i + 1] == '=')
+			break ;
 		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
@@ -85,5 +87,6 @@ int	ft_export(char **args, t_shell *shell)
 			set_var(args[i], &shell->env);
 		i++;
 	}
+	shell->exit_status = status;
 	return (status);
 }
