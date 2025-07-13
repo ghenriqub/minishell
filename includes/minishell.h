@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 18:01:21 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:02:58 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_free_split(char **arr);
 char	*ft_get_variable(char **env, char *part, int exit_status);
 char	*get_env_value(char **env, const char *var_name);
 char	*ft_concat(char *start, char *part, char *var_value, int i);
+char	*ft_get_brace(char **env, char *part, char *start);
 
 // ====== Exection ======
 

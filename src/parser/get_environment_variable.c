@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:47:03 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 17:29:04 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:04:20 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@ char	*ft_get_variable(char **env, char *part, int code_exit)
 	char	*var_name;
 	char	*var_value;
 	int		i;
+	int		len;
 
 	start = ft_strchr(part, '$');
 	i = 1;
-	if(start[1] == '?')
-		return(ft_concat(start, part, ft_itoa(code_exit), i + 1));
-	if(!start[1])
+
+	if (!start[1])
 		return (part);
+	if (start[1] == '?')
+		return (ft_concat(start, part, ft_itoa(code_exit), i + 1));
+	if (start[1] == '{')
+		return (ft_get_brace(env, part, start));
 	while (start[i] && (ft_isalnum(start[i]) || start[i] == '_'))
 		i++;
 	var_name = ft_substr(start, 1, i - 1);
@@ -68,4 +72,28 @@ char	*ft_concat(char *start, char *part, char *var_value, int i)
 	free(tmp);
 	free(part);
 	return (result);
+}
+
+char	*ft_get_brace(char **env, char *part, char *start)
+{
+	char	*end_brace;
+	char	*var_name;
+	char	*var_value;
+
+	end_brace = ft_strchr(start + 2, '}');
+	if (!end_brace)
+	{
+		free(part);
+		return (strdup(""));
+	}
+	int len = end_brace - (start + 2);
+	if (len == 0)
+	{
+		free(part);
+		return (strdup(""));
+	}
+	var_name = ft_substr(start + 2, 0, len);
+	var_value = get_env_value(env, var_name);
+	free(var_name);
+	return (ft_concat(start, part, var_value, len + 3));
 }
