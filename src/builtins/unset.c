@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 12:32:33 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 15:53:38 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	is_valid(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (!ft_isalnum(str[i] && str[i] != '_'))
+		if (!ft_isalnum(str[i]) && str[i] != '_')
 			return (0);
 		i++;
 	}
@@ -103,19 +103,19 @@ int	ft_unset(char **args, t_shell *shell)
 
 	i = 0;
 	status = 0;
-	if(!shell->env)
-		return(1);
+	if (!shell->env)
+		return (1);
 	if (!args[0])
 		return (0);
 	while (args[i])
 	{
-		// if (!is_valid(args[i]))
-		// {
-		// 	print_unset_error(args[i]);
-		// 	status = 1;
-		// }
-		// else
-		update_env(args[i], &shell->env);
+		if (!is_valid(args[i]))
+		{
+			print_unset_error(args[i]);
+			status = 1;
+		}
+		else
+			update_env(args[i], &shell->env);
 		i++;
 	}
 	return (status);

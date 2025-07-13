@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 12:39:49 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:18:58 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/// @brief 
+/// @param arg 
 static void	print_export_error(char *arg)
 {
 	ft_putstr_fd("export: ", STDERR_FILENO);
@@ -19,7 +21,9 @@ static void	print_export_error(char *arg)
 	ft_putstr_fd(": not a valid identifier\n", STDERR_FILENO);
 }
 
-
+/// @brief 
+/// @param str 
+/// @return 
 static int	is_valid(char *str)
 {
 	int	i;
@@ -38,7 +42,8 @@ static int	is_valid(char *str)
 	return (1);
 }
 
-
+/// @brief 
+/// @param env 
 static void	print_all(char **env)
 {
 	int	i;
@@ -53,7 +58,10 @@ static void	print_all(char **env)
 	}
 }
 
-
+/// @brief 
+/// @param args 
+/// @param shell 
+/// @return 
 int	ft_export(char **args, t_shell *shell)
 {
 	int		i;
@@ -64,7 +72,7 @@ int	ft_export(char **args, t_shell *shell)
 	if (!args[i])
 	{
 		print_all(shell->env);
-		return(0);
+		return (0);
 	}
 	while (args[i])
 	{
