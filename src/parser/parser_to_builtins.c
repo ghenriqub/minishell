@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 20:51:22 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:27:44 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 /// @brief this function call ant builtin according to input
 /// @param token tokens of the input
-/// @param env variable ambient 
+/// @param env variable ambient
 /// @return return 1 if succed, or 0 if is fail
 int	call_builtins(t_token *token, t_shell *shell, char **env)
 {
-	char	**args;
-
-	args = ft_array_struct(token);
+	char	**args;	args = ft_array_struct(token);
 	if (!ft_strncmp(token->value, "pwd", 3) && ft_strlen(token->value) == 3)
 	{
 		ft_pwd(args);
@@ -58,6 +56,12 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 		ft_free_split(args);
 		return (1);
 	}
+	if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
+	{
+		ft_cd(args, shell);
+		ft_free_split(args);
+		return (1);
+	}
 	return (0);
 }
 
@@ -70,9 +74,7 @@ char	**ft_array_struct(t_token *token)
 {
 	char	**args;
 	int		i;
-	int		len;
-
-	len = ft_lstsize(token);
+	int		len;	len = ft_lstsize(token);
 	i = 0;
 	args = malloc(sizeof(char *) * len);
 	if (!args)
@@ -97,9 +99,7 @@ char	**ft_array_struct(t_token *token)
 /// @param arr array of the arrays
 void	ft_free_split(char **arr)
 {
-	int	i;
-
-	i = 0;
+	int	i;	i = 0;
 	while (arr[i])
 	{
 		free(arr[i]);

@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 14:56:21 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 13:24:57 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /// @brief 
 /// @param  
 /// @return 
-static char	*get_current_dir(void)
+char	*get_current_dir(void)
 {
 	char	*cwd;
 	char	*temp;

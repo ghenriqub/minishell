@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/12 18:03:54 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/13 14:28:49 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ SRC = $(PARSER_DIR)/main.c \
 		$(BUILTINS_DIR)/exit.c \
 		$(BUILTINS_DIR)/export.c \
 		$(BUILTINS_DIR)/export_utils.c \
-		$(BUILTINS_DIR)/unset.c
+		$(BUILTINS_DIR)/unset.c \
+		$(BUILTINS_DIR)/cd.c \
+		$(BUILTINS_DIR)/cd_utils.c
 
 #objects
 OBJS = $(SRC:.c=.o)

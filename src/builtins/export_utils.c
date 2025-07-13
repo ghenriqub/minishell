@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 18:07:26 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:19:38 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
+/// @brief 
+/// @param env 
+/// @param variable 
+/// @return 
 static int	find_index(char **env, char *variable)
 {
 	int	i;
@@ -22,15 +25,17 @@ static int	find_index(char **env, char *variable)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strncmp(env[i], variable, len) == 0 &&
-			env[i][len] == '=')
+		if (ft_strncmp(env[i], variable, len) == 0
+			&& env[i][len] == '=')
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-
+/// @brief 
+/// @param variable 
+/// @return 
 static char	*get_var(char *variable)
 {
 	int		i;
@@ -46,7 +51,9 @@ static char	*get_var(char *variable)
 	return (name);
 }
 
-
+/// @brief 
+/// @param variable 
+/// @param env 
 static void	set_env(char *variable, char ***env)
 {
 	char	**new_env;
@@ -71,7 +78,9 @@ static void	set_env(char *variable, char ***env)
 	*env = new_env;
 }
 
-
+/// @brief 
+/// @param variable 
+/// @param env 
 void	set_var(char *variable, char ***env)
 {
 	char	*name;
@@ -82,7 +91,7 @@ void	set_var(char *variable, char ***env)
 	if (i != -1)
 	{
 		free(env[i]);
-		*env[i] = ft_strdup(variable);
+		(*env)[i] = ft_strdup(variable);
 	}
 	else
 		set_env(variable, env);
