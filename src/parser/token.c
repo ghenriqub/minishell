@@ -6,13 +6,13 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/12 17:19:24 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/13 17:20:53 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	ft_init_token_2(t_token *new, t_token *head, char *line, int *i);
+static t_token	*ft_init_token_2(t_shell *shell, t_token *head, char *line, int *i);
 static void	ft_init_token_3(t_token **new, t_token **head, t_token **current);
 
 void		print_token(t_token *token);
@@ -27,20 +27,21 @@ t_token	*ft_tokenizer(t_shell *shell, char *line, char **env)
 
 	if (!line[0])
 		return (NULL);
-	token = ft_init_token(line);
+	token = ft_init_token(shell, line);
 	if (!token)
 	{
 		printf(INPUT_ERROR);
 	}
 	else
 		call_builtins(token, shell, env);
+	//print_token(token);
 	return (token);
 }
 
 /// @brief tokenization, alloc the memory and call functions for value and type
 /// @param line is the user input
 /// @return return token created or NULL if input is invalid
-t_token	*ft_init_token(char *line)
+t_token	*ft_init_token(t_shell *shell, char *line)
 {
 	t_token	*head;
 	t_token	*current;
@@ -56,10 +57,8 @@ t_token	*ft_init_token(char *line)
 			i++;
 		else
 		{
-			new = malloc(sizeof(t_token));
-			if (!new)
-				ft_error(head, MALLOC_ERROR, 1);
-			if (!ft_init_token_2(new, head, line, &i))
+			new = ft_init_token_2(shell, head, line, &i);
+			if(!new)
 				return (NULL);
 			ft_init_token_3(&new, &head, &current);
 		}
@@ -74,8 +73,13 @@ t_token	*ft_init_token(char *line)
 /// @param line input user
 /// @param i interator that we used to walk string
 /// @return return 0 for error or 1 if was been succeed
-static int	ft_init_token_2(t_token *new, t_token *head, char *line, int *i)
+static t_token	*ft_init_token_2(t_shell *shell, t_token *head, char *line, int *i)
 {
+	t_token	*new;
+
+	new = malloc(sizeof(t_token));
+	if (!new)
+		ft_error(head, MALLOC_ERROR, 1);
 	if ((line[*i] == '>' && line[*i + 1] == '>')
 		|| (line[*i] == '<' && line[*i + 1] == '<'))
 	{
@@ -89,14 +93,14 @@ static int	ft_init_token_2(t_token *new, t_token *head, char *line, int *i)
 		(*i)++;
 	}
 	else
-		new->value = ft_get_value(line, i);
+		new->value = ft_get_value(shell, line, i);
 	if (!new->value)
 	{
 		ft_free_tokens(head);
 		free(new);
-		return (0);
+		return (NULL);
 	}
-	return (1);
+	return (new);
 }
 
 /// @brief call the get type and update current

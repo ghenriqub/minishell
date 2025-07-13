@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 14:31:03 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:22:47 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_cd_error(char *path)
 /// @return 
 static int	handle_many_args(char **args)
 {
-	ft_putstr_fd("cd: too many arguments", STDERR_FILENO);
+	ft_putstr_fd("cd: too many arguments\n", STDERR_FILENO);
 	return (1);
 }
 
@@ -60,7 +60,7 @@ int	ft_cd(char **args, t_shell *shell)
 	char	*pwd[3];
 	int		result;
 
-	if (!args || !args[0])
+	if (!args)
 		return (1);
 	if (args[1])
 		return (handle_many_args(args));

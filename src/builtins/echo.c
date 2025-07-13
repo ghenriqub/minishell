@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:26 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 14:16:29 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:03:58 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ int	ft_echo(char **args, int exit_status)
 
 	if (!args || !args[0])
 		return (0);
-	if (!ft_strncmp(args[0], "$?", 2))
-	{
-		ft_putnbr_fd(exit_status, 1);
-		write(1, "\n", 1);
-		return (0);
-	}
 	i = process_flags(args, &new_line);
 	while (args[i])
 	{

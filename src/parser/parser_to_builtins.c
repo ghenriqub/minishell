@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_to_builtins.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 16:11:17 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 18:10:31 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,13 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 	}
 	else if(!ft_strncmp(token->value, "cd", 2) && ft_strlen(token->value) == 2)
 	{
-		ft_cd(args, shell);
+		if (ft_cd(args, shell))
+			shell->exit_status = 1;
 		ft_free_split(args);
 		return (1);
 	}
-	else
-	{
-		ft_putstr_fd(" command not found", STDERR_FILENO);
-		shell->exit_status = 127;
-		return (0);
-	}
+	ft_putendl_fd(" command not found", STDERR_FILENO);
+	shell->exit_status = 127;
 	ft_free_split(args);
 	return (0);
 }
