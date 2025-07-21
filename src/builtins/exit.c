@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 20:27:26 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:44:08 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	ft_exit(char **args, t_shell *shell)
 	}
 	else
 	{
-		if (!is_valid_arg(args[0]))
+		if (args || !is_valid_arg(args[0]))
 			clean_exit(args, shell, 1, 1);
 		print_exit_error(NULL, 2, shell);
 		return (1);
