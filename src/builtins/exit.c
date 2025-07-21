@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/21 14:44:08 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/21 14:49:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	ft_exit(char **args, t_shell *shell)
 	}
 	else
 	{
-		if (args || !is_valid_arg(args[0]))
+		if (arg_count == 0 || !is_valid_arg(args[0]))
 			clean_exit(args, shell, 1, 1);
 		print_exit_error(NULL, 2, shell);
 		return (1);
