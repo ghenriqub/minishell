@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 19:37:15 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:15:45 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_free_tokens(t_token *token);
 void	ft_error(t_token *token, char *message, int code);
 t_shell	*ft_init_shell(t_shell *shell, char **env);
 // call_builtins:
-int		call_builtins(t_token *token, t_shell *shell, char **env);
+int		ft_call_builtins(t_token *token, t_shell *shell, char **env);
 char	**ft_array_struct(t_token *token);
 int		ft_lstsize(t_token *token);
 void	ft_free_split(char **arr);

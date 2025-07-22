@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 20:10:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:15:38 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param token tokens of the input
 /// @param env variable ambient
 /// @return return 1 if succed, or 0 if is fail
-int	call_builtins(t_token *token, t_shell *shell, char **env)
+int	ft_call_builtins(t_token *token, t_shell *shell, char **env)
 {
 	char	**args;
 

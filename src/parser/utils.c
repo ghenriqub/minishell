@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 13:03:15 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:17:53 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_lstsize(t_token *lst)
 /// @brief this function create a copy of env whit memory alloc
 /// @param envp envp
 /// @return copy
-char	**copy_env(char **envp)
+char	**ft_copy_env(char **envp)
 {
 	int		i;
 	char	**new_env;
@@ -83,10 +83,10 @@ t_shell	*ft_init_shell(t_shell *shell, char **env)
 {
 	shell = malloc(sizeof(t_shell));
 	shell->exit_status = 0;
-	shell->env = copy_env(env);
+	shell->env = ft_copy_env(env);
 	return (shell);
 }
-
+/*
 // provisorie function, we will delete it latter
 char	*name_type(int type)
 {
@@ -124,3 +124,4 @@ void	print_token(t_token *token)
 		current = current->next;
 	}
 }
+*/

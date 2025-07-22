@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 20:11:54 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:16:31 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_token	*ft_tokenizer(t_shell *shell, char *line, char **env)
 	}
 	else
 	{
-		if (!call_builtins(token, shell, env))
+		if (!ft_call_builtins(token, shell, env))
 		{
 			ft_putendl_fd(" command not found", STDERR_FILENO);
 			shell->exit_status = 127;
