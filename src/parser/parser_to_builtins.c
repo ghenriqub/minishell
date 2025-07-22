@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 20:10:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:16:53 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	call_builtins(t_token *token, t_shell *shell, char **env)
 	else if (!ft_strcmp(token->value, "env"))
 		ft_env(args, shell->env);
 	else if (!ft_strcmp(token->value, "exit"))
-		ft_exit(args, shell);
+		ft_exit(args, shell, token);
 	else if (!ft_strcmp(token->value, "export"))
 		ft_export(args, shell);
 	else if (!ft_strcmp(token->value, "unset"))

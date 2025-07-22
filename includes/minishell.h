@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 19:37:15 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:16:40 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*get_current_dir(void);
 int		ft_unset(char **args, t_shell *shell);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
-int		ft_exit(char **args, t_shell *shell);
+int		ft_exit(char **args, t_shell *shell, t_token *token);
 int		ft_export(char **args, t_shell *shell);
 void	set_var(char *variable, char ***env);
 int		ft_cd(char **args, t_shell *shell);

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 16:48:31 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/13 19:37:08 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:19:12 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static char	*ft_get_value_2(t_shell *shell, const char *s, int *i)
 	int		start;
 	char	quote;
 	char	*part;
-	char	*pointer;
 
+	quote = 0;
 	if (s[*i] == '"' || s[*i] == '\'')
 	{
 		quote = s[(*i)++];
