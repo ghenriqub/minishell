@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/03 21:31:37 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:15:45 by lgertrud         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/07/22 16:20:27 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -84,7 +85,7 @@ char	*get_current_dir(void);
 int		ft_unset(char **args, t_shell *shell);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
-int		ft_exit(char **args, t_shell *shell);
+int		ft_exit(char **args, t_shell *shell, t_token *token);
 int		ft_export(char **args, t_shell *shell);
 void	set_var(char *variable, char ***env);
 int		ft_cd(char **args, t_shell *shell);

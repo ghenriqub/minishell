@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/21 14:49:11 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:18:20 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,14 @@ static int	count_args(char **args)
 /// @param shell 
 /// @param exit_code 
 /// @param is_mult 
-static void	clean_exit(char **args, t_shell *shell, int exit_code, int is_mult)
+static void	clean_exit(char **args, t_shell *shell, int exit_code, t_token *token)
 {
-	if (is_mult)
-		shell->exit_status = 2;
+	//if (is_mult)
+	shell->exit_status = exit_code;
+	ft_free_split(shell->env);
+	free(shell);
+	ft_free_split(args);
+	ft_free_tokens(token);
 	exit(exit_code & 255);
 }
 
@@ -95,7 +99,7 @@ static int	is_valid_arg(char *arg)
 /// @param args 
 /// @param shell 
 /// @return 
-int	ft_exit(char **args, t_shell *shell)
+int	ft_exit(char **args, t_shell *shell, t_token *token)
 {
 	long	exit_code;
 	int		arg_count;
@@ -109,17 +113,17 @@ int	ft_exit(char **args, t_shell *shell)
 			if (!ft_strncmp(args[0], "--", 2))
 				exit (0);
 			print_exit_error(args[0], 1, shell);
-			clean_exit(args, shell, 2, 1);
+			clean_exit(args, shell, 2, token);
 		}
 		exit_code = ft_atoi(args[0]);
 	}
 	else
 	{
 		if (arg_count == 0 || !is_valid_arg(args[0]))
-			clean_exit(args, shell, 1, 1);
+			clean_exit(args, shell, 1, token);
 		print_exit_error(NULL, 2, shell);
 		return (1);
 	}
-	clean_exit(args, shell, exit_code, 0);
+	clean_exit(args, shell, exit_code, token);
 	return (0);
 }
