@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/07/22 16:20:27 by lgertrud         ###   ########.fr       */
+/*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
+/*   Updated: 2025/07/23 09:13:01 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -65,6 +64,7 @@ int		ft_is_delimiter(char c);
 void	ft_free_tokens(t_token *token);
 void	ft_error(t_token *token, char *message, int code);
 t_shell	*ft_init_shell(t_shell *shell, char **env);
+char	**ft_copy_env(char **envp);
 // call_builtins:
 int		ft_call_builtins(t_token *token, t_shell *shell, char **env);
 char	**ft_array_struct(t_token *token);

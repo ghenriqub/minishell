@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 20:26:38 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/23 09:12:47 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	**copy_env(char **envp);
 
 /// @brief 
 /// @param  
@@ -67,7 +65,7 @@ static void	update_env(char *command, char ***env)
 	}
 	new_env[j] = NULL;
 	ft_free_split(*env);
-	*env = copy_env(new_env);
+	*env = ft_copy_env(new_env);
 	ft_free_split(new_env);
 }
 

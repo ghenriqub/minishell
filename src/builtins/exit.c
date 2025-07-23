@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/22 15:18:20 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/23 09:06:52 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static int	count_args(char **args)
 /// @param shell 
 /// @param exit_code 
 /// @param is_mult 
-static void	clean_exit(char **args, t_shell *shell, int exit_code, t_token *token)
+static void	clean_exit(char **args, t_shell *shell,
+		int exit_code, t_token *token)
 {
-	//if (is_mult)
 	shell->exit_status = exit_code;
 	ft_free_split(shell->env);
 	free(shell);
