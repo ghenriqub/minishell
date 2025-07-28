@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:20:29 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:45:49 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	main(int argc, char **argv, char **env)
 {
 	char	*line;
-	t_token	*tokens;
+	t_block	*blocks;
 	t_shell	*shell;
 
 	shell = ft_init_shell(shell, env);
@@ -26,14 +26,16 @@ int	main(int argc, char **argv, char **env)
 	ft_setup_signals();
 	while (1)
 	{
-		line = readline("minishell$ ");
+		line = readline(MINI);
 		if (!line)
 			break ;
 		if (*line)
 			add_history(line);
-		tokens = ft_tokenizer(shell, line, env);
+		blocks = ft_tokenizer(shell, line, env);
+		if(blocks)
+			ft_minishell(blocks, shell);
+		ft_free_blocks(blocks);
 		free(line);
-		ft_free_tokens(tokens);
 	}
 	ft_free_split(shell->env);
 	free(shell);

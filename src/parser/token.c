@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:20:29 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:46:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,23 @@ static void		ft_init_token_3(t_token **new, t_token **head,
 /// @param line is the param that user write
 /// @param env ambient variable
 /// @return the token created
-t_token	*ft_tokenizer(t_shell *shell, char *line, char **env)
+t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 {
 	t_token	*token;
+	t_block *blocks;
 
-	if (!line[0])
+	blocks = NULL;
+	if (!line[0] || !ft_have_something(line))
 		return (NULL);
 	token = ft_init_token(shell, line);
 	if (!token)
 	{
 		printf(INPUT_ERROR);
+		return (NULL);
 	}
-	else
-	{
-		if (!ft_call_builtins(token, shell, env))
-		{
-			ft_putendl_fd(" command not found", STDERR_FILENO);
-			shell->exit_status = 127;
-		}
-	}
-	return (token);
+	blocks = ft_parse_blocks(token);
+	ft_free_tokens(token);
+	return (blocks);
 }
 
 /// @brief tokenization, alloc the memory and call functions for value and type
@@ -126,4 +123,16 @@ static void	ft_init_token_3(t_token **new, t_token **head, t_token **current)
 		(*current)->next = *new;
 		*current = *new;
 	}
+}
+
+int	ft_have_something(char *line)
+{
+	int	i;
+
+	i = 0;
+	while(line[i] && (line[i] != 32 || line[i] != '\t'))
+		i++;
+	if(line[i])
+		return (1);
+	return (0);
 }

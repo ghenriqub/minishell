@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:20:29 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:10:13 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,64 +16,27 @@
 /// @param token tokens of the input
 /// @param env variable ambient
 /// @return return 1 if succed, or 0 if is fail
-int	ft_call_builtins(t_token *token, t_shell *shell, char **env)
+int	ft_call_builtins(t_block *block, t_shell *shell)
 {
-	char	**args;
-
-	args = ft_array_struct(token);
-	if (!ft_strcmp(token->value, "pwd"))
-		ft_pwd(args);
-	else if (!ft_strcmp(token->value, "echo"))
-		ft_echo(args, shell->exit_status);
-	else if (!ft_strcmp(token->value, "env"))
-		ft_env(args, shell->env);
-	else if (!ft_strcmp(token->value, "exit"))
-		ft_exit(args, shell, token);
-	else if (!ft_strcmp(token->value, "export"))
-		ft_export(args, shell);
-	else if (!ft_strcmp(token->value, "unset"))
-		ft_unset(args, shell);
-	else if (!ft_strcmp(token->value, "cd"))
-		shell->exit_status = ft_cd(args, shell);
+	if(!block->args || !block->args[0])
+		return 0;
+	if (!ft_strcmp(block->args[0], "pwd"))
+		ft_pwd(block->args + 1);
+	else if (!ft_strcmp(block->args[0], "echo"))
+		ft_echo(block->args + 1, shell->exit_status);
+	else if (!ft_strcmp(block->args[0], "env"))
+		ft_env(block->args + 1, shell->env);
+	else if (!ft_strcmp(block->args[0], "exit"))
+		ft_exit(block->args + 1, shell, block);
+	else if (!ft_strcmp(block->args[0], "export"))
+		ft_export(block->args + 1, shell);
+	else if (!ft_strcmp(block->args[0], "unset"))
+		ft_unset(block->args + 1, shell);
+	else if (!ft_strcmp(block->args[0], "cd"))
+		shell->exit_status = ft_cd(block->args + 1, shell);
 	else
-	{
-		ft_free_split(args);
 		return (0);
-	}
-	ft_free_split(args);
 	return (1);
-}
-
-/// @brief This function create the array of the args,
-/// 		but without the command name
-///				exemple: "echo hello", return args[0] = hello
-/// @param token struct where is the args.
-/// @return array of the args.
-char	**ft_array_struct(t_token *token)
-{
-	char	**args;
-	int		i;
-	int		len;
-
-	len = ft_lstsize(token);
-	i = 0;
-	args = malloc(sizeof(char *) * len);
-	if (!args)
-		return (NULL);
-	if (len == 1)
-	{
-		args[0] = NULL;
-		return (args);
-	}
-	token = token ->next;
-	while (token)
-	{
-		args[i] = ft_strdup(token->value);
-		token = token->next;
-		i++;
-	}
-	args[i] = NULL;
-	return (args);
 }
 
 /// @brief free any array of the arrays
