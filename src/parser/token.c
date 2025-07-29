@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:46:09 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:23:03 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	ft_have_something(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i] && (line[i] != 32 || line[i] != '\t'))
+	while(line[i] && (line[i] == 32 && line[i] == '\t'))
 		i++;
 	if(line[i])
 		return (1);

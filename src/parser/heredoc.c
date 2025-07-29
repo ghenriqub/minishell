@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 12:41:08 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/28 11:23:55 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:59:25 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static int	if_heredoc(int *fd, char *limiter)
 int	ft_heredoc(t_block *block, char *limiter)
 {
 	int		fd[2];
-	char	*limiter;
 	pid_t	pid;
 
 	if (!block || !limiter)

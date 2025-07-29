@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/28 11:12:17 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/07/28 14:17:19 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = $(PARSER_DIR)/main.c \
 		$(PARSER_DIR)/parser_to_builtins.c \
 		$(PARSER_DIR)/get_environment_variable.c \
 		$(PARSER_DIR)/blocks.c \
+		$(PARSER_DIR)/heredoc.c \
 	$(BUILTINS_DIR)/pwd.c \
 		$(BUILTINS_DIR)/echo.c \
 		$(BUILTINS_DIR)/env.c \
@@ -48,7 +49,8 @@ SRC = $(PARSER_DIR)/main.c \
 		$(BUILTINS_DIR)/cd.c \
 		$(BUILTINS_DIR)/cd_utils.c \
 	$(EXEC_DIR)/minishell.c \
-		$(EXEC_DIR)/path.c
+		$(EXEC_DIR)/path.c \
+		$(EXEC_DIR)/redirections.c 
 
 #objects
 OBJS = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:04:11 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:34:43 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_block *ft_parse_blocks(t_token *tokens)
 				new_block->heredoc = 1;
 				tokens = tokens->next;
 				if (tokens)
-					new_block->input = strdup(tokens->value); // ou outro campo para delim
+					new_block->limit = strdup(tokens->value); // ou outro campo para delim
 			}
 			tokens = tokens->next;
 		}
