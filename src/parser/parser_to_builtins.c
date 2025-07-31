@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:10:13 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:40:49 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 /// @return return 1 if succed, or 0 if is fail
 int	ft_call_builtins(t_block *block, t_shell *shell)
 {
-	if(!block->args || !block->args[0])
-		return 0;
+	if (!block->args || !block->args[0])
+		return (0);
 	if (!ft_strcmp(block->args[0], "pwd"))
 		ft_pwd(block->args + 1);
 	else if (!ft_strcmp(block->args[0], "echo"))

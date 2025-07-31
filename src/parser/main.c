@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:45:49 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:39:55 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv, char **env)
 		if (*line)
 			add_history(line);
 		blocks = ft_tokenizer(shell, line, env);
-		if(blocks)
+		if (blocks)
 			ft_minishell(blocks, shell);
 		ft_free_blocks(blocks);
 		free(line);

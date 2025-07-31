@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:24:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:51 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_shell	*ft_init_shell(t_shell *shell, char **env)
 	shell->env = ft_copy_env(env);
 	return (shell);
 }
-
+/*
 // provisorie function, we will delete it latter
 char	*name_type(int type)
 {
@@ -124,3 +124,4 @@ void	print_token(t_token *token)
 		current = current->next;
 	}
 }
+*/

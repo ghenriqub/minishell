@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/28 16:23:03 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:34 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		ft_init_token_3(t_token **new, t_token **head,
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 {
 	t_token	*token;
-	t_block *blocks;
+	t_block	*blocks;
 
 	blocks = NULL;
 	if (!line[0] || !ft_have_something(line))
@@ -130,9 +130,9 @@ int	ft_have_something(char *line)
 	int	i;
 
 	i = 0;
-	while(line[i] && (line[i] == 32 && line[i] == '\t'))
+	while (line[i] && (line[i] == 32 && line[i] == '\t'))
 		i++;
-	if(line[i])
+	if (line[i])
 		return (1);
 	return (0);
 }

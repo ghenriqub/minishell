@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/06/11 13:37:48 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/30 10:49:02 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-void	sort_int_tab(int *tab, unsigned int size);
 char	**ft_split(char const *s, char c);
-int		ft_iputnbr_base(int nbr, int base);
-int		ft_print_pointer(void *ptr);
-int		ft_printf(const char *str, ...);
-int		ft_iputstr_fd(char *s, int fd);
-int		ft_iputchar_fd(char c, int fd);
-int		ft_sign(char c, va_list args);
 size_t	ft_strlen(const char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 

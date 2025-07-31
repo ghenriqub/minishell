@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/29 14:34:43 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/07/31 14:12:18 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ t_block *ft_parse_blocks(t_token *tokens)
 			tmp = tmp->next;
 		}
 
-		// Alocar args
+		// Alocar arrays
 		new_block->args = malloc(sizeof(char *) * (argc + 1));
+		new_block->limits = malloc(sizeof(char *) * (argc + 1));
+		new_block->input = malloc(sizeof(char *) * (argc + 1));
+		new_block->output = malloc(sizeof(char *) * (argc + 1));
 		int i = 0;
-
+		new_block->heredoc = 0;
+		new_block->redirect_in = 0;
+		new_block->redirect_out = 0;
 		// Preencher infos
 		while (tokens && tokens->type != T_PIPE)
 		{
@@ -42,36 +47,39 @@ t_block *ft_parse_blocks(t_token *tokens)
 				new_block->args[i++] = strdup(tokens->value);
 			else if (tokens->type == T_REDIRECT_IN)
 			{
-				new_block->redirect_in = 1;
 				tokens = tokens->next;
 				if (tokens)
-					new_block->input = strdup(tokens->value);
+					new_block->input[new_block->redirect_in] = strdup(tokens->value);
+				new_block->redirect_in++;
 			}
 			else if (tokens->type == T_REDIRECT_OUT)
 			{
-				new_block->redirect_out = 1;
 				new_block->append = 0;
 				tokens = tokens->next;
 				if (tokens)
-					new_block->output = strdup(tokens->value);
+					new_block->output[new_block->redirect_out] = strdup(tokens->value);
+				new_block->redirect_out++;
 			}
 			else if (tokens->type == T_APPEND)
 			{
-				new_block->redirect_out = 1;
 				new_block->append = 1;
 				tokens = tokens->next;
 				if (tokens)
-					new_block->output = strdup(tokens->value);
+					new_block->output[new_block->redirect_out] = strdup(tokens->value);
+				new_block->redirect_out++;
 			}
 			else if (tokens->type == T_HEREDOC)
 			{
-				new_block->heredoc = 1;
 				tokens = tokens->next;
 				if (tokens)
-					new_block->limit = strdup(tokens->value); // ou outro campo para delim
+					new_block->limits[new_block->heredoc] = strdup(tokens->value);
+				new_block->heredoc++;
 			}
 			tokens = tokens->next;
 		}
+		new_block->input[new_block->redirect_in] = NULL;
+		new_block->output[new_block->redirect_out] = NULL;
+		new_block->limits[new_block->heredoc] = NULL;
 		new_block->args[i] = NULL;
 
 		// Adiciona na lista encadeada
@@ -89,7 +97,27 @@ t_block *ft_parse_blocks(t_token *tokens)
 	return head;
 }
 
+void	ft_free_blocks(t_block *head)
+{
+	t_block	*tmp;
 
+	while (head)
+	{
+		tmp = head->next;
+		if (head->args)
+			ft_free_split(head->args);
+		if (head->input)
+			ft_free_split(head->input);
+		if (head->limits)
+			ft_free_split(head->limits);
+		if (head->output)
+			ft_free_split(head->output);
+		free(head);
+		head = tmp;
+	}
+}
+
+/*
 void	print_block_info(t_block *block)
 {
 	int	i = 0;
@@ -139,28 +167,4 @@ void	print_block_info(t_block *block)
 		block_num++;
 		i = 0;
 	}
-}
-
-void	ft_free_blocks(t_block *head)
-{
-	t_block	*tmp;
-
-	while (head)
-	{
-		tmp = head->next;
-
-		// Libera args
-		if (head->args)
-			ft_free_split(head->args);
-		// Libera input/output
-		if (head->input)
-			free(head->input);
-		if (head->limit)
-			free(head->limit);
-		if (head->output)
-			free(head->output);
-		// Libera o próprio bloco
-		free(head);
-		head = tmp;
-	}
-}
+}*/
