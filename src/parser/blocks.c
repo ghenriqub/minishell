@@ -6,13 +6,13 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 14:12:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:27:21 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_block *ft_parse_blocks(t_token *tokens)
+t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
 {
 	t_block *head = NULL;
 	t_block *current = NULL;
@@ -32,10 +32,10 @@ t_block *ft_parse_blocks(t_token *tokens)
 		}
 
 		// Alocar arrays
-		new_block->args = malloc(sizeof(char *) * (argc + 1));
-		new_block->limits = malloc(sizeof(char *) * (argc + 1));
-		new_block->input = malloc(sizeof(char *) * (argc + 1));
-		new_block->output = malloc(sizeof(char *) * (argc + 1));
+		new_block->args = ft_calloc(sizeof(char *), argc + 1);
+		new_block->limits = ft_calloc(sizeof(char *), argc + 1);
+		new_block->input = ft_calloc(sizeof(char *), argc + 1);
+		new_block->output = ft_calloc(sizeof(char *), argc + 1);
 		int i = 0;
 		new_block->heredoc = 0;
 		new_block->redirect_in = 0;
@@ -50,6 +50,14 @@ t_block *ft_parse_blocks(t_token *tokens)
 				tokens = tokens->next;
 				if (tokens)
 					new_block->input[new_block->redirect_in] = strdup(tokens->value);
+				else
+				{
+					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
+					ft_free_blocks(head);
+					ft_free_blocks(new_block);
+					shell->exit_status = 2;
+					return (NULL);
+				}
 				new_block->redirect_in++;
 			}
 			else if (tokens->type == T_REDIRECT_OUT)
@@ -58,6 +66,14 @@ t_block *ft_parse_blocks(t_token *tokens)
 				tokens = tokens->next;
 				if (tokens)
 					new_block->output[new_block->redirect_out] = strdup(tokens->value);
+				else
+				{
+					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
+					ft_free_blocks(head);
+					ft_free_blocks(new_block);
+					shell->exit_status = 2;
+					return (NULL);
+				}
 				new_block->redirect_out++;
 			}
 			else if (tokens->type == T_APPEND)
@@ -66,6 +82,14 @@ t_block *ft_parse_blocks(t_token *tokens)
 				tokens = tokens->next;
 				if (tokens)
 					new_block->output[new_block->redirect_out] = strdup(tokens->value);
+				else
+				{
+					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
+					ft_free_blocks(head);
+					ft_free_blocks(new_block);
+					shell->exit_status = 2;
+					return (NULL);
+				}
 				new_block->redirect_out++;
 			}
 			else if (tokens->type == T_HEREDOC)
@@ -73,6 +97,14 @@ t_block *ft_parse_blocks(t_token *tokens)
 				tokens = tokens->next;
 				if (tokens)
 					new_block->limits[new_block->heredoc] = strdup(tokens->value);
+				else
+				{
+					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
+					ft_free_blocks(head);
+					ft_free_blocks(new_block);
+					shell->exit_status = 2;
+					return (NULL);
+				}
 				new_block->heredoc++;
 			}
 			tokens = tokens->next;
@@ -101,6 +133,8 @@ void	ft_free_blocks(t_block *head)
 {
 	t_block	*tmp;
 
+	if(!head)
+		return ;
 	while (head)
 	{
 		tmp = head->next;

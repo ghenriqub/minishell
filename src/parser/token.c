@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 13:44:34 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:14:06 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 		printf(INPUT_ERROR);
 		return (NULL);
 	}
-	blocks = ft_parse_blocks(token);
+	blocks = ft_parse_blocks(token, shell);
 	ft_free_tokens(token);
 	return (blocks);
 }

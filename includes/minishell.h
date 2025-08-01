@@ -6,13 +6,14 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 15:22:05 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/01 10:13:58 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
+# define REDIREC_ERROR "bash: syntax error near unexpected token `newline'\n"
 # define INPUT_ERROR "Error: input incorrect\n"
 # define MINI "\001\033[0;36m\002minishell\001\033[0m\002$ "
 
@@ -73,11 +74,11 @@ void	ft_handle_sigint(int sig);
 void	ft_setup_signals(void);
 // tokens:
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env);
+t_block *ft_parse_blocks(t_token *tokens, t_shell *shell);
 t_token	*ft_init_token(t_shell *shell, char *line);
 t_type	ft_get_type(char *value);
 char	*ft_get_value(t_shell *shell, const char *s, int *i);
 int		ft_is_delimiter(char c);
-t_block	*ft_parse_blocks(t_token *tokens);
 int		ft_heredoc(t_block *block, char *limiter);
 // utils:
 void	ft_free_tokens(t_token *token);
