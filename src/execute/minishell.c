@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:49:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 15:45:16 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/01 12:36:30 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_minishell(t_block *blocks, t_shell *shell)
 {
 	if (!blocks->next)
 		ft_simple_command(blocks, shell);
+	//else
+	//	ft_pipe_command(blocks, shell);
 }
 
 void	ft_simple_command(t_block *blocks, t_shell *shell)

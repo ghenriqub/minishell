@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/01 10:13:58 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:10:13 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ char	*get_target_dir(char **args, t_shell *shell);
 void	update_pwd_env(char *old_pwd, char *new_pwd, t_shell *shell);
 // execve:
 void	ft_minishell(t_block *blocks, t_shell *shell);
+void	ft_pipe_command(t_block *blocks, t_shell *shell);
 void	ft_simple_command(t_block *blocks, t_shell *shell);
 void	ft_simple_command_2(t_block *blocks, t_shell *shell,
 			int fd_in, int fd_out);
