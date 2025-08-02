@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/01 11:10:13 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:16:24 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ typedef struct s_block
 
 // ====== Parser ======
 
-// signals:
-void	ft_handle_sigint(int sig);
-void	ft_setup_signals(void);
 // tokens:
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env);
 t_block *ft_parse_blocks(t_token *tokens, t_shell *shell);
