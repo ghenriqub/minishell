@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/28 11:04:40 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:24:31 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief 
-/// @param arg 
-/// @param type 
+/// @brief the function that will print the standard exit error message
+/// @param arg the arguments received at the call
+/// @param type if its non-numeric or if its too many arguments
+/// @param shell the shell structure with exit status
 static void	print_exit_error(char *arg, int type, t_shell *shell)
 {
 	if (type == 1)
@@ -32,9 +33,9 @@ static void	print_exit_error(char *arg, int type, t_shell *shell)
 	return ;
 }
 
-/// @brief 
-/// @param args 
-/// @return 
+/// @brief the classic count args
+/// @param args the string that will hold the arguments
+/// @return the number of arguments
 static int	count_args(char **args)
 {
 	int	count;
@@ -47,11 +48,11 @@ static int	count_args(char **args)
 	return (count);
 }
 
-/// @brief 
-/// @param args 
-/// @param shell 
-/// @param exit_code 
-/// @param is_mult 
+/// @brief the free clean and error code of the exit call
+/// @param args the arguments received at the call
+/// @param shell the shell structure with exit status
+/// @param exit_code the code we got to exit
+/// @param token the tokenized structure with calls
 static void	clean_exit(char **args, t_shell *shell,
 		int exit_code, t_block *block)
 {
@@ -62,9 +63,9 @@ static void	clean_exit(char **args, t_shell *shell,
 	exit(exit_code & 255);
 }
 
-/// @brief 
-/// @param arg 
-/// @return 
+/// @brief verifies the validity of the argument with exit
+/// @param arg the argument being analyzed
+/// @return 1 = is valid, 0 = not valid
 static int	is_valid_arg(char *arg)
 {
 	unsigned long long	num[2];
@@ -94,10 +95,11 @@ static int	is_valid_arg(char *arg)
 	return (1);
 }
 
-/// @brief 
-/// @param args 
-/// @param shell 
-/// @return 
+/// @brief the built-in implementation of exit()
+/// @param args the arguments that we will receive
+/// @param shell the structure that hold some functionalities (exit status)
+/// @param block 
+/// @return 0 = success, 1 = error
 int	ft_exit(char **args, t_shell *shell, t_block *block)
 {
 	long	exit_code;

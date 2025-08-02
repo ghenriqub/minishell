@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:29 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/12 19:47:58 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:23:44 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief 
-/// @param  
+/// @brief the standard error message of the wrong env call
+/// @param arg the worng argument
 static void	print_env_error(char *arg)
 {
 	ft_putstr_fd("env: ", STDERR_FILENO);
@@ -22,9 +22,9 @@ static void	print_env_error(char *arg)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-/// @brief 
-/// @param env 
-/// @return 
+/// @brief calculates the size of env 
+/// @param env the local variables of the system
+/// @return i = size of env
 int	env_size(char **env)
 {
 	int	i;
@@ -35,10 +35,10 @@ int	env_size(char **env)
 	return (i);
 }
 
-/// @brief 
-/// @param args 
-/// @param env 
-/// @return 
+/// @brief the built-in implementation of the env function
+/// @param args the arguments we got in the readline
+/// @param env the local variables of the system
+/// @return 0 = success, 1 = error
 int	ft_env(char **args, char **env)
 {
 	int	i;

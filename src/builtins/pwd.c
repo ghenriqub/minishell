@@ -6,15 +6,14 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 13:24:57 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:25:14 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief 
-/// @param  
-/// @return 
+/// @brief we just get the current directory with getcwd
+/// @return the updated current working directory
 char	*get_current_dir(void)
 {
 	char	*cwd;
@@ -44,8 +43,7 @@ char	*get_current_dir(void)
 	return (cwd);
 }
 
-/// @brief 
-/// @param  
+/// @brief the standard error message of pwd function
 static void	print_pwd_error(void)
 {
 	ft_putstr_fd("pwd: ", STDERR_FILENO);
@@ -53,9 +51,9 @@ static void	print_pwd_error(void)
 	ft_putchar_fd('\n', STDERR_FILENO);
 }
 
-/// @brief 
-/// @param  
-/// @return 
+/// @brief the built-in of the print working directory function
+/// @param  the arguments received in the call
+/// @return 0 = success, 1 = error
 int	ft_pwd(char **args)
 {
 	char	*cwd;

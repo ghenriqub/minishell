@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/23 09:12:47 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:25:59 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/// @brief 
-/// @param  
+/// @brief the standard error message of the unset command
+/// @param arg the argument to be displayed 
 static void	print_unset_error(char *arg)
 {
 	ft_putstr_fd("unset: ", STDERR_FILENO);
@@ -21,10 +21,10 @@ static void	print_unset_error(char *arg)
 	ft_putstr_fd(": invalid parameter name\n", STDERR_FILENO);
 }
 
-/// @brief 
-/// @param env 
-/// @param command 
-/// @return 
+/// @brief the command finders, a ft_strcmp of the selected command
+/// @param env the local variables
+/// @param command the selected command
+/// @return the index of the command, -1 in error
 static int	find_command(char **env, char *command)
 {
 	int	i;
@@ -40,9 +40,9 @@ static int	find_command(char **env, char *command)
 	return (-1);
 }
 
-/// @brief 
-/// @param command 
-/// @param env 
+/// @brief the split and update of the old variables into the updated
+/// @param command the command that will be removed
+/// @param env the local variables
 static void	update_env(char *command, char ***env)
 {
 	int		i;
@@ -69,9 +69,9 @@ static void	update_env(char *command, char ***env)
 	ft_free_split(new_env);
 }
 
-/// @brief 
-/// @param str 
-/// @return 
+/// @brief we just verify the validity of the arguments
+/// @param str the string that will be analyzed
+/// @return 1 = is valid, 0 = not valid
 static int	is_valid(char *str)
 {
 	int	i;
@@ -90,10 +90,10 @@ static int	is_valid(char *str)
 	return (1);
 }
 
-/// @brief 
-/// @param args 
-/// @param env 
-/// @return 
+/// @brief the built-in implementation of bash unset function 
+/// @param args the arguments we received in the call
+/// @param shell the shell structure with the env variables
+/// @return the status of the update
 int	ft_unset(char **args, t_shell *shell)
 {
 	int	i;

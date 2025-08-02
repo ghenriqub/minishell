@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 18:22:47 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/02 16:22:54 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <string.h>
 #include <errno.h>
 
-/// @brief 
-/// @param path 
+/// @brief the standard cd error message
+/// @param path the path that were sent
 static void	print_cd_error(char *path)
 {
 	ft_putstr_fd("cd: ", STDERR_FILENO);
@@ -25,19 +25,19 @@ static void	print_cd_error(char *path)
 	ft_putchar_fd('\n', STDERR_FILENO);
 }
 
-/// @brief 
-/// @param args 
-/// @return 
+/// @brief the error message in case of too many args
+/// @param args the arguments are passed as a returnable function
+/// @return 1 after the message sent
 static int	handle_many_args(char **args)
 {
 	ft_putstr_fd("cd: too many arguments\n", STDERR_FILENO);
 	return (1);
 }
 
-/// @brief 
-/// @param old 
-/// @param  
-/// @param target 
+/// @brief free the variables in the main cd function
+/// @param old the old pwd
+/// @param new the new pwd
+/// @param target and the targeted pwd
 static void	free_cd(char *old, char *new, char *target)
 {
 	if (old)
@@ -50,7 +50,7 @@ static void	free_cd(char *old, char *new, char *target)
 		return ;
 }
 
-/// @brief 
+/// @brief the function that emulates the cd function
 /// @var pwd[0] = old_pwd, pwd[1] = new_pwd, pwd[2] = target_pwd
 /// @param args the arguments we got from the readline input
 /// @param shell the struct that holds our env variables
