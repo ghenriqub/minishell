@@ -1,418 +1,418 @@
-==55565== Syscall param access(pathname) points to unaddressable byte(s)
-==55565==    at 0x49D994B: access (access.c:27)
-==55565==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
-==55572== Syscall param execve(filename) points to unaddressable byte(s)
-==55572==    at 0x49B008B: execve (syscall-template.S:120)
-==55572==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== Syscall param execve(argv[i]) points to unaddressable byte(s)
-==55572==    at 0x49B008B: execve (syscall-template.S:120)
-==55572==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== Invalid read of size 1
-==55572==    at 0x405E15: ft_strlen (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x405635: ft_putstr_fd (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== Syscall param write(buf) points to unaddressable byte(s)
-==55572==    at 0x49D9887: write (write.c:26)
-==55572==    by 0x405644: ft_putstr_fd (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
+==76027== Syscall param access(pathname) points to unaddressable byte(s)
+==76027==    at 0x49D994B: access (access.c:27)
+==76027==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+==76035== Syscall param execve(filename) points to unaddressable byte(s)
+==76035==    at 0x49B008B: execve (syscall-template.S:120)
+==76035==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== Syscall param execve(argv[i]) points to unaddressable byte(s)
+==76035==    at 0x49B008B: execve (syscall-template.S:120)
+==76035==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== Invalid read of size 1
+==76035==    at 0x405E15: ft_strlen (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x405635: ft_putstr_fd (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== Syscall param write(buf) points to unaddressable byte(s)
+==76035==    at 0x49D9887: write (write.c:26)
+==76035==    by 0x405644: ft_putstr_fd (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
 test_files/: command not found
-==55572== Invalid free() / delete / delete[] / realloc()
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404B14: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== Invalid free() / delete / delete[] / realloc()
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x404B1D: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== Invalid write of size 4
-==55572==    at 0x404B38: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b22058 is 24 bytes inside a block of size 32 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x404B33: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x401A89: ft_init_shell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401336: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== ERROR SUMMARY: 19 errors from 8 contexts (suppressed: 0 from 0)
-==55572== 
-==55572== 1 errors in context 1 of 8:
-==55572== Invalid write of size 4
-==55572==    at 0x404B38: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b22058 is 24 bytes inside a block of size 32 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x404B33: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x401A89: ft_init_shell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401336: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 2 of 8:
-==55572== Invalid free() / delete / delete[] / realloc()
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x404B1D: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 3 of 8:
-==55572== Invalid free() / delete / delete[] / realloc()
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404B14: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 4 of 8:
-==55572== Syscall param write(buf) points to unaddressable byte(s)
-==55572==    at 0x49D9887: write (write.c:26)
-==55572==    by 0x405644: ft_putstr_fd (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 5 of 8:
-==55572== Syscall param execve(argv[i]) points to unaddressable byte(s)
-==55572==    at 0x49B008B: execve (syscall-template.S:120)
-==55572==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 6 of 8:
-==55572== Syscall param execve(filename) points to unaddressable byte(s)
-==55572==    at 0x49B008B: execve (syscall-template.S:120)
-==55572==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 1 errors in context 7 of 8:
-==55572== Syscall param access(pathname) points to unaddressable byte(s)
-==55572==    at 0x49D994B: access (access.c:27)
-==55572==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
-==55572== 
-==55572== 12 errors in context 8 of 8:
-==55572== Invalid read of size 1
-==55572==    at 0x405E15: ft_strlen (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x405635: ft_putstr_fd (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55572==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==  Block was alloc'd at
-==55572==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55572==    by 0x496D58E: strdup (strdup.c:42)
-==55572==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55572== 
---55572-- 
---55572-- used_suppression:     63 leak readline readline.supp:10 suppressed: 204,207 bytes in 222 blocks
---55572-- used_suppression:      4 leak add_history readline.supp:16 suppressed: 4,064 bytes in 4 blocks
-==55572== 
-==55572== ERROR SUMMARY: 19 errors from 8 contexts (suppressed: 0 from 0)
-==55565== Invalid free() / delete / delete[] / realloc()
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x404B6F: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
-==55565== Invalid free() / delete / delete[] / realloc()
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013AE: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
-==55565== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
-==55565== 
-==55565== 1 errors in context 1 of 3:
-==55565== Invalid free() / delete / delete[] / realloc()
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013AE: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
-==55565== 
-==55565== 1 errors in context 2 of 3:
-==55565== Invalid free() / delete / delete[] / realloc()
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x404B6F: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
-==55565== 
-==55565== 1 errors in context 3 of 3:
-==55565== Syscall param access(pathname) points to unaddressable byte(s)
-==55565==    at 0x49D994B: access (access.c:27)
-==55565==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Address 0x4b63c90 is 0 bytes inside a block of size 12 free'd
-==55565==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4013A5: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==  Block was alloc'd at
-==55565==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==55565==    by 0x496D58E: strdup (strdup.c:42)
-==55565==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565==    by 0x401389: main (in /home/ghenriqu/Desktop/teste/minishell/minishell)
-==55565== 
---55565-- 
---55565-- used_suppression:     62 leak readline readline.supp:10 suppressed: 204,195 bytes in 221 blocks
---55565-- used_suppression:      1 leak add_history readline.supp:16 suppressed: 4,016 bytes in 1 blocks
-==55565== 
-==55565== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==76035== Invalid free() / delete / delete[] / realloc()
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404B14: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== Invalid free() / delete / delete[] / realloc()
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x404B1D: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== Invalid write of size 4
+==76035==    at 0x404B38: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b22058 is 24 bytes inside a block of size 32 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x404B33: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x401A89: ft_init_shell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401336: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== ERROR SUMMARY: 19 errors from 8 contexts (suppressed: 0 from 0)
+==76035== 
+==76035== 1 errors in context 1 of 8:
+==76035== Invalid write of size 4
+==76035==    at 0x404B38: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b22058 is 24 bytes inside a block of size 32 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x404B33: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x401A89: ft_init_shell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401336: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 2 of 8:
+==76035== Invalid free() / delete / delete[] / realloc()
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x404B1D: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 3 of 8:
+==76035== Invalid free() / delete / delete[] / realloc()
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404B14: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 4 of 8:
+==76035== Syscall param write(buf) points to unaddressable byte(s)
+==76035==    at 0x49D9887: write (write.c:26)
+==76035==    by 0x405644: ft_putstr_fd (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 5 of 8:
+==76035== Syscall param execve(argv[i]) points to unaddressable byte(s)
+==76035==    at 0x49B008B: execve (syscall-template.S:120)
+==76035==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 6 of 8:
+==76035== Syscall param execve(filename) points to unaddressable byte(s)
+==76035==    at 0x49B008B: execve (syscall-template.S:120)
+==76035==    by 0x404ADA: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 1 errors in context 7 of 8:
+==76035== Syscall param access(pathname) points to unaddressable byte(s)
+==76035==    at 0x49D994B: access (access.c:27)
+==76035==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+==76035== 
+==76035== 12 errors in context 8 of 8:
+==76035== Invalid read of size 1
+==76035==    at 0x405E15: ft_strlen (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x405635: ft_putstr_fd (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x404AF7: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76035==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==  Block was alloc'd at
+==76035==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76035==    by 0x496D58E: strdup (strdup.c:42)
+==76035==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76035== 
+--76035-- 
+--76035-- used_suppression:     63 leak readline readline.supp:10 suppressed: 204,207 bytes in 222 blocks
+--76035-- used_suppression:      4 leak add_history readline.supp:16 suppressed: 4,064 bytes in 4 blocks
+==76035== 
+==76035== ERROR SUMMARY: 19 errors from 8 contexts (suppressed: 0 from 0)
+==76027== Invalid free() / delete / delete[] / realloc()
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x404B6F: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+==76027== Invalid free() / delete / delete[] / realloc()
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013AE: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+==76027== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==76027== 
+==76027== 1 errors in context 1 of 3:
+==76027== Invalid free() / delete / delete[] / realloc()
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x402356: ft_free_split (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x402D31: ft_free_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013AE: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+==76027== 
+==76027== 1 errors in context 2 of 3:
+==76027== Invalid free() / delete / delete[] / realloc()
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x404B6F: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+==76027== 
+==76027== 1 errors in context 3 of 3:
+==76027== Syscall param access(pathname) points to unaddressable byte(s)
+==76027==    at 0x49D994B: access (access.c:27)
+==76027==    by 0x404B9D: ft_found_path (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x404A9C: ft_simple_command_2 (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4049C9: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Address 0x4b63df0 is 0 bytes inside a block of size 12 free'd
+==76027==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x4049B6: ft_simple_command (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4048DB: ft_minishell (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4013A5: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==  Block was alloc'd at
+==76027==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==76027==    by 0x496D58E: strdup (strdup.c:42)
+==76027==    by 0x402909: ft_parse_blocks (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x4014EE: ft_tokenizer (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027==    by 0x401389: main (in /home/ghenriqu/Desktop/minishell/minishell)
+==76027== 
+--76027-- 
+--76027-- used_suppression:     62 leak readline readline.supp:10 suppressed: 204,195 bytes in 221 blocks
+--76027-- used_suppression:      1 leak add_history readline.supp:16 suppressed: 4,016 bytes in 1 blocks
+==76027== 
+==76027== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
