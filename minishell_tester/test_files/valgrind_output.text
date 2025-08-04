@@ -1,0 +1,7 @@
+minishell: test_files/: Is a directory
+==795527== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--795527-- 
+--795527-- used_suppression:     62 leak readline readline.supp:10 suppressed: 204,195 bytes in 221 blocks
+--795527-- used_suppression:      1 leak add_history readline.supp:16 suppressed: 4,016 bytes in 1 blocks
+==795527== 
+==795527== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

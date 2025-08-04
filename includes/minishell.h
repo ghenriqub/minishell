@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/01 11:10:13 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:43:06 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <limits.h>
+#include <sys/stat.h>
 
 typedef enum e_token_type
 {
@@ -89,8 +90,8 @@ void	ft_free_blocks(t_block *head);
 int		ft_have_something(char *line);
 // call_builtins:
 int		ft_call_builtins(t_block *block, t_shell *shell);
-int		ft_lstsize(t_token *token);
 void	ft_free_split(char **arr);
+int		is_directory(char *path, t_shell *shell);
 // environment_variable
 char	*ft_get_variable(char **env, char *part, int exit_status);
 char	*get_env_value(char **env, const char *var_name);

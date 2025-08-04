@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 13:40:49 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:59:53 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ int	ft_call_builtins(t_block *block, t_shell *shell)
 		ft_unset(block->args + 1, shell);
 	else if (!ft_strcmp(block->args[0], "cd"))
 		shell->exit_status = ft_cd(block->args + 1, shell);
+	else if (ft_strchr(block->args[0], 47))
+	{
+		if(!is_directory(block->args[0], shell))
+			return (0);
+	}
 	else
 		return (0);
 	return (1);
@@ -52,4 +57,50 @@ void	ft_free_split(char **arr)
 		i++;
 	}
 	free(arr);
+}
+
+int	is_directory(char *path, t_shell *shell)
+{
+	struct stat sb;
+
+	if (stat(path, &sb) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putendl_fd(": No such file or directory", 2);
+		shell->exit_status = 127;
+		return (1);
+	}
+
+	else if (S_ISDIR(sb.st_mode))
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putendl_fd(": Is a directory", 2);
+		shell->exit_status = 126;
+		return (1);
+	}
+
+	else if (S_ISREG(sb.st_mode))
+	{
+		if (access(path, X_OK) == 0)
+		{
+			return (0);
+		}
+		else
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(path, 2);
+			ft_putendl_fd(": Permission denied", 2);
+			shell->exit_status = 126;
+		}
+		return (1);
+	}
+
+	// Se não é dir nem arquivo comum
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(path, 2);
+	ft_putendl_fd(": Not a directory", 2);
+	shell->exit_status = 127;
+	return (1);
 }

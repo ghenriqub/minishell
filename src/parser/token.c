@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/01 10:14:06 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:20:50 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,16 @@ t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 	t_block	*blocks;
 
 	blocks = NULL;
-	if (!line[0] || !ft_have_something(line))
+	if (!line[0] || !ft_have_something(line) || !ft_strcmp(line, "$EMPTY"))
 		return (NULL);
+	if(!ft_strncmp(line, "$EMPTY", 6))
+		line += 6;
+	if(!strncmp(line, "\"\"", 2) && (!line[2] || line[2] == 32))
+	{
+		ft_putendl_fd(": command not found", STDERR_FILENO);
+		shell->exit_status = 127;
+		return (NULL);
+	}
 	token = ft_init_token(shell, line);
 	if (!token)
 	{
@@ -80,7 +88,7 @@ static t_token	*ft_init_token_2(t_shell *shell, t_token *head,
 {
 	t_token	*new;
 
-	new = malloc(sizeof(t_token));
+	new = calloc(sizeof(t_token), 1);
 	if (!new)
 		ft_error(head, MALLOC_ERROR, 1);
 	if ((line[*i] == '>' && line[*i + 1] == '>')
@@ -130,7 +138,7 @@ int	ft_have_something(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] && (line[i] == 32 && line[i] == '\t'))
+	while (line[i] && (line[i] == 32 || line[i] == '\t'))
 		i++;
 	if (line[i])
 		return (1);

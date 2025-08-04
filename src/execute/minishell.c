@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:49:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/02 12:57:09 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:53:36 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_minishell(t_block *blocks, t_shell *shell)
 {
 	if (!blocks->next)
 		ft_simple_command(blocks, shell);
-	//else
-	//	ft_pipe_command(blocks, shell);
+	else
+		ft_pipe_command(blocks, shell);
 }
 
 void	ft_simple_command(t_block *blocks, t_shell *shell)
@@ -54,6 +54,7 @@ void	ft_simple_command_2(t_block *blocks,
 {
 	int		pid;
 	char	*path;
+	int status;
 
 	path = ft_found_path(blocks->args[0], shell->env);
 	pid = fork();
@@ -69,11 +70,14 @@ void	ft_simple_command_2(t_block *blocks,
 			free(path);
 			ft_free_split(shell->env);
 			free(shell);
-			shell->exit_status = 127;
 			exit(127);
 		}
 	}
-	waitpid(pid, NULL, 0);
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		shell->exit_status = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		shell->exit_status = 128 + WTERMSIG(status);
 	if (path)
 		free(path);
 }

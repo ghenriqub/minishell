@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/07/30 14:38:43 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/08/02 15:06:45 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,9 @@ SRC = $(PARSER_DIR)/main.c \
 		$(BUILTINS_DIR)/cd_utils.c \
 	$(EXEC_DIR)/minishell.c \
 		$(EXEC_DIR)/path.c \
-		$(EXEC_DIR)/redirections.c 
+		$(EXEC_DIR)/redirections.c \
+		$(EXEC_DIR)/pipe.c
+
 
 #objects
 OBJS = $(SRC:.c=.o)
