@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/04 15:43:06 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:03:38 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ typedef struct s_block
 
 // ====== Parser ======
 
-// signals:
-void	ft_handle_sigint(int sig);
-void	ft_setup_signals(void);
 // tokens:
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env);
 t_block *ft_parse_blocks(t_token *tokens, t_shell *shell);
