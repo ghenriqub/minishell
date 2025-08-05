@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/01 10:27:21 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/04 12:35:58 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,17 @@ t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
 		else
 			current->next = new_block;
 		current = new_block;
-
 		// Pula o pipe
 		if (tokens && tokens->type == T_PIPE)
+		{
 			tokens = tokens->next;
+			if(!tokens)
+			{
+				ft_free_blocks(head);
+				shell->exit_status = 1;
+				return (NULL);
+			}
+		}
 	}
 
 	return head;

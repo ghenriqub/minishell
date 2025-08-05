@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/02 17:02:14 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:17:48 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	check_interactive(void)
 static void	minishell_loop(t_shell *shell, char **env)
 {
 	char	*line;
-	t_token	*blocks;
+	t_block	*blocks;
 
 	while (1)
 	{
@@ -68,7 +68,7 @@ static void	minishell_loop(t_shell *shell, char **env)
 		blocks = ft_tokenizer(shell, line, env);
 		if (blocks)
 			ft_minishell(blocks, shell);
-		ft_free_tokens(blocks);
+		ft_free_blocks(blocks);
 		free(line);
 	}
 }

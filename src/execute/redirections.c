@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:29 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/02 16:26:24 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/05 14:17:32 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
