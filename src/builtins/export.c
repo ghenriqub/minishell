@@ -3,14 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 20:26:58 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:46:56 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	ft_print_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i - 1] != '=')
+	{
+		write(1, &line[i], 1);
+		i++;
+	}
+	write(1, "\"", 1);
+	while (line[i])
+	{
+		write(1, &line[i], 1);
+		i++;
+	}
+	write(1, "\"\n", 2);
+}
 
 /// @brief 
 /// @param arg 
@@ -54,8 +73,7 @@ static void	print_all(char **env)
 	while (env[i])
 	{
 		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(env[i], 1);
-		ft_putchar_fd('\n', 1);
+		ft_print_line(env[i]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:49:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/04 15:53:36 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:38:02 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	ft_simple_command(t_block *blocks, t_shell *shell)
 	stdin_copy = dup(STDOUT_FILENO);
 	stdout_copy = dup(STDIN_FILENO);
 	if (!ft_redirections(blocks, shell))
+	{
+		ft_restore_std(stdin_copy, stdout_copy);
 		return ;
+	}
 	if (!strcmp(blocks->args[0], "exit"))
 		ft_restore_std(stdin_copy, stdout_copy);
 	if (!ft_call_builtins(blocks, shell))

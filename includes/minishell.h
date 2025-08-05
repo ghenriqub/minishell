@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/05 14:11:22 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:46:08 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <limits.h>
-#include <sys/stat.h>
+# include <sys/stat.h>
 
 typedef enum e_token_type
 {
@@ -72,7 +72,7 @@ typedef struct s_block
 
 // tokens:
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env);
-t_block *ft_parse_blocks(t_token *tokens, t_shell *shell);
+t_block	*ft_parse_blocks(t_token *tokens, t_shell *shell);
 t_token	*ft_init_token(t_shell *shell, char *line);
 t_type	ft_get_type(char *value);
 char	*ft_get_value(t_shell *shell, const char *s, int *i);

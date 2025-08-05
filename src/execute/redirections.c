@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:29 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/05 14:17:32 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:38:40 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_redirections(t_block *block, t_shell *shell)
 	ret = 1;
 	if (block->heredoc > 0)
 		ret = ft_red_here(block);
-	if (block->redirect_in > 0)
+	if (block->redirect_in > 0 && ret == 1)
 		ret = ft_red_in(block, shell);
-	if (block->redirect_out > 0)
+	if (block->redirect_out > 0 && ret == 1)
 		ret = ft_red_out(block, shell);
 	return (ret);
 }
