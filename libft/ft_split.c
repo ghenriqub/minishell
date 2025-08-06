@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:54:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/06 09:59:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/06 10:09:06 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	count_parts(const char *str, char sep)
 
 	i = 0;
 	count = 0;
-	if(!str)
+	if (!str)
 		return (0);
 	while (str[i])
 	{
@@ -61,6 +61,8 @@ char	**ft_free(char **arr)
 	int	i;
 
 	i = 0;
+	if (!arr)
+		return (NULL);
 	while (arr[i])
 	{
 		free(arr[i]);
@@ -78,9 +80,9 @@ char	**ft_split(char const *str, char sep)
 
 	i = 0;
 	k = 0;
-	arr = (char **)malloc(sizeof(char *) * (count_parts(str, sep) + 1));
+	arr = calloc(sizeof(char *), (count_parts(str, sep) + 1));
 	if (!arr || !str)
-		return (NULL);
+		return (ft_free(arr));
 	while (str[i])
 	{
 		if (str[i] != sep)
