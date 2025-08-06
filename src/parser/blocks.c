@@ -6,37 +6,36 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/04 12:35:58 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:09:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
+t_block	*ft_parse_blocks(t_token *tokens, t_shell *shell)
 {
-	t_block *head = NULL;
-	t_block *current = NULL;
+	t_block	*head = NULL;
+	t_block	*current = NULL;
 
 	while (tokens)
 	{
-		t_block *new_block = calloc(1, sizeof(t_block));
+		t_block	*new_block = calloc(1, sizeof(t_block));
 
 		// Contar args
-		t_token *tmp = tokens;
-		int argc = 0;
+		t_token	*tmp = tokens;
+		int	argc = 0;
 		while (tmp && tmp->type != T_PIPE)
 		{
 			if (tmp->type == T_WORD)
 				argc++;
 			tmp = tmp->next;
 		}
-
 		// Alocar arrays
 		new_block->args = ft_calloc(sizeof(char *), argc + 1);
 		new_block->limits = ft_calloc(sizeof(char *), argc + 1);
 		new_block->input = ft_calloc(sizeof(char *), argc + 1);
 		new_block->output = ft_calloc(sizeof(char *), argc + 1);
-		int i = 0;
+		int	i = 0;
 		new_block->heredoc = 0;
 		new_block->redirect_in = 0;
 		new_block->redirect_out = 0;
@@ -113,7 +112,6 @@ t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
 		new_block->output[new_block->redirect_out] = NULL;
 		new_block->limits[new_block->heredoc] = NULL;
 		new_block->args[i] = NULL;
-
 		// Adiciona na lista encadeada
 		if (!head)
 			head = new_block;
@@ -124,7 +122,7 @@ t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
 		if (tokens && tokens->type == T_PIPE)
 		{
 			tokens = tokens->next;
-			if(!tokens)
+			if (!tokens)
 			{
 				ft_free_blocks(head);
 				shell->exit_status = 1;
@@ -132,15 +130,14 @@ t_block *ft_parse_blocks(t_token *tokens, t_shell *shell)
 			}
 		}
 	}
-
-	return head;
+	return (head);
 }
 
 void	ft_free_blocks(t_block *head)
 {
 	t_block	*tmp;
 
-	if(!head)
+	if (!head)
 		return ;
 	while (head)
 	{

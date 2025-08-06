@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:11:48 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/04 15:49:02 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:52:30 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ char	*ft_found_path(char *cmd, char **envp)
 	int		i;
 
 	if (access(cmd, X_OK) == 0)
-	{
 		return (ft_strdup(cmd));
-	}
 	i = 0;
 	path = ft_split(get_path(envp), ':');
 	if (!path)

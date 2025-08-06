@@ -6,11 +6,13 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/05 13:45:34 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:50:01 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	ft_print_error(t_shell *shell, char *path, char *str, int code);
 
 /// @brief this function call ant builtin according to input
 /// @param token tokens of the input
@@ -36,7 +38,7 @@ int	ft_call_builtins(t_block *block, t_shell *shell)
 		shell->exit_status = ft_cd(block->args + 1, shell);
 	else if (ft_strchr(block->args[0], 47))
 	{
-		if(!is_directory(block->args[0], shell))
+		if (!is_directory(block->args[0], shell))
 			return (0);
 	}
 	else
@@ -61,46 +63,30 @@ void	ft_free_split(char **arr)
 
 int	is_directory(char *path, t_shell *shell)
 {
-	struct stat sb;
+	struct stat	sb;
 
 	if (stat(path, &sb) == -1)
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(path, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-		shell->exit_status = 127;
-		return (1);
-	}
-
+		return (ft_print_error(shell,
+				path, ": No such file or directory", 127));
 	else if (S_ISDIR(sb.st_mode))
-	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(path, 2);
-		ft_putendl_fd(": Is a directory", 2);
-		shell->exit_status = 126;
-		return (1);
-	}
-
+		return (ft_print_error(shell, path, ": Is a directory", 126));
 	else if (S_ISREG(sb.st_mode))
 	{
 		if (access(path, X_OK) == 0)
-		{
 			return (0);
-		}
 		else
-		{
-			ft_putstr_fd("minishell: ", 2);
-			ft_putstr_fd(path, 2);
-			ft_putendl_fd(": Permission denied", 2);
-			shell->exit_status = 126;
-		}
+			ft_print_error(shell, path, ": Permission denied", 126);
 		return (1);
 	}
+	ft_print_error(shell, path, ": Not a directory", 127);
+	return (1);
+}
 
-	// Se não é dir nem arquivo comum
+static int	ft_print_error(t_shell *shell, char *path, char *str, int code)
+{
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(path, 2);
-	ft_putendl_fd(": Not a directory", 2);
-	shell->exit_status = 127;
+	ft_putendl_fd(str, 2);
+	shell->exit_status = code;
 	return (1);
 }

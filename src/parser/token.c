@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/04 15:20:50 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:17:19 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 	blocks = NULL;
 	if (!line[0] || !ft_have_something(line) || !ft_strcmp(line, "$EMPTY"))
 		return (NULL);
-	if(!ft_strncmp(line, "$EMPTY", 6))
+	if (!ft_strncmp(line, "$EMPTY", 6))
 		line += 6;
-	if(!strncmp(line, "\"\"", 2) && (!line[2] || line[2] == 32))
+	if (!strncmp(line, "\"\"", 2) && (!line[2] || line[2] == 32))
 	{
 		ft_putendl_fd(": command not found", STDERR_FILENO);
 		shell->exit_status = 127;

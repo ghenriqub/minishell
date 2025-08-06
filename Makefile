@@ -6,7 +6,7 @@
 #    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/02 15:06:45 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/08/06 13:55:19 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC = $(PARSER_DIR)/main.c \
 	$(EXEC_DIR)/minishell.c \
 		$(EXEC_DIR)/path.c \
 		$(EXEC_DIR)/redirections.c \
+		$(EXEC_DIR)/simple_command.c \
 		$(EXEC_DIR)/pipe.c
 
 
