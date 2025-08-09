@@ -6,11 +6,13 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/09 16:38:57 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/09 17:35:48 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_shell	*g_shell;
 
 /// @brief Handles the SIGINT signal (Ctrl-C) by clearing the current input line
 ///        and redisplaying the prompt without exiting the shell.
@@ -18,6 +20,8 @@
 static void	ft_handle_sigint(int sig)
 {
 	(void)sig;
+	if (g_shell)
+		g_shell->exit_status = 130;
 	rl_replace_line("", 0);
 	write(1, "\n", 1);
 	rl_on_new_line();
@@ -27,7 +31,7 @@ static void	ft_handle_sigint(int sig)
 /// @brief Sets up custom signal handlers for interactive shell behavior.
 ///        Specifically, handles SIGINT and ignores SIGQUIT.
 /// @param void This function takes no parameters.
-static void	ft_setup_signals(void)
+static void	ft_setup_signals(t_shell *shell)
 {
 	signal(SIGINT, ft_handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
@@ -52,7 +56,6 @@ static void	minishell_loop(t_shell *shell, char **env)
 
 	while (1)
 	{
-		// RETIRAR O || 0 == 0 ANTES DE ENVIAR!!!! ISSO E SO PARA O TESTER!!!!
 		if (check_interactive())
 			line = readline(MINI);
 		else
@@ -84,7 +87,8 @@ int	main(int argc, char **argv, char **env)
 	shell = ft_init_shell(shell, env);
 	(void)argc;
 	(void)argv;
-	ft_setup_signals();
+	g_shell = shell;
+	ft_setup_signals(shell);
 	minishell_loop(shell, env);
 	ft_free_split(shell->env);
 	free(shell);

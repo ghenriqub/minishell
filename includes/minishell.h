@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/05 15:46:08 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/09 19:46:51 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ typedef struct s_block
 	struct s_block	*next;
 }	t_block;
 
+// ====== Global variable ======
+extern t_shell	*g_shell;
+
 // ====== Parser ======
 
 // tokens:
@@ -94,6 +97,12 @@ char	*ft_get_variable(char **env, char *part, int exit_status);
 char	*get_env_value(char **env, const char *var_name);
 char	*ft_concat(char *start, char *part, char *var_value, int i);
 char	*ft_get_brace(char **env, char *part, char *start);
+// blocks:
+int		ft_handle_heredoc(t_block *block, t_token **token);
+int		ft_handle_redirect(t_block *block, t_token **token, int type);
+int		ft_redir_error(t_block *head, t_block *blk, t_shell *shell);
+t_block	*ft_new_block(int argc);
+int		ft_count_args(t_token *tmp);
 
 // ====== Exection ======
 

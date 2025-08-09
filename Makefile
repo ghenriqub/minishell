@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/06 13:55:19 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/08/09 19:44:33 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = $(PARSER_DIR)/main.c \
 		$(PARSER_DIR)/parser_to_builtins.c \
 		$(PARSER_DIR)/get_environment_variable.c \
 		$(PARSER_DIR)/blocks.c \
+		$(PARSER_DIR)/blocks_utils.c \
 		$(PARSER_DIR)/heredoc.c \
 	$(BUILTINS_DIR)/pwd.c \
 		$(BUILTINS_DIR)/echo.c \

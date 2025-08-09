@@ -3,134 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   blocks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/06 14:09:09 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/09 19:46:47 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_block	*ft_parse_blocks(t_token *tokens, t_shell *shell)
+static int	ft_fill_blk(t_block *blk, t_token **tk, t_shell *sh, t_block *head)
 {
-	t_block	*head = NULL;
-	t_block	*current = NULL;
+	int	i;
 
-	while (tokens)
+	i = 0;
+	while (*tk && (*tk)->type != T_PIPE)
 	{
-		t_block	*new_block = calloc(1, sizeof(t_block));
-
-		// Contar args
-		t_token	*tmp = tokens;
-		int	argc = 0;
-		while (tmp && tmp->type != T_PIPE)
+		if ((*tk)->type == T_WORD)
+			blk->args[i++] = strdup((*tk)->value);
+		else if ((*tk)->type == T_REDIRECT_IN
+			|| (*tk)->type == T_REDIRECT_OUT || (*tk)->type == T_APPEND)
 		{
-			if (tmp->type == T_WORD)
-				argc++;
-			tmp = tmp->next;
+			if (ft_handle_redirect(blk, tk, (*tk)->type) < 0)
+				return (ft_redir_error(head, blk, sh));
 		}
-		// Alocar arrays
-		new_block->args = ft_calloc(sizeof(char *), argc + 1);
-		new_block->limits = ft_calloc(sizeof(char *), argc + 1);
-		new_block->input = ft_calloc(sizeof(char *), argc + 1);
-		new_block->output = ft_calloc(sizeof(char *), argc + 1);
-		int	i = 0;
-		new_block->heredoc = 0;
-		new_block->redirect_in = 0;
-		new_block->redirect_out = 0;
-		// Preencher infos
-		while (tokens && tokens->type != T_PIPE)
+		else if ((*tk)->type == T_HEREDOC)
 		{
-			if (tokens->type == T_WORD)
-				new_block->args[i++] = strdup(tokens->value);
-			else if (tokens->type == T_REDIRECT_IN)
-			{
-				tokens = tokens->next;
-				if (tokens)
-					new_block->input[new_block->redirect_in] = strdup(tokens->value);
-				else
-				{
-					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
-					ft_free_blocks(head);
-					ft_free_blocks(new_block);
-					shell->exit_status = 2;
-					return (NULL);
-				}
-				new_block->redirect_in++;
-			}
-			else if (tokens->type == T_REDIRECT_OUT)
-			{
-				new_block->append = 0;
-				tokens = tokens->next;
-				if (tokens)
-					new_block->output[new_block->redirect_out] = strdup(tokens->value);
-				else
-				{
-					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
-					ft_free_blocks(head);
-					ft_free_blocks(new_block);
-					shell->exit_status = 2;
-					return (NULL);
-				}
-				new_block->redirect_out++;
-			}
-			else if (tokens->type == T_APPEND)
-			{
-				new_block->append = 1;
-				tokens = tokens->next;
-				if (tokens)
-					new_block->output[new_block->redirect_out] = strdup(tokens->value);
-				else
-				{
-					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
-					ft_free_blocks(head);
-					ft_free_blocks(new_block);
-					shell->exit_status = 2;
-					return (NULL);
-				}
-				new_block->redirect_out++;
-			}
-			else if (tokens->type == T_HEREDOC)
-			{
-				tokens = tokens->next;
-				if (tokens)
-					new_block->limits[new_block->heredoc] = strdup(tokens->value);
-				else
-				{
-					write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
-					ft_free_blocks(head);
-					ft_free_blocks(new_block);
-					shell->exit_status = 2;
-					return (NULL);
-				}
-				new_block->heredoc++;
-			}
-			tokens = tokens->next;
+			if (ft_handle_heredoc(blk, tk) < 0)
+				return (ft_redir_error(head, blk, sh));
 		}
-		new_block->input[new_block->redirect_in] = NULL;
-		new_block->output[new_block->redirect_out] = NULL;
-		new_block->limits[new_block->heredoc] = NULL;
-		new_block->args[i] = NULL;
-		// Adiciona na lista encadeada
-		if (!head)
-			head = new_block;
-		else
-			current->next = new_block;
-		current = new_block;
-		// Pula o pipe
-		if (tokens && tokens->type == T_PIPE)
-		{
-			tokens = tokens->next;
-			if (!tokens)
-			{
-				ft_free_blocks(head);
-				shell->exit_status = 1;
-				return (NULL);
-			}
-		}
+		(*tk) = (*tk)->next;
 	}
-	return (head);
+	blk->args[i] = NULL;
+	return (0);
+}
+
+static int	ft_pipe_error(t_block *head, t_shell *shell)
+{
+	ft_free_blocks(head);
+	shell->exit_status = 1;
+	return (-1);
 }
 
 void	ft_free_blocks(t_block *head)
@@ -155,54 +67,37 @@ void	ft_free_blocks(t_block *head)
 	}
 }
 
-/*
-void	print_block_info(t_block *block)
+/// @brief 
+/// @param token 
+/// @param shell 
+///	block [0] == head
+///	block [1] == current
+///	block [2] == new block
+/// @return 
+t_block	*ft_parse_blocks(t_token *token, t_shell *shell)
 {
-	int	i = 0;
-	int	block_num = 1;
+	t_block	*block[3];
+	int		argc;
 
-	while (block)
+	block[0] = NULL;
+	block[1] = NULL;
+	while (token)
 	{
-		printf("=== Bloco %d ===\n", block_num);
-
-		// Args
-		printf("Args: ");
-		if (block->args && block->args[0])
-		{
-			while (block->args[i])
-			{
-				printf("\"%s\" ", block->args[i]);
-				i++;
-			}
-			printf("\n");
-		}
+		argc = ft_count_args(token);
+		block[2] = ft_new_block(argc);
+		if (!block[2] || ft_fill_blk(block[2], &token, shell, block[0]) < 0)
+			return (NULL);
+		if (!block[0])
+			block[0] = block[2];
 		else
-			printf("(nenhum)\n");
-
-		// Redirect IN
-		printf("Redirect IN: %s", block->redirect_in ? "sim" : "não");
-		if (block->redirect_in)
-			printf(" (%s)", block->input ? block->input : "(null)");
-		printf("\n");
-
-		// Heredoc
-		printf("Heredoc: %s", block->heredoc ? "sim" : "não");
-		if (block->heredoc)
-			printf(" (%s)", block->input ? block->input : "(null)");
-		printf("\n");
-
-		// Redirect OUT
-		printf("Redirect OUT: %s", block->redirect_out ? "sim" : "não");
-		if (block->redirect_out)
+			block[1]->next = block[2];
+		block[1] = block[2];
+		if (token && token->type == T_PIPE)
 		{
-			printf(" (%s)", block->output ? block->output : "(null)");
-			printf(" [%s]", block->append ? "APPEND" : "TRUNC");
+			token = token->next;
+			if (!token)
+				return (ft_pipe_error(block[0], shell), NULL);
 		}
-		printf("\n");
-
-		printf("\n");
-		block = block->next;
-		block_num++;
-		i = 0;
 	}
-}*/
+	return (block[0]);
+}
