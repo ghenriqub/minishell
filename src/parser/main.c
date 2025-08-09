@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/05 14:17:48 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/09 16:38:57 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	minishell_loop(t_shell *shell, char **env)
 	while (1)
 	{
 		// RETIRAR O || 0 == 0 ANTES DE ENVIAR!!!! ISSO E SO PARA O TESTER!!!!
-		if (check_interactive() || 0 == 0)
+		if (check_interactive())
 			line = readline(MINI);
 		else
 			line = get_next_line(STDIN_FILENO);
