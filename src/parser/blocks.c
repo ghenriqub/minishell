@@ -41,7 +41,7 @@ static int	ft_fill_blk(t_block *blk, t_token **tk, t_shell *sh, t_block *head)
 static int	ft_pipe_error(t_block *head, t_shell *shell)
 {
 	ft_free_blocks(head);
-	ft_putendl_fd("minishell: pipe Error",2);
+	ft_putendl_fd("minishell: pipe Error", 2);
 	shell->exit_status = 1;
 	return (-1);
 }
