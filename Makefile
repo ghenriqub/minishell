@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
+#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/16 14:46:00 by lgertrud         ###   ########.fr        #
+#    Updated: 2025/08/16 17:57:40 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,8 @@ SRC = $(PARSER_DIR)/main.c \
 		$(EXEC_DIR)/path.c \
 		$(EXEC_DIR)/redirections.c \
 		$(EXEC_DIR)/simple_command.c \
-		$(EXEC_DIR)/pipe.c
+		$(EXEC_DIR)/pipe.c \
+		$(EXEC_DIR)/pipe_utils.c
 
 SRC_BONUS = $(PAR_BONUS_DIR)/main_bonus.c \
 		$(PAR_BONUS_DIR)/token_bonus.c \
@@ -87,7 +88,8 @@ SRC_BONUS = $(PAR_BONUS_DIR)/main_bonus.c \
 		$(EXE_BONUS_DIR)/path_bonus.c \
 		$(EXE_BONUS_DIR)/redirections_bonus.c \
 		$(EXE_BONUS_DIR)/simple_command_bonus.c \
-		$(EXE_BONUS_DIR)/pipe_bonus.c
+		$(EXE_BONUS_DIR)/pipe_bonus.c \
+		$(EXE_BONUS_DIR)/pipe_utils_bonus.c
 
 
 #objects

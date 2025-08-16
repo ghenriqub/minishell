@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 17:10:25 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:00:27 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,13 @@ int		ft_cd(char **args, t_shell *shell);
 char	*get_target_dir(char **args, t_shell *shell);
 void	update_pwd_env(char *old_pwd, char *new_pwd, t_shell *shell);
 // execve:
+void	ft_handle_sigint(int sig);
 void	ft_minishell(t_block *blocks, t_shell *shell);
 void	ft_pipe_command(t_block *blocks, t_shell *shell);
+void	ft_cmd(t_block *blocks, t_shell *shell);
+void	ft_son(t_block *blocks, t_shell *shell, int in_fd, int *pipefd);
+void	ft_father(t_block *blocks, int *in_fd, int *pipefd);
+void	ft_get_status(t_shell *shell, int i, int *pids, int wstatus);
 void	ft_simple_command(t_block *blocks, t_shell *shell);
 void	ft_simple_command_2(t_block *blocks, t_shell *shell,
 			int fd_in, int fd_out);
