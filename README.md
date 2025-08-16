@@ -73,7 +73,7 @@ The **minishell**'s architecture follow a pipeline of **Entry -> Parser -> Execu
 
 ## Execution Flow
 
-The basic **minishell*'s cicle is:
+The basic **minishell**'s cicle is:
 
 1. **Show the prompt** -> `readline(MINI)`
 2. **Read command**
