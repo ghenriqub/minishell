@@ -66,6 +66,9 @@ The **minishell**'s architecture follow a pipeline of **Entry -> Parser -> Execu
      - `t_shell` -> the shell's global status.
    - Auxiliar functions to free memory after each command.
 
+4. **Exit**
+   - Finishes the program and cleans any remaining memory allocated.
+
 ---
 
 ## Execution Flow
