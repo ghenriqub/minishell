@@ -27,10 +27,6 @@ Furthermore, it's necessary to deal with usual functionalities of shells, such a
 
 The **minishell**'s architecture follow a pipeline of **Entry -> Parser -> Executor -> Exit**.
 
-+-----------+     +----------+     +-----------+     +----------+
-|   Entry   | --> |  Parser  | --> |  Execute  | --> |   Exit   |
-+-----------+     +----------+     +-----------+     +----------+
-
 ### Principal Modules
 
 1. **Entry**
