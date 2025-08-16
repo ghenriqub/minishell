@@ -6,7 +6,7 @@
 #    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/09 19:44:33 by ghenriqu         ###   ########.fr        #
+#    Updated: 2025/08/16 12:15:34 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC = $(PARSER_DIR)/main.c \
 		$(BUILTINS_DIR)/echo.c \
 		$(BUILTINS_DIR)/env.c \
 		$(BUILTINS_DIR)/exit.c \
+		$(BUILTINS_DIR)/exit_utils.c \
 		$(BUILTINS_DIR)/export.c \
 		$(BUILTINS_DIR)/export_utils.c \
 		$(BUILTINS_DIR)/unset.c \

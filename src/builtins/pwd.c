@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/02 16:25:14 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/15 20:05:05 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ char	*get_current_dir(void)
 static void	print_pwd_error(void)
 {
 	ft_putstr_fd("pwd: ", STDERR_FILENO);
-	ft_putstr_fd("too many arguments", STDERR_FILENO);
-	ft_putchar_fd('\n', STDERR_FILENO);
+	ft_putendl_fd("too many arguments", STDERR_FILENO);
 }
 
 /// @brief the built-in of the print working directory function
@@ -60,13 +59,18 @@ int	ft_pwd(char **args)
 
 	(void)args;
 	cwd = get_current_dir();
-	if (!cwd)
+	if (ft_strlen(cwd) != ft_strlen(getenv("PWD")))
 	{
-		print_pwd_error();
-		return (1);
+		cwd = getenv("PWD");
+		if (!cwd || ft_strlen(cwd) == 0)
+		{
+			ft_putendl_fd("pwd: error retrieving directory", STDERR_FILENO);
+			return (1);
+		}
 	}
 	ft_putstr_fd(cwd, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
-	free(cwd);
+	if (cwd != getenv("PWD"))
+		free(cwd);
 	return (0);
 }
