@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:10:00 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:21:35 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	update_env(char *command, char ***env)
 /// @brief we just verify the validity of the arguments
 /// @param str the string that will be analyzed
 /// @return 1 = is valid, 0 = not valid
-static int	is_valid(char *str)
+static int	is_valid_unset(char *str)
 {
 	int	i;
 
@@ -107,7 +107,7 @@ int	ft_unset(char **args, t_shell *shell)
 		return (0);
 	while (args[i])
 	{
-		if (!is_valid(args[i]))
+		if (!is_valid_unset(args[i]))
 		{
 			print_unset_error(args[i]);
 			status = 1;

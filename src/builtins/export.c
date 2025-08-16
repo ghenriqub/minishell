@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:17:40 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:37:06 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,27 @@ static void	print_all(char **env)
 	}
 }
 
+/// @brief the loop insife the export function
+/// @param str[0] = equal sign
+/// @param str[1] = command name
 static void	ft_export_loop(char *arg, t_shell *shell, int *status)
 {
-	char	*equal;
+	char	*str[2];
 
-	equal = ft_strchr(arg, '=');
-	if (equal)
+	str[0] = ft_strchr(arg, '=');
+	if (str[0])
 	{
 		if (!is_valid(arg))
 		{
 			print_export_error(arg);
 			*status = 1;
 		}
-		else if (*(equal + 1) == '\0')
+		else if (*(str[0] + 1) == '\0')
 		{
-			if (find_command(shell->env, arg))
+			str[1] = ft_substr(arg, 0, str[0] - arg);
+			if (find_command(shell->env, str[1]) > 0)
 				set_var(arg, &shell->env);
+			free(str[1]);
 		}
 		else
 			set_var(arg, &shell->env);
