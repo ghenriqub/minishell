@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = minishell
-
+NAME_BONUS = minishell_bonus
 
 #compiler and flags
 CC = cc
@@ -119,9 +119,11 @@ $(NAME): $(OBJS)
 	$(END)
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(LDFLAG) -o $(NAME)
 
-bonus: $(LIBFT) $(OBJSB)
-	@echo "$(GREEN)[OK]$(RESET) BONUS BONUS BONUS!!! 🔥"
-	@$(CC) $(FLAGS) $(INCLUDES) $(OBJSB) $(LIBFT) $(LDFLAG) -o $(NAME)
+bonus: $(LIBFT) $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJSB)
+	@echo "$(GREEN)[OK]$(RESET) BONUS!!"
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJSB) $(LIBFT) $(LDFLAG) -o $(NAME_BONUS)
 
 %.o: %.c
 	@echo "$(YELLOW)[.o]$(RESET)Compiling $<..."
@@ -134,8 +136,7 @@ clean:
 
 fclean:
 	@echo "$(RED)[FCLEAN]$(RESET) Removing all generated files..."
-	@rm -f $(NAME) $(BONUS)
-	@rm -f $(OBJS) $(OBJSB)
+	@rm -f $(NAME) $(NAME_BONUS) $(OBJS) $(OBJSB)
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 
 re: fclean all
