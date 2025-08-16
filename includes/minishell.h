@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 12:21:02 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 13:31:08 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int		ft_count_args(t_token *tmp);
 
 // built in:
 int		ft_echo(char **args, int exit_status);
-int		ft_pwd(char **args);
+int		ft_pwd(char **args, char **envp);
 char	*get_current_dir(void);
 int		ft_unset(char **args, t_shell *shell);
 int		ft_env(char **args, char **env);

@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 12:33:36 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 13:30:41 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_call_builtins(t_block *block, t_shell *shell)
 	if (!block->args || !block->args[0])
 		return (0);
 	if (!ft_strcmp(block->args[0], "pwd"))
-		ft_pwd(block->args + 1);
+		ft_pwd(block->args + 1, shell->env);
 	else if (!ft_strcmp(block->args[0], "echo"))
 		shell->exit_status = ft_echo(block->args + 1, shell->exit_status);
 	else if (!ft_strcmp(block->args[0], "env"))
