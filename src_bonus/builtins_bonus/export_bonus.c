@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   export_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/05 15:46:56 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:45:03 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_bonus.h"
+#include "minishell.h"
 
 static void	ft_print_line(char *line)
 {
@@ -31,8 +31,6 @@ static void	ft_print_line(char *line)
 	write(1, "\"\n", 2);
 }
 
-/// @brief 
-/// @param arg 
 static void	print_export_error(char *arg)
 {
 	ft_putstr_fd("export: ", STDERR_FILENO);
@@ -40,31 +38,6 @@ static void	print_export_error(char *arg)
 	ft_putstr_fd(": not a valid identifier\n", STDERR_FILENO);
 }
 
-/// @brief 
-/// @param str 
-/// @return 
-static int	is_valid(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !*str)
-		return (0);
-	if (!ft_isalpha(str[0]) && str[0] != '_')
-		return (0);
-	while (str[i] && str[i] != '=')
-	{
-		if (str[i] == '+' && str[i + 1] == '=')
-			break ;
-		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-/// @brief 
-/// @param env 
 static void	print_all(char **env)
 {
 	int	i;
@@ -78,33 +51,57 @@ static void	print_all(char **env)
 	}
 }
 
-/// @brief 
-/// @param args 
-/// @param shell 
-/// @return 
+/// @brief the loop insife the export function
+/// @param str[0] = equal sign
+/// @param str[1] = command name
+static void	ft_export_loop(char *arg, t_shell *shell, int *status)
+{
+	char	*str[2];
+
+	str[0] = ft_strchr(arg, '=');
+	if (str[0])
+	{
+		if (!is_valid(arg))
+		{
+			print_export_error(arg);
+			*status = 1;
+		}
+		else if (*(str[0] + 1) == '\0')
+		{
+			str[1] = ft_substr(arg, 0, str[0] - arg);
+			if (find_command(shell->env, str[1]) > 0)
+				set_var(arg, &shell->env);
+			free(str[1]);
+		}
+		else
+			set_var(arg, &shell->env);
+	}
+	else if (!is_valid(arg))
+	{
+		print_export_error(arg);
+		*status = 1;
+	}
+}
+
+/// @param i[0] = iterator
+/// @param i[1] = status
+/// @return the status of the exit
 int	ft_export(char **args, t_shell *shell)
 {
-	int		i;
-	int		status;
+	int		i[2];
 
-	status = 0;
-	i = 0;
-	if (!args[i])
+	i[0] = 0;
+	i[1] = 0;
+	if (!args[i[0]])
 	{
 		print_all(shell->env);
 		return (0);
 	}
-	while (args[i])
+	while (args[i[0]])
 	{
-		if (!is_valid(args[i]))
-		{
-			print_export_error(args[i]);
-			status = 1;
-		}
-		else
-			set_var(args[i], &shell->env);
-		i++;
+		ft_export_loop(args[i[0]], shell, &i[1]);
+		i[0]++;
 	}
-	shell->exit_status = status;
-	return (status);
+	shell->exit_status = i[1];
+	return (i[1]);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_utils.c                                     :+:      :+:    :+:   */
+/*   export_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/07/13 15:42:45 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:45:18 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell_bonus.h"
+#include "minishell.h"
 
 /// @brief 
 /// @param env 
@@ -77,6 +77,27 @@ static void	set_env(char *variable, char ***env)
 	free(*env);
 	*env = new_env;
 }
+
+int	is_valid(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !*str)
+		return (0);
+	if (!ft_isalpha(str[0]) && str[0] != '_')
+		return (0);
+	while (str[i] && str[i] != '=')
+	{
+		if (str[i] == '+' && str[i + 1] == '=')
+			break ;
+		if (!ft_isalnum(str[i]) && str[i] != '_')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 
 /// @brief 
 /// @param variable 
