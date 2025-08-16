@@ -61,6 +61,13 @@ static int	next_delim_level0(const char *str, const char *delim)
 	return (-1);
 }
 
+static void	ft_init_variables(int *idx, int *p, int *start)
+{
+	*idx = 0;
+	*p = 0;
+	*start = 0;
+}
+
 static char	*ft_dup_strim(const char *str, int len)
 {
 	char	*temp;
@@ -79,7 +86,7 @@ char	**ft_split_array(const char *str, const char *delim)
 	int		idx;
 	int		p;
 
-	init_variables(&idx, &p, &start);
+	ft_init_variables(&idx, &p, &start);
 	res = malloc((ft_count_parts(str, delim) + 1) * sizeof(char *));
 	if (!res)
 		return (NULL);
