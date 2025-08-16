@@ -61,11 +61,15 @@ static int	next_delim_level0(const char *str, const char *delim)
 	return (-1);
 }
 
-void	init_variables(int *idx, int *p, int *start)
+static char	*ft_dup_strim(const char *str, int len)
 {
-	*idx = 0;
-	*p = 0;
-	*start = 0;
+	char	*temp;
+	char	*result;
+
+	temp = ft_strndup(str, len);
+	result = ft_strtrim(temp, "()");
+	free(temp);
+	return (result);
 }
 
 char	**ft_split_array(const char *str, const char *delim)
@@ -84,8 +88,7 @@ char	**ft_split_array(const char *str, const char *delim)
 		idx = next_delim_level0(str + start, delim);
 		if (idx == -1)
 			idx = ft_strlen(str + start);
-		res[p] = ft_strndup(str + start, idx);
-		res[p] = ft_strtrim(res[p], "()");
+		res[p] = ft_dup_strim(str + start, idx);
 		p++;
 		start += idx;
 		if (str[start])
