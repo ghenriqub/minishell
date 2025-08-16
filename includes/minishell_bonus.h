@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 15:29:38 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:05:26 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int		ft_exit(char **args, t_shell *shell, t_block *block);
 int		is_valid_arg(char *arg);
 int		count_args(char **args);
 int		ft_export(char **args, t_shell *shell);
+int		is_valid(char *str);
 void	set_var(char *variable, char ***env);
 int		ft_cd(char **args, t_shell *shell);
 char	*get_target_dir(char **args, t_shell *shell);

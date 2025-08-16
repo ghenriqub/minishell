@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/02 16:25:59 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:10:00 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	print_unset_error(char *arg)
 /// @param env the local variables
 /// @param command the selected command
 /// @return the index of the command, -1 in error
-static int	find_command(char **env, char *command)
+int	find_command(char **env, char *command)
 {
 	int	i;
 
