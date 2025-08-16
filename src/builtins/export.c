@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/05 15:46:56 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:05:32 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,33 +78,34 @@ static void	print_all(char **env)
 	}
 }
 
-/// @brief 
-/// @param args 
-/// @param shell 
-/// @return 
+/// @param i[0] = iterator
+/// @param i[1] = status
+/// @return the status of the exit
 int	ft_export(char **args, t_shell *shell)
 {
-	int		i;
-	int		status;
+	int		i[2];
 
-	status = 0;
-	i = 0;
-	if (!args[i])
+	i[0] = 0;
+	i[1] = 0;
+	if (!args[i[0]])
 	{
 		print_all(shell->env);
 		return (0);
 	}
-	while (args[i])
+	while (args[i[0]])
 	{
-		if (!is_valid(args[i]))
+		if (ft_strnstr(args[i[0]], "=", ft_strlen(args[i[0]])))
 		{
-			print_export_error(args[i]);
-			status = 1;
+			if (!is_valid(args[i[0]]))
+			{
+				print_export_error(args[i[0]]);
+				i[1] = 1;
+			}
+			else
+				set_var(args[i[0]], &shell->env);
 		}
-		else
-			set_var(args[i], &shell->env);
-		i++;
+		i[0]++;
 	}
-	shell->exit_status = status;
-	return (status);
+	shell->exit_status = i[1];
+	return (i[1]);
 }
