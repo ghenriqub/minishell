@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   and_or.c                                           :+:      :+:    :+:   */
+/*   and_or_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 11:54:15 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:02:28 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:43:24 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_bonus.h"
 
 char		**ft_split_array(const char *str, const char *delim);
-static void	ft_exec(t_block *blocks, t_shell *shell, char **env, char *and);
+static void	ft_exec(t_shell *shell, char **env, char *and);
 
-void	and_or(t_shell *shell, char *line, char **env)
+void	ft_and_or(t_shell *shell, char *line, char **env)
 {
-	t_block	*blocks;
 	char	**and;
 	char	**or;
 	int		y;
@@ -31,7 +30,7 @@ void	and_or(t_shell *shell, char *line, char **env)
 		and = ft_split_array(or[y], "&&");
 		while (and[i])
 		{
-			ft_exec(blocks, shell, env, and[i]);
+			ft_exec(shell, env, and[i]);
 			if (shell->exit_status != 0)
 				break ;
 			i++;
@@ -44,10 +43,12 @@ void	and_or(t_shell *shell, char *line, char **env)
 	ft_free_split(or);
 }
 
-static void	ft_exec(t_block *blocks, t_shell *shell, char **env, char *and)
+static void	ft_exec(t_shell *shell, char **env, char *and)
 {
+	t_block	*blocks;
+
 	if (ft_strnstr(and, "||", ft_strlen(and)))
-		and_or(shell, and, env);
+		ft_and_or(shell, and, env);
 	else
 	{
 		blocks = ft_tokenizer(shell, and, env);

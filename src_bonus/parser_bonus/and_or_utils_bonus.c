@@ -1,43 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   and_or_utils.c                                     :+:      :+:    :+:   */
+/*   and_or_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:36:14 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:03:55 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:43:39 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_bonus.h"
-
-static int	ft_in_parens(const char *str)
-{
-	int	len;
-	int	i;
-	int	depth;
-
-	len = ft_strlen(str);
-	if (len < 2 || str[0] != '(' || str[len - 1] != ')')
-		return (0);
-	depth = 0;
-	i = 0;
-	while (i < len)
-	{
-		if (str[i] == '(')
-			depth++;
-		else if (str[i] == ')')
-		{
-			depth--;
-			if (depth == 0 && i != len - 1)
-				return (0);
-		}
-		i++;
-	}
-	depth = 0;
-	return (depth);
-}
 
 static int	ft_count_parts(const char *str, const char *delim)
 {

@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/02 16:22:54 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:06:45 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	print_cd_error(char *path)
 /// @brief the error message in case of too many args
 /// @param args the arguments are passed as a returnable function
 /// @return 1 after the message sent
-static int	handle_many_args(char **args)
+static int	handle_many_args(void)
 {
 	ft_putstr_fd("cd: too many arguments\n", STDERR_FILENO);
 	return (1);
@@ -63,7 +63,7 @@ int	ft_cd(char **args, t_shell *shell)
 	if (!args)
 		return (1);
 	if (args[1])
-		return (handle_many_args(args));
+		return (handle_many_args());
 	pwd[0] = get_current_dir();
 	pwd[2] = get_target_dir(args, shell);
 	if (!pwd[2])
