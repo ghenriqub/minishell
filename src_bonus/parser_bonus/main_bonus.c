@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/15 12:03:15 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:02:00 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_handle_sigint(int sig)
 /// @brief Sets up custom signal handlers for interactive shell behavior.
 ///        Specifically, handles SIGINT and ignores SIGQUIT.
 /// @param void This function takes no parameters.
-static void	ft_setup_signals(t_shell *shell)
+static void	ft_setup_signals(void)
 {
 	signal(SIGINT, ft_handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
@@ -52,11 +52,10 @@ static int	check_interactive(void)
 static void	minishell_loop(t_shell *shell, char **env)
 {
 	char	*line;
-	t_block	*blocks;
 
 	while (1)
 	{
-		if (check_interactive())
+		if (check_interactive() || 0 == 0)
 			line = readline(MINI);
 		else
 			line = get_next_line(STDIN_FILENO);
@@ -68,7 +67,7 @@ static void	minishell_loop(t_shell *shell, char **env)
 		}
 		if (*line)
 			add_history(line);
-		and_or(shell, line, env);
+		ft_and_or(shell, line, env);
 		free(line);
 	}
 }
@@ -77,15 +76,14 @@ static void	minishell_loop(t_shell *shell, char **env)
 /// @return value exit
 int	main(int argc, char **argv, char **env)
 {
-	char	*line;
-	t_block	*blocks;
 	t_shell	*shell;
 
+	shell = NULL;
 	shell = ft_init_shell(shell, env);
 	(void)argc;
 	(void)argv;
 	g_shell = shell;
-	ft_setup_signals(shell);
+	ft_setup_signals();
 	minishell_loop(shell, env);
 	ft_free_split(shell->env);
 	free(shell);

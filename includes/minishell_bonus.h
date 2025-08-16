@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   minishell_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/15 15:45:58 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:38:04 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
 # define REDIREC_ERROR "bash: syntax error near unexpected token `newline'\n"
 # define INPUT_ERROR "Error: input incorrect\n"
-# define MINI "\001\033[0;36m\002minishell\001\033[0m\002$ "
+# define MINI "\001\033[0;33m\002minishell\001\033[0m\002$ "
 
 # include "libft.h"
 # include <fcntl.h>
@@ -75,7 +75,7 @@ extern t_shell	*g_shell;
 
 // tokens:
 t_block	*ft_tokenizer(t_shell *shell, char *line, char **env);
-void	and_or(t_shell *shell, char *line, char **env);
+void	ft_and_or(t_shell *shell, char *line, char **env);
 t_block	*ft_parse_blocks(t_token *tokens, t_shell *shell);
 t_token	*ft_init_token(t_shell *shell, char *line);
 t_type	ft_get_type(char *value);
@@ -108,13 +108,15 @@ int		ft_count_args(t_token *tmp);
 // ====== Exection ======
 
 // built in:
-int		ft_echo(char **args, int exit_status);
-int		ft_pwd(char **args);
+int		ft_echo(char **args);
+int		ft_pwd(char **args, char **envp);
 char	*get_current_dir(void);
 int		ft_unset(char **args, t_shell *shell);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
 int		ft_exit(char **args, t_shell *shell, t_block *block);
+int		is_valid_arg(char *arg);
+int		count_args(char **args);
 int		ft_export(char **args, t_shell *shell);
 void	set_var(char *variable, char ***env);
 int		ft_cd(char **args, t_shell *shell);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:26 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/15 15:11:56 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:03:55 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	process_flags(char **args, int *new_line)
 /// @brief built-in echo implementation, with -n flag, whole string with write
 /// @param args the arguments we got from the STDIN_FILENO
 /// @return returns 0 on success (and it always succeeds)
-int	ft_echo(char **args, int exit_status)
+int	ft_echo(char **args)
 {
 	int	new_line;
 	int	i;

@@ -6,13 +6,13 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/09 17:35:08 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:09:44 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_bonus.h"
 
-static void	ft_cmd(t_block *blocks, t_shell *shell, int infile, int outfile);
+static void	ft_cmd(t_block *blocks, t_shell *shell);
 static void	ft_get_status(t_shell *shell, int i, int *pids, int wstatus);
 static void	ft_father(t_block *blocks, int *in_fd, int *pipefd);
 static void	ft_son(t_block *blocks, t_shell *shell, int in_fd, int *pipefd);
@@ -26,6 +26,7 @@ void	ft_pipe_command(t_block *blocks, t_shell *shell)
 	int		wstatus;
 
 	i = 0;
+	wstatus = 0;
 	in_fd = STDIN_FILENO;
 	while (blocks)
 	{
@@ -44,9 +45,8 @@ void	ft_pipe_command(t_block *blocks, t_shell *shell)
 	ft_get_status(shell, i, pids, wstatus);
 }
 
-static void	ft_cmd(t_block *blocks, t_shell *shell, int infile, int outfile)
+static void	ft_cmd(t_block *blocks, t_shell *shell)
 {
-	int		pid;
 	char	*path;
 
 	path = NULL;
@@ -84,7 +84,7 @@ static void	ft_son(t_block *blocks, t_shell *shell, int in_fd, int *pipefd)
 	}
 	if (!ft_redirections(blocks, shell))
 		exit(1);
-	ft_cmd(blocks, shell, STDIN_FILENO, STDOUT_FILENO);
+	ft_cmd(blocks, shell);
 	exit(0);
 }
 

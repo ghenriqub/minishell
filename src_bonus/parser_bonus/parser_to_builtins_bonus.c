@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_to_builtins.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/15 15:12:25 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 14:04:16 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_call_builtins(t_block *block, t_shell *shell)
 	if (!block->args || !block->args[0])
 		return (0);
 	if (!ft_strcmp(block->args[0], "pwd"))
-		ft_pwd(block->args + 1);
+		ft_pwd(block->args + 1, shell->env);
 	else if (!ft_strcmp(block->args[0], "echo"))
-		shell->exit_status = ft_echo(block->args + 1, shell->exit_status);
+		shell->exit_status = ft_echo(block->args + 1);
 	else if (!ft_strcmp(block->args[0], "env"))
 		ft_env(block->args + 1, shell->env);
 	else if (!ft_strcmp(block->args[0], "exit"))

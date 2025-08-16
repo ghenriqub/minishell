@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
+#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/16 14:14:12 by ghenriqu         ###   ########.fr        #
+#    Updated: 2025/08/16 14:46:00 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-BONUS = minishell
+
 
 #compiler and flags
 CC = cc
@@ -77,6 +77,7 @@ SRC_BONUS = $(PAR_BONUS_DIR)/main_bonus.c \
 		$(BUI_BONUS_DIR)/echo_bonus.c \
 		$(BUI_BONUS_DIR)/env_bonus.c \
 		$(BUI_BONUS_DIR)/exit_bonus.c \
+		$(BUI_BONUS_DIR)/exit_utils_bonus.c \
 		$(BUI_BONUS_DIR)/export_bonus.c \
 		$(BUI_BONUS_DIR)/export_utils_bonus.c \
 		$(BUI_BONUS_DIR)/unset_bonus.c \
@@ -118,13 +119,13 @@ $(NAME): $(OBJS)
 	$(END)
 	@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(LDFLAG) -o $(NAME)
 
+bonus: $(LIBFT) $(OBJSB)
+	@echo "$(GREEN)[OK]$(RESET) BONUS BONUS BONUS!!! 🔥"
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJSB) $(LIBFT) $(LDFLAG) -o $(NAME)
+
 %.o: %.c
 	@echo "$(YELLOW)[.o]$(RESET)Compiling $<..."
 	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
-
-bonus: $(LIBFT) $(OBJSB)
-	@echo "$(YELLOW)[LOADING...]$(RESET)"
-	@$(CC) $(FLAGS) $(INCLUDES) $(OBJSB) $(LIBFT) $(LDFLAG) -o $(BONUS)
 
 clean:
 	@echo "$(RED)[CLEAN]$(RESET) Removing object files..."
