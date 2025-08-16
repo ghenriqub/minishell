@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simple_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 14:07:27 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:10:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell_bonus.h"
 
 static void	ft_restore_std(int stdin_copy, int stdout_copy);
 static void	ft_error_path(t_shell *shell, char *command);
@@ -52,7 +52,6 @@ void	ft_simple_command_2(t_block *blocks,
 	char	*path;
 	int		status;
 
-	status = 0;
 	path = ft_found_path(blocks->args[0], shell->env);
 	pid = fork();
 	if (pid == 0)

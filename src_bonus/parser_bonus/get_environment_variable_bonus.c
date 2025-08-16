@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_environment_variable.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:47:03 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 14:03:19 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:27:59 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell_bonus.h"
 
 /// @brief this funcion take a environment variable and
 ///			set in one string 
@@ -24,6 +24,7 @@ char	*ft_get_variable(char **env, char *part, int code_exit)
 	char	*var_name;
 	char	*var_value;
 	int		i;
+	int		len;
 
 	start = ft_strchr(part, '$');
 	i = 1;

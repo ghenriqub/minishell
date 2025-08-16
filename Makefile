@@ -6,21 +6,27 @@
 #    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/16 12:15:34 by ghenriqu         ###   ########.fr        #
+#    Updated: 2025/08/16 14:14:12 by ghenriqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
+BONUS = minishell
 
 #compiler and flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror -lreadline -g
+FLAGS = -Wall -Wextra -Werror
+LDFLAG = -lreadline
 
 #directories
 SRC_DIR = src
 PARSER_DIR = src/parser
 EXEC_DIR = src/execute
 BUILTINS_DIR = src/builtins
+BONUS_DIR = src_bonus
+PAR_BONUS_DIR = src_bonus/parser_bonus
+BUI_BONUS_DIR = src_bonus/builtins_bonus
+EXE_BONUS_DIR = src_bonus/execute_bonus
 I_DIR = includes
 LIBFT_DIR = libft
 
@@ -56,9 +62,38 @@ SRC = $(PARSER_DIR)/main.c \
 		$(EXEC_DIR)/simple_command.c \
 		$(EXEC_DIR)/pipe.c
 
+SRC_BONUS = $(PAR_BONUS_DIR)/main_bonus.c \
+		$(PAR_BONUS_DIR)/token_bonus.c \
+		$(PAR_BONUS_DIR)/utils_bonus.c \
+		$(PAR_BONUS_DIR)/token_utils_bonus.c \
+		$(PAR_BONUS_DIR)/parser_to_builtins_bonus.c \
+		$(PAR_BONUS_DIR)/get_environment_variable_bonus.c \
+		$(PAR_BONUS_DIR)/blocks_bonus.c \
+		$(PAR_BONUS_DIR)/blocks_utils_bonus.c \
+		$(PAR_BONUS_DIR)/heredoc_bonus.c \
+		$(PAR_BONUS_DIR)/and_or_bonus.c \
+		$(PAR_BONUS_DIR)/and_or_utils_bonus.c \
+	$(BUI_BONUS_DIR)/pwd_bonus.c \
+		$(BUI_BONUS_DIR)/echo_bonus.c \
+		$(BUI_BONUS_DIR)/env_bonus.c \
+		$(BUI_BONUS_DIR)/exit_bonus.c \
+		$(BUI_BONUS_DIR)/export_bonus.c \
+		$(BUI_BONUS_DIR)/export_utils_bonus.c \
+		$(BUI_BONUS_DIR)/unset_bonus.c \
+		$(BUI_BONUS_DIR)/cd_bonus.c \
+		$(BUI_BONUS_DIR)/cd_utils_bonus.c \
+	$(EXE_BONUS_DIR)/minishell_bonus.c \
+		$(EXE_BONUS_DIR)/path_bonus.c \
+		$(EXE_BONUS_DIR)/redirections_bonus.c \
+		$(EXE_BONUS_DIR)/simple_command_bonus.c \
+		$(EXE_BONUS_DIR)/pipe_bonus.c
+
 
 #objects
 OBJS = $(SRC:.c=.o)
+
+#objects bonus
+OBJSB = $(SRC_BONUS:.c=.o)
 
 # Colors
 YELLOW = \e[93m
@@ -81,21 +116,25 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	$(END)
-	@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJS) $(LIBFT) $(LDFLAG) -o $(NAME)
 
 %.o: %.c
 	@echo "$(YELLOW)[.o]$(RESET)Compiling $<..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+
+bonus: $(LIBFT) $(OBJSB)
+	@echo "$(YELLOW)[LOADING...]$(RESET)"
+	@$(CC) $(FLAGS) $(INCLUDES) $(OBJSB) $(LIBFT) $(LDFLAG) -o $(BONUS)
 
 clean:
 	@echo "$(RED)[CLEAN]$(RESET) Removing object files..."
-	@rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(OBJS) $(OBJSB)
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
 
 fclean:
 	@echo "$(RED)[FCLEAN]$(RESET) Removing all generated files..."
-	@rm -f $(NAME) $(BONUS_NAME)
-	@rm -f $(OBJS) $(BONUS_OBJS)
+	@rm -f $(NAME) $(BONUS)
+	@rm -f $(OBJS) $(OBJSB)
 	@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 
 re: fclean all
