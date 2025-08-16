@@ -47,7 +47,7 @@ The **minishell**'s architecture follow a pipeline of **Entry -> Parser -> Execu
    - Implements simple executions, with pipes, and redirects.
    - Configures *file descriptors* before `execve`.
 
-4. **Builtins**
+3.1. **Builtins**
 
    - Self implementions for:
      - `echo`
@@ -58,7 +58,7 @@ The **minishell**'s architecture follow a pipeline of **Entry -> Parser -> Execu
      - `unset`
      - `exit`
 
-5. **Memory Management**
+3.2. **Memory Management**
 
    - Data structure:
      - `t_token` -> a *token* linked list.
