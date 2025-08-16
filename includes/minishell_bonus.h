@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 14:38:04 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:29:38 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
 # define REDIREC_ERROR "bash: syntax error near unexpected token `newline'\n"
 # define INPUT_ERROR "Error: input incorrect\n"
-# define MINI "\001\033[0;33m\002minishell\001\033[0m\002$ "
+# define MINI "\001\033[0;93m\002minishell\001\033[0m\002$ "
 
 # include "libft.h"
 # include <fcntl.h>
