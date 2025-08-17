@@ -6,12 +6,12 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 18:00:31 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:21:37 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef MINISHELL_BONUS_H
+# define MINISHELL_BONUS_H
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
 # define REDIREC_ERROR "bash: syntax error near unexpected token `newline'\n"
 # define INPUT_ERROR "Error: input incorrect\n"

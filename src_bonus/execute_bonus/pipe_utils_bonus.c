@@ -6,11 +6,11 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 17:56:53 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:19:10 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell_bonus.h"
 
 void	ft_cmd(t_block *blocks, t_shell *shell)
 {

@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:05:32 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:22:33 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ int	is_valid(char *str)
 	}
 	return (1);
 }
-
 
 /// @brief 
 /// @param variable 

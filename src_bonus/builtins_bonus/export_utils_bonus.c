@@ -6,11 +6,11 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:45:18 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:23:23 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "minishell_bonus.h"
 
 /// @brief 
 /// @param env 
@@ -97,7 +97,6 @@ int	is_valid(char *str)
 	}
 	return (1);
 }
-
 
 /// @brief 
 /// @param variable 
