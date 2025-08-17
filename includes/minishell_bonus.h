@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/17 13:21:37 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:29:52 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int		ft_echo(char **args);
 int		ft_pwd(char **args, char **envp);
 char	*get_current_dir(void);
 int		ft_unset(char **args, t_shell *shell);
+int		find_command(char **env, char *command);
 int		ft_env(char **args, char **env);
 int		env_size(char **env);
 int		ft_exit(char **args, t_shell *shell, t_block *block);

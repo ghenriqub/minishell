@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/17 13:25:27 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/17 13:28:04 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_shell	*g_shell;
 /// @brief Handles the SIGINT signal (Ctrl-C) by clearing the current input line
 ///        and redisplaying the prompt without exiting the shell.
 /// @param sig The signal number (unused in this function).
-static void	ft_handle_sigint(int sig)
+void	ft_handle_sigint(int sig)
 {
 	(void)sig;
 	if (g_shell)
