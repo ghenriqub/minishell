@@ -1,7 +1,9 @@
 # Minishell
 
 **Authors:** [lgertrud](https://github.com/Leandro-Gertrudes) && [ghenriqub](https://github.com/ghenriqub)
+
 **Project:** Minishell - 42 School
+
 **Objectiv:** Implement a command interpreter (*shell*) with a similar behavior of *bash*.
 
 ---
