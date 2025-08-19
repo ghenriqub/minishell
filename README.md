@@ -164,12 +164,19 @@ The **executor** decides how to run each command.
 The **builtins** are executed without creating a new process, if possible.
 
 | Command | Function | Description |
+
 | `echo` | `ft_echo` | Prints arguments |
+
 | `pwd` | `ft_pwd` | Shows the current directory |
+
 | `cd` | `ft_cd` | Changes the directory |
+
 | `env` | `ft_env` | Lists the environment variables |
+
 | `export` | `ft_export` | Defines an environment variable |
+
 | `unset` | `ft_unset` | Removes an environment variable |
+
 | `exit` | `ft_exit` | Closes shell |
 
 ---
@@ -205,6 +212,7 @@ cat file.txt | grep hello > out.txt
 ### Blocks
 
 Bloco 1: `args=["cat", "file.txt"], pipe_out = 1`
+
 Bloco 2: `args=["grep", "hello"], redirect_out = out.txt`
 
 ### Execution
