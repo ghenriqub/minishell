@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 14:03:37 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:52:50 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_pwd(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		if (!strncmp(envp[i], "PWD=", 4))
+		if (!ft_strncmp(envp[i], "PWD=", 4))
 			return (ft_strdup(envp[i] + 4));
 		i++;
 	}

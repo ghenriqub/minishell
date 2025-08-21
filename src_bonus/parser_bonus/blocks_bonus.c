@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blocks.c                                           :+:      :+:    :+:   */
+/*   blocks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/12 15:03:12 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:41:18 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_fill_blk(t_block *blk, t_token **tk, t_shell *sh, t_block *head)
 	while (*tk && (*tk)->type != T_PIPE)
 	{
 		if ((*tk)->type == T_WORD)
-			blk->args[i++] = strdup((*tk)->value);
+			blk->args[i++] = ft_strdup((*tk)->value);
 		else if ((*tk)->type == T_REDIRECT_IN
 			|| (*tk)->type == T_REDIRECT_OUT || (*tk)->type == T_APPEND)
 		{

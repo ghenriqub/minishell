@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 14:07:27 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:34:57 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_simple_command(t_block *blocks, t_shell *shell)
 		ft_restore_std(stdin_copy, stdout_copy);
 		return ;
 	}
-	if (!strcmp(blocks->args[0], "exit"))
+	if (!ft_strcmp(blocks->args[0], "exit"))
 		ft_restore_std(stdin_copy, stdout_copy);
 	if (!ft_call_builtins(blocks, shell))
 	{

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/30 10:49:02 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:31:44 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <ctype.h>
 # include <stddef.h>
 # include "get_next_line.h"

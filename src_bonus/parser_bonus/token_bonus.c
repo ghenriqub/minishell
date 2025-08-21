@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 18:25:51 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/17 13:20:39 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:03:21 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_block	*ft_tokenizer(t_shell *shell, char *line, char **env)
 		return (NULL);
 	if (!ft_strncmp(line, "$EMPTY", 6))
 		line += 6;
-	if (!strncmp(line, "\"\"", 2) && (!line[2] || line[2] == 32))
+	if (!ft_strncmp(line, "\"\"", 2) && (!line[2] || line[2] == 32))
 	{
 		ft_putendl_fd(": command not found", STDERR_FILENO);
 		shell->exit_status = 127;
@@ -89,7 +89,7 @@ static t_token	*ft_init_token_2(t_shell *shell, t_token *head,
 {
 	t_token	*new;
 
-	new = calloc(sizeof(t_token), 1);
+	new = ft_calloc(sizeof(t_token), 1);
 	if (!new)
 		ft_error(head, MALLOC_ERROR, 1);
 	if ((line[*i] == '>' && line[*i + 1] == '>')

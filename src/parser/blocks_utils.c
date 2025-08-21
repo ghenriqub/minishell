@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   blocks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/09 19:46:29 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:35:16 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	ft_handle_redirect(t_block *block, t_token **token, int type)
 	if (!(*token))
 		return (-1);
 	if (type == T_REDIRECT_IN)
-		block->input[block->redirect_in++] = strdup((*token)->value);
+		block->input[block->redirect_in++] = ft_strdup((*token)->value);
 	else
 	{
 		if (type == T_APPEND)
 			block->append = 1;
-		block->output[block->redirect_out++] = strdup((*token)->value);
+		block->output[block->redirect_out++] = ft_strdup((*token)->value);
 	}
 	return (0);
 }
@@ -70,6 +70,6 @@ int	ft_handle_heredoc(t_block *block, t_token **token)
 	(*token) = (*token)->next;
 	if (!(*token))
 		return (-1);
-	block->limits[block->heredoc++] = strdup((*token)->value);
+	block->limits[block->heredoc++] = ft_strdup((*token)->value);
 	return (0);
 }

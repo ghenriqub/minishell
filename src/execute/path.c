@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:11:48 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/06 13:52:30 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:02:43 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*get_path(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		if (!strncmp(envp[i], "PATH=", 5))
+		if (!ft_strncmp(envp[i], "PATH=", 5))
 		{
 			return (envp[i] + 5);
 		}

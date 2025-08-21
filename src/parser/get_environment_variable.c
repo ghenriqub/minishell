@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_environment_variable.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 16:47:03 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 14:03:19 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:53:44 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ char	*get_env_value(char **env, const char *var_name)
 	var_len = ft_strlen(var_name);
 	while (env[i])
 	{
-		if (!strncmp(env[i], var_name, var_len) && env[i][var_len] == '=')
-			return (strdup(env[i] + var_len + 1));
+		if (!ft_strncmp(env[i], var_name, var_len) && env[i][var_len] == '=')
+			return (ft_strdup(env[i] + var_len + 1));
 		i++;
 	}
-	return (strdup(""));
+	return (ft_strdup(""));
 }
 
 char	*ft_concat(char *start, char *part, char *var_value, int i)
@@ -94,13 +94,13 @@ char	*ft_get_brace(char **env, char *part, char *start)
 	if (!end_brace)
 	{
 		free(part);
-		return (strdup(""));
+		return (ft_strdup(""));
 	}
 	len = end_brace - (start + 2);
 	if (len == 0)
 	{
 		free(part);
-		return (strdup(""));
+		return (ft_strdup(""));
 	}
 	var_name = ft_substr(start + 2, 0, len);
 	var_value = get_env_value(env, var_name);

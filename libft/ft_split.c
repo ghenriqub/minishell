@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:54:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/06 10:09:06 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:49:22 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**ft_split(char const *str, char sep)
 
 	i = 0;
 	k = 0;
-	arr = calloc(sizeof(char *), (count_parts(str, sep) + 1));
+	arr = ft_calloc(sizeof(char *), (count_parts(str, sep) + 1));
 	if (!arr || !str)
 		return (ft_free(arr));
 	while (str[i])
