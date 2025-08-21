@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 11:41:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:10:46 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_block	*ft_parse_blocks(t_token *token, t_shell *shell)
 		if (token && token->type == T_PIPE)
 		{
 			token = token->next;
-			if (!token)
+			if (!token || token->type == T_PIPE)
 				return (ft_pipe_error(block[0], shell), NULL);
 		}
 	}
