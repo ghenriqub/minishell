@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 12:20:44 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:31:51 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	ft_redir_error(t_block *head, t_block *blk, t_shell *shell)
 int	ft_handle_redirect(t_block *block, t_token **token, int type)
 {
 	(*token) = (*token)->next;
-	if (!(*token) || (*token)->type == T_PIPE)
+	if (!(*token) || (*token)->type == T_PIPE || (*token)->type == T_REDIRECT_IN
+		|| (*token)->type == T_REDIRECT_OUT || (*token)->type == T_APPEND || (*token)->type == T_HEREDOC)
 		return (-1);
 	if (type == T_REDIRECT_IN)
 		block->input[block->redirect_in++] = ft_strdup((*token)->value);
@@ -68,7 +69,8 @@ int	ft_handle_redirect(t_block *block, t_token **token, int type)
 int	ft_handle_heredoc(t_block *block, t_token **token)
 {
 	(*token) = (*token)->next;
-	if (!(*token) || (*token)->type == T_PIPE)
+	if (!(*token) || (*token)->type == T_PIPE || (*token)->type == T_REDIRECT_IN
+		|| (*token)->type == T_REDIRECT_OUT || (*token)->type == T_APPEND || (*token)->type == T_HEREDOC)
 		return (-1);
 	block->limits[block->heredoc++] = ft_strdup((*token)->value);
 	return (0);

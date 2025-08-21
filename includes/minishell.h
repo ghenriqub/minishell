@@ -6,14 +6,14 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 11:31:46 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:30:14 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
-# define REDIREC_ERROR "bash: syntax error near unexpected token `newline'\n"
+# define REDIREC_ERROR "bash: syntax error near unexpected token\n"
 # define INPUT_ERROR "Error: input incorrect\n"
 # define MINI "\001\033[0;36m\002minishell\001\033[0m\002$ "
 
