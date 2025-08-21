@@ -15,7 +15,7 @@ NAME_BONUS = minishell_bonus
 
 #compiler and flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 LDFLAG = -lreadline
 
 #directories

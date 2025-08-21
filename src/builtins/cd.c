@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:22 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 14:06:45 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:06:27 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_cd(char **args, t_shell *shell)
 
 	if (!args)
 		return (1);
-	if (args[1])
+	if (args[0] && args[1])
 		return (handle_many_args());
 	pwd[0] = get_current_dir();
 	pwd[2] = get_target_dir(args, shell);
