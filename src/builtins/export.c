@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:37:06 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:28:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static void	ft_print_line(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i - 1] != '=')
+	do
 	{
 		write(1, &line[i], 1);
 		i++;
+	} while (line[i] && line[i - 1] != '=');
+	if(!line[i] && line[i - 1] != '=')
+	{
+		write(1, "\n", 1);
+		return ;
 	}
 	write(1, "\"", 1);
 	while (line[i])
@@ -56,31 +61,20 @@ static void	print_all(char **env)
 /// @param str[1] = command name
 static void	ft_export_loop(char *arg, t_shell *shell, int *status)
 {
-	char	*str[2];
+	int	find;
 
-	str[0] = ft_strchr(arg, '=');
-	if (str[0])
-	{
-		if (!is_valid(arg))
-		{
-			print_export_error(arg);
-			*status = 1;
-		}
-		else if (*(str[0] + 1) == '\0')
-		{
-			str[1] = ft_substr(arg, 0, str[0] - arg);
-			if (find_command(shell->env, str[1]) > 0)
-				set_var(arg, &shell->env);
-			free(str[1]);
-		}
-		else
-			set_var(arg, &shell->env);
-	}
-	else if (!is_valid(arg))
+	find = find_index(shell->export, arg);
+	if (!is_valid(arg))
 	{
 		print_export_error(arg);
 		*status = 1;
 	}
+	if(ft_strchr(arg, '='))
+		set_var(arg, &shell->env);
+	if(!ft_strchr(arg, '=')
+		&& (find != -1 && ft_strchr(shell->export[find], '=')))
+		return ;
+	set_var(arg, &shell->export);
 }
 
 /// @param i[0] = iterator
@@ -94,7 +88,7 @@ int	ft_export(char **args, t_shell *shell)
 	i[1] = 0;
 	if (!args[i[0]])
 	{
-		print_all(shell->env);
+		print_all(shell->export);
 		return (0);
 	}
 	while (args[i[0]])

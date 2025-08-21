@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/17 13:19:54 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:05:04 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	ft_print_line(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i - 1] != '=')
+	do
 	{
 		write(1, &line[i], 1);
 		i++;
-	}
+	} while (line[i - 1] != '=');
 	write(1, "\"", 1);
 	while (line[i])
 	{

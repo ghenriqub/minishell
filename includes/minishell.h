@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 12:30:14 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:19:36 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_shell
 {
 	char	**args;
 	char	**env;
+	char	**export;
 	char	**history;
 	int		exit_status;
 }	t_shell;
@@ -117,6 +118,7 @@ int		ft_exit(char **args, t_shell *shell, t_block *block);
 int		count_args(char **args);
 int		is_valid_arg(char *arg);
 int		ft_export(char **args, t_shell *shell);
+int		find_index(char **env, char *variable);
 int		is_valid(char *str);
 void	set_var(char *variable, char ***env);
 int		ft_cd(char **args, t_shell *shell);

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 11:34:57 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 15:20:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_simple_command_2(t_block *blocks,
 			ft_free_blocks(blocks);
 			free(path);
 			ft_free_split(shell->env);
+			ft_free_split(shell->export);
 			free(shell);
 			exit(127);
 		}

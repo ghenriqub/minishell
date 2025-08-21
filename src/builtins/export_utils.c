@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/17 13:22:33 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:19:14 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param env 
 /// @param variable 
 /// @return 
-static int	find_index(char **env, char *variable)
+int	find_index(char **env, char *variable)
 {
 	int	i;
 	int	len;
@@ -25,8 +25,7 @@ static int	find_index(char **env, char *variable)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strncmp(env[i], variable, len) == 0
-			&& env[i][len] == '=')
+		if (ft_strncmp(env[i], variable, len) == 0)
 			return (i);
 		i++;
 	}

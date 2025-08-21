@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/16 18:15:23 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/21 16:20:21 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	ft_error_path(t_block *blocks, t_shell *shell);
 
 void	ft_cmd(t_block *blocks, t_shell *shell)
 {
@@ -20,6 +22,8 @@ void	ft_cmd(t_block *blocks, t_shell *shell)
 	if (!ft_call_builtins(blocks, shell))
 	{
 		path = ft_found_path(blocks->args[0], shell->env);
+		if (!path)
+			ft_error_path(blocks, shell);
 		if (execve(path, blocks->args, shell->env) == -1)
 		{
 			ft_putstr_fd(blocks->args[0], STDERR_FILENO);
@@ -27,8 +31,8 @@ void	ft_cmd(t_block *blocks, t_shell *shell)
 			ft_free_blocks(blocks);
 			free(path);
 			ft_free_split(shell->env);
+			ft_free_split(shell->export);
 			free(shell);
-			shell->exit_status = 127;
 			exit(127);
 		}
 	}
@@ -50,8 +54,18 @@ void	ft_son(t_block *blocks, t_shell *shell, int in_fd, int *pipefd)
 		close(pipefd[1]);
 	}
 	if (!ft_redirections(blocks, shell))
+	{
+		ft_free_blocks(blocks);
+		ft_free_split(shell->env);
+		ft_free_split(shell->export);
+		free(shell);
 		exit(1);
+	}
 	ft_cmd(blocks, shell);
+	ft_free_blocks(blocks);
+	ft_free_split(shell->env);
+	ft_free_split(shell->export);
+	free(shell);
 	exit(0);
 }
 
@@ -85,4 +99,14 @@ void	ft_get_status(t_shell *shell, int i, int *pids, int wstatus)
 		}
 		j++;
 	}
+}
+static void	ft_error_path(t_block *blocks, t_shell *shell)
+{
+	ft_putstr_fd(blocks->args[0], 2);
+	ft_putstr_fd(": command not found\n", 2);
+	ft_free_blocks(blocks);
+	ft_free_split(shell->env);
+	ft_free_split(shell->export);
+	free(shell);
+	exit(127);
 }
