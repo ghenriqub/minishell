@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/22 10:24:24 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:40:55 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static void	update_env(char *command, char ***env)
 	j = 0;
 	while ((*env)[i])
 	{
-		if (ft_strncmp((*env)[i], command, ft_strlen(command)))
+		if (!(ft_strncmp((*env)[i], command, ft_strlen(command)) == 0
+			&& ((*env)[i][ft_strlen(command)] == '=' || !(*env)[i][ft_strlen(command)])))
 			new_env[j++] = ft_strdup((*env)[i]);
 		i++;
 	}
