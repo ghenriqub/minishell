@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/22 10:06:08 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:25:33 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_cmd(t_block *blocks, t_shell *shell, t_block *head)
 	if (!ft_call_builtins(blocks, shell))
 	{
 		path = ft_found_path(blocks->args[0], shell->env);
-		if(!path)
+		if (!path)
 		{
 			ft_free_all(head, shell);
 			exit(127);

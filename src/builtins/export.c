@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/21 15:28:09 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:31:59 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static void	ft_print_line(char *line)
 	int	i;
 
 	i = 0;
-	do
+	write(1, &line[i], 1);
+	i++;
+	while (line[i] && line[i - 1] != '=')
 	{
 		write(1, &line[i], 1);
 		i++;
-	} while (line[i] && line[i - 1] != '=');
-	if(!line[i] && line[i - 1] != '=')
+	}
+	if (!line[i] && line[i - 1] != '=')
 	{
 		write(1, "\n", 1);
 		return ;
@@ -69,9 +71,9 @@ static void	ft_export_loop(char *arg, t_shell *shell, int *status)
 		print_export_error(arg);
 		*status = 1;
 	}
-	if(ft_strchr(arg, '='))
+	if (ft_strchr(arg, '='))
 		set_var(arg, &shell->env);
-	if(!ft_strchr(arg, '=')
+	if (!ft_strchr(arg, '=')
 		&& (find != -1 && ft_strchr(shell->export[find], '=')))
 		return ;
 	set_var(arg, &shell->export);

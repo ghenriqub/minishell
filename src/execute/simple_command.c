@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 15:20:09 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 12:02:31 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_simple_command(t_block *blocks, t_shell *shell)
 		else
 		{
 			free(path);
+			signal(SIGINT, SIG_IGN);
+			signal(SIGQUIT, SIG_IGN);
 			ft_simple_command_2(blocks, shell, stdin_copy, stdout_copy);
 		}
 	}
@@ -57,6 +59,8 @@ void	ft_simple_command_2(t_block *blocks,
 	pid = fork();
 	if (pid == 0)
 	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		close(fd_in);
 		close(fd_out);
 		if (execve(path, blocks->args, shell->env) == -1)
