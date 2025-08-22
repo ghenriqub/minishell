@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 16:33:21 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:51:09 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_pipe_command(t_block *blocks, t_shell *shell)
 	pid_t	pids[256];
 	int		i;
 	int		wstatus;
-
+	
 	i = 0;
 	wstatus = 0;
 	signal(SIGINT, SIG_IGN);

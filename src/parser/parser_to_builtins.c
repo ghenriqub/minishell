@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:13:19 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 16:27:51 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 09:38:20 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_free_split(char **arr)
 	int	i;
 
 	i = 0;
-	if(!i)
+	if(!arr)
 		return ;
 	while (arr[i])
 	{
