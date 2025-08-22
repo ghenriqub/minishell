@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/22 09:51:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:06:17 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,11 @@ void	update_pwd_env(char *old_pwd, char *new_pwd, t_shell *shell);
 void	ft_handle_sigint(int sig);
 void	ft_minishell(t_block *blocks, t_shell *shell);
 void	ft_pipe_command(t_block *blocks, t_shell *shell);
-void	ft_cmd(t_block *blocks, t_shell *shell);
-void	ft_son(t_block *blocks, t_shell *shell, int in_fd, int *pipefd);
+void	ft_cmd(t_block *blocks, t_shell *shell, t_block *head);
+void	ft_son(t_block *block, t_shell *shell, int *pipefd, t_block *head);
 void	ft_father(t_block *blocks, int *in_fd, int *pipefd);
 void	ft_get_status(t_shell *shell, int i, int *pids, int wstatus);
+void	ft_dup_stdin(int in_fd);
 void	ft_simple_command(t_block *blocks, t_shell *shell);
 void	ft_simple_command_2(t_block *blocks, t_shell *shell,
 			int fd_in, int fd_out);

@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/21 14:19:14 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:27:30 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	find_index(char **env, char *variable)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strncmp(env[i], variable, len) == 0)
+		if (ft_strncmp(env[i], variable, len) == 0
+			&& (env[i][len] == '=' || !env[i][len]))
 			return (i);
 		i++;
 	}

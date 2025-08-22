@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:40 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 17:21:35 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:24:24 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	find_command(char **env, char *command)
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], command, ft_strlen(command)) == 0
-			&& env[i][ft_strlen(command)] == '=')
+			&& (env[i][ft_strlen(command)] == '=' || !env[i][ft_strlen(command)]))
 			return (i);
 		i++;
 	}
@@ -113,7 +113,10 @@ int	ft_unset(char **args, t_shell *shell)
 			status = 1;
 		}
 		else
+		{
 			update_env(args[i], &shell->env);
+			update_env(args[i], &shell->export);
+		}
 		i++;
 	}
 	shell->exit_status = status;
