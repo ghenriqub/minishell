@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 14:02:17 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:54:38 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	ft_simple_else(t_block *blks, t_shell *sh, int stdinc, int stdoutc)
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	ft_simple_command_2(blks, sh, stdinc, stdoutc);
+	signal(SIGINT, ft_handle_sigint);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 static void	ft_simple_else_2(t_block *blocks, t_shell *shell, char *path)
