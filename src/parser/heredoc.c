@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 12:41:08 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/23 15:36:51 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 16:07:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	if_heredoc(int *fd, char *limiter, t_block *block, t_shell *shell)
 		}
 		if (ft_strcmp(line, limiter) == 0)
 		{
+			ft_free_all(block, shell);
 			free(line);
 			break ;
 		}
