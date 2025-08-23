@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+         #
+#    By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/28 19:44:31 by lgertrud          #+#    #+#              #
-#    Updated: 2025/08/23 15:04:16 by ghenriqu         ###   ########.fr        #
+#    Updated: 2025/08/23 15:46:03 by lgertrud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME_BONUS = minishell_bonus
 
 #compiler and flags
 CC = cc
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 LDFLAG = -lreadline
 
 #directories
