@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_command_bonus.c                             :+:      :+:    :+:   */
+/*   simple_command.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 14:00:33 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:02:17 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_simple_command(t_block *blocks, t_shell *shell)
 	int		stdout_copy;
 	char	*path;
 
-	stdin_copy = dup(STDOUT_FILENO);
-	stdout_copy = dup(STDIN_FILENO);
+	stdin_copy = dup(STDIN_FILENO);
+	stdout_copy = dup(STDOUT_FILENO);
 	if (!ft_redirections(blocks, shell))
 	{
 		ft_restore_std(stdin_copy, stdout_copy);

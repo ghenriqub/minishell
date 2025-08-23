@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_utils_bonus.c                               :+:      :+:    :+:   */
+/*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:35 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/17 13:23:23 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/22 10:27:30 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /// @param env 
 /// @param variable 
 /// @return 
-static int	find_index(char **env, char *variable)
+int	find_index(char **env, char *variable)
 {
 	int	i;
 	int	len;
@@ -26,7 +26,7 @@ static int	find_index(char **env, char *variable)
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], variable, len) == 0
-			&& env[i][len] == '=')
+			&& (env[i][len] == '=' || !env[i][len]))
 			return (i);
 		i++;
 	}
