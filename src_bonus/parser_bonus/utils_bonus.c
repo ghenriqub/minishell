@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:54:58 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/07/31 13:44:51 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:15:39 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ t_shell	*ft_init_shell(t_shell *shell, char **env)
 	shell = malloc(sizeof(t_shell));
 	shell->exit_status = 0;
 	shell->env = ft_copy_env(env);
+	shell->export = ft_copy_env(env);
 	return (shell);
 }
 /*

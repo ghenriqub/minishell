@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:33 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/16 14:06:19 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/22 11:01:01 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	clean_exit(char **args, t_shell *shell,
 	(void)args;
 	shell->exit_status = exit_code;
 	ft_free_split(shell->env);
+	ft_free_split(shell->export);
 	free(shell);
 	ft_free_blocks(block);
 	exit(exit_code & 255);
