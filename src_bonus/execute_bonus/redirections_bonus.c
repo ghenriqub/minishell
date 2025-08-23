@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirections.c                                     :+:      :+:    :+:   */
+/*   redirections_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:53:29 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/06 11:03:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:38:35 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_bonus.h"
 
-static int	ft_red_here(t_block *block);
+static int	ft_red_here(t_block *block, t_shell *shell);
 static int	ft_red_in(t_block *block, t_shell *shell);
 static int	ft_red_out(t_block *block, t_shell *shell);
 //cuidado com o leak, sempre chamar o ft_free com o primeiro node.
@@ -23,7 +23,7 @@ int	ft_redirections(t_block *block, t_shell *shell)
 
 	ret = 1;
 	if (block->heredoc > 0)
-		ret = ft_red_here(block);
+		ret = ft_red_here(block, shell);
 	if (block->redirect_in > 0 && ret == 1)
 		ret = ft_red_in(block, shell);
 	if (block->redirect_out > 0 && ret == 1)
@@ -31,14 +31,14 @@ int	ft_redirections(t_block *block, t_shell *shell)
 	return (ret);
 }
 
-static int	ft_red_here(t_block *block)
+static int	ft_red_here(t_block *block, t_shell *shell)
 {
 	int	i;
 
 	i = 0;
 	while (block->limits[i])
 	{
-		ft_heredoc(block, block->limits[i]);
+		ft_heredoc(block, block->limits[i], shell);
 		i++;
 	}
 	dup2(block->heredoc_fd, 0);

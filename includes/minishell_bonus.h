@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 15:19:18 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:42:15 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ t_token	*ft_init_token(t_shell *shell, char *line);
 t_type	ft_get_type(char *value);
 char	*ft_get_value(t_shell *shell, const char *s, int *i);
 int		ft_is_delimiter(char c);
-int		ft_heredoc(t_block *block, char *limiter);
 // utils:
 void	ft_free_tokens(t_token *token);
 void	ft_error(t_token *token, char *message, int code);
@@ -99,6 +98,7 @@ char	*get_env_value(char **env, const char *var_name);
 char	*ft_concat(char *start, char *part, char *var_value, int i);
 char	*ft_get_brace(char **env, char *part, char *start);
 // blocks:
+int		ft_heredoc(t_block *block, char *limiter, t_shell *shell);
 int		ft_handle_heredoc(t_block *block, t_token **token);
 int		ft_handle_redirect(t_block *block, t_token **token, int type);
 int		ft_redir_error(t_block *head, t_block *blk, t_shell *shell);
@@ -142,6 +142,6 @@ void	ft_error_path(t_shell *shell, char *command);
 void	ft_wait(t_shell *shell, int status, int pid);
 char	*ft_found_path(char *cmd, char **envp);
 int		ft_redirections(t_block *block, t_shell *shell);
-int		ft_heredoc(t_block *block, char *limiter);
+void	ft_free_all(t_block *block, t_shell *shell);
 
 #endif

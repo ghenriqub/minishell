@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_utils.c                                       :+:      :+:    :+:   */
+/*   pipe_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/22 12:25:33 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:38:57 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell_bonus.h"
-
-static void	ft_free_all(t_block *block, t_shell *shell);
 
 void	ft_cmd(t_block *blocks, t_shell *shell, t_block *head)
 {
@@ -73,7 +71,7 @@ void	ft_dup_stdin(int in_fd)
 	}
 }
 
-static void	ft_free_all(t_block *block, t_shell *shell)
+void	ft_free_all(t_block *block, t_shell *shell)
 {
 	ft_free_blocks(block);
 	ft_free_split(shell->env);
