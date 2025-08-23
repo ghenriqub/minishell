@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com     +#+  +:+       +#+        */
+/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:37:14 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/05/12 13:38:29 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:05:45 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

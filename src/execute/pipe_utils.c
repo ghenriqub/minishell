@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 15:31:25 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:16:12 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ void	ft_cmd(t_block *blocks, t_shell *shell, t_block *head)
 		{
 			ft_putstr_fd(blocks->args[0], STDERR_FILENO);
 			ft_putendl_fd(": command not found", STDERR_FILENO);
-			ft_free_blocks(blocks);
-			free(path);
-			ft_free_split(shell->env);
-			free(shell);
-			shell->exit_status = 127;
+			if (path)
+				free(path);
+			ft_free_all(head, shell);
 			exit(127);
 		}
 	}

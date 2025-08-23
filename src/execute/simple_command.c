@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 15:54:38 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:15:11 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_simple_command(t_block *blocks, t_shell *shell)
 		ft_restore_std(stdin_copy, stdout_copy);
 		return ;
 	}
-	if (!ft_strcmp(blocks->args[0], "exit"))
+	if (blocks->args[0] && !ft_strcmp(blocks->args[0], "exit"))
 		ft_restore_std(stdin_copy, stdout_copy);
 	if (!ft_call_builtins(blocks, shell))
 	{
