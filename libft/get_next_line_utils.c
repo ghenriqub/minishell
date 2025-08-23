@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:50:55 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/05/21 18:11:31 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:59:38 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+static void	*ft_memcpy_gnl(void *dest, const void *src, size_t n)
+{
+	const unsigned char	*s;
+	unsigned char		*d;
+
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (!dest || !src)
+		return (NULL);
+	while (n--)
+		*d++ = *s++;
+	return (dest);
+}
 
 char	*ft_join_free(char *s1, const char *s2)
 {
@@ -31,26 +45,12 @@ char	*ft_join_free(char *s1, const char *s2)
 	}
 	if (s1)
 	{
-		ft_memcpy(new, s1, len1);
+		ft_memcpy_gnl(new, s1, len1);
 		free(s1);
 	}
-	ft_memcpy(new + len1, s2, len2);
+	ft_memcpy_gnl(new + len1, s2, len2);
 	new[len1 + len2] = '\0';
 	return (new);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	const unsigned char	*s;
-	unsigned char		*d;
-
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	if (!dest || !src)
-		return (NULL);
-	while (n--)
-		*d++ = *s++;
-	return (dest);
 }
 
 char	*ft_strndup(const char *s, size_t n)

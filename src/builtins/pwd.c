@@ -3,21 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 17:17:38 by ghenriqu          #+#    #+#             */
-/*   Updated: 2025/08/21 11:52:50 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:50:27 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static char	*ft_grow_buffer(char *old, size_t old_size, size_t new_size)
+{
+	char	*new;
+
+	new = malloc(new_size);
+	if (!new)
+	{
+		free(old);
+		return (NULL);
+	}
+	ft_memcpy(new, old, old_size);
+	free(old);
+	return (new);
+}
 
 /// @brief we just get the current directory with getcwd
 /// @return the updated current working directory
 char	*get_current_dir(void)
 {
 	char	*cwd;
-	char	*temp;
 	size_t	size;
 
 	size = 1024;
@@ -31,14 +45,15 @@ char	*get_current_dir(void)
 			free (cwd);
 			return (NULL);
 		}
-		size *= 2;
-		temp = realloc(cwd, size);
-		if (!temp)
+		if (size > 2147483647 / 2)
 		{
 			free (cwd);
 			return (NULL);
 		}
-		cwd = temp;
+		cwd = ft_grow_buffer(cwd, size, size * 2);
+		if (!cwd)
+			return (NULL);
+		size *= 2;
 	}
 	return (cwd);
 }

@@ -62,6 +62,7 @@
 		"typeinfo": "c",
 		"variant": "c",
 		"stdlib.h": "c",
-		"ctype.h": "c"
+		"ctype.h": "c",
+		"get_next_line.h": "c"
 	}
 }

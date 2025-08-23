@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 12:30:05 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:01:21 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_shell
 {
 	char	**args;
 	char	**env;
+	char	**export;
 	char	**history;
 	int		exit_status;
 }		t_shell;
@@ -134,6 +135,9 @@ void	ft_father(t_block *blocks, int *in_fd, int *pipefd);
 void	ft_get_status(t_shell *shell, int i, int *pids, int wstatus);
 void	ft_simple_command_2(t_block *blocks, t_shell *shell,
 			int fd_in, int fd_out);
+void	ft_restore_std(int stdin_copy, int stdout_copy);
+void	ft_error_path(t_shell *shell, char *command);
+void	ft_wait(t_shell *shell, int status, int pid);
 char	*ft_found_path(char *cmd, char **envp);
 int		ft_redirections(t_block *block, t_shell *shell);
 int		ft_heredoc(t_block *block, char *limiter);
