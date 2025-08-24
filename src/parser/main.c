@@ -6,7 +6,7 @@
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 21:33:12 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 15:58:30 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:13:02 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_handle_sigint(int sig)
 	if (g_shell)
 		g_shell->exit_status = 130;
 	rl_replace_line("", 0);
-	write(1, "\n", 1);
+	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
 	rl_redisplay();
 }

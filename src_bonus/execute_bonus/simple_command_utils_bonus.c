@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_command_utils.c                             :+:      :+:    :+:   */
+/*   simple_command_utils_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 13:54:43 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 12:49:15 by ghenriqu         ###   ########.fr       */
+/*   Updated: 2025/08/24 16:09:35 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,18 @@ void	ft_wait(t_shell *shell, int status, int pid)
 	if (WIFEXITED(status))
 		shell->exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
-		shell->exit_status = 128 + WTERMSIG(status);
+	{
+		if (WTERMSIG(status) == SIGINT)
+		{
+			write(STDOUT_FILENO, "\n", 1);
+			shell->exit_status = 130;
+		}
+		else if (WTERMSIG(status) == SIGQUIT)
+		{
+			write(STDOUT_FILENO, "Quit (core dumped)\n", 19);
+			shell->exit_status = 128 + WTERMSIG(status);
+		}
+	}
 }
 
 void	ft_error_path(t_shell *shell, char *command)
