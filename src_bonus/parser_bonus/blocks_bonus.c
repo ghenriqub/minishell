@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blocks.c                                           :+:      :+:    :+:   */
+/*   blocks_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 12:11:06 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:19:03 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_fill_blk(t_block *blk, t_token **tk, t_shell *sh, t_block *head)
 static int	ft_pipe_error(t_block *head, t_shell *shell)
 {
 	ft_free_blocks(head);
-	ft_putendl_fd("minishell: pipe Error", 2);
+	ft_putendl_fd("bash: syntax error near unexpected token `|'", 2);
 	shell->exit_status = 1;
 	return (-1);
 }
