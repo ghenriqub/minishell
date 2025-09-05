@@ -6,7 +6,7 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/22 12:24:32 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:22:06 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,21 @@ t_block	*ft_new_block(int argc)
 	return (block);
 }
 
-int	ft_redir_error(t_block *head, t_block *blk, t_shell *shell)
+int	ft_redir_error(t_block *head, t_block *blk, t_shell *shell, t_token *token)
 {
 	write(2, REDIREC_ERROR, ft_strlen(REDIREC_ERROR));
+	if (!token)
+		ft_putendl_fd("`newline'", 2);
+	else if (token->type == T_REDIRECT_IN)
+		ft_putendl_fd("`<'", 2);
+	else if (token->type == T_REDIRECT_OUT)
+		ft_putendl_fd("`>'", 2);
+	else if (token->type == T_APPEND)
+		ft_putendl_fd("`>>'", 2);
+	else if (token->type == T_PIPE)
+		ft_putendl_fd("`|'", 2);
+	else if (token->type == T_HEREDOC)
+		ft_putendl_fd("`<<'", 2);
 	ft_free_blocks(head);
 	ft_free_blocks(blk);
 	shell->exit_status = 2;

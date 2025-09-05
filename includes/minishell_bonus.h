@@ -6,14 +6,14 @@
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 09:07:49 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 15:42:15 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:43:54 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_BONUS_H
 # define MINISHELL_BONUS_H
 # define MALLOC_ERROR "Error: failed in memory allocate\n"
-# define REDIREC_ERROR "bash: syntax error near unexpected token\n"
+# define REDIREC_ERROR "bash: syntax error near unexpected token "
 # define INPUT_ERROR "Error: input incorrect\n"
 # define MINI "\001\033[0;93m\002minishell\001\033[0m\002$ "
 
@@ -101,7 +101,8 @@ char	*ft_get_brace(char **env, char *part, char *start);
 int		ft_heredoc(t_block *block, char *limiter, t_shell *shell);
 int		ft_handle_heredoc(t_block *block, t_token **token);
 int		ft_handle_redirect(t_block *block, t_token **token, int type);
-int		ft_redir_error(t_block *head, t_block *blk, t_shell *shell);
+int		ft_redir_error(t_block *head, t_block *blk,
+			t_shell *shell, t_token *token);
 t_block	*ft_new_block(int argc);
 int		ft_count_args(t_token *tmp);
 

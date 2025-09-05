@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ghenriqu <ghenriqu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:11:48 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/21 12:02:43 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/08/23 18:20:34 by ghenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ char	*ft_found_path(char *cmd, char **envp)
 	char	*path_cmd;
 	int		i;
 
+	i = -1;
+	if (!cmd)
+		return (NULL);
 	if (access(cmd, X_OK) == 0)
 		return (ft_strdup(cmd));
-	i = 0;
 	path = ft_split(get_path(envp), ':');
 	if (!path)
 		return (NULL);
-	while (path[i])
+	while (path[++i])
 	{
 		path_cmd = ft_strjoin(path[i], "/");
 		path_cmd = ft_join_free(path_cmd, cmd);
@@ -50,7 +52,6 @@ char	*ft_found_path(char *cmd, char **envp)
 			return (path_cmd);
 		}
 		free(path_cmd);
-		i++;
 	}
 	ft_free_split(path);
 	return (NULL);

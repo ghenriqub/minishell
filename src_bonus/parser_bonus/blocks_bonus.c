@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   blocks_bonus.c                                     :+:      :+:    :+:   */
+/*   blocks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:29:10 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/09/05 11:19:03 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/09/05 11:35:05 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ static int	ft_fill_blk(t_block *blk, t_token **tk, t_shell *sh, t_block *head)
 			|| (*tk)->type == T_REDIRECT_OUT || (*tk)->type == T_APPEND)
 		{
 			if (ft_handle_redirect(blk, tk, (*tk)->type) < 0)
-				return (ft_redir_error(head, blk, sh));
+				return (ft_redir_error(head, blk, sh, *tk));
 		}
 		else if ((*tk)->type == T_HEREDOC)
 		{
 			if (ft_handle_heredoc(blk, tk) < 0)
-				return (ft_redir_error(head, blk, sh));
+				return (ft_redir_error(head, blk, sh, *tk));
 		}
 		(*tk) = (*tk)->next;
 	}
