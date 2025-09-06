@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_utils.c                                       :+:      :+:    :+:   */
+/*   pipe_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgertrud <lgertrud@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:00:50 by lgertrud          #+#    #+#             */
-/*   Updated: 2025/08/23 18:16:12 by lgertrud         ###   ########.fr       */
+/*   Updated: 2025/09/06 12:08:45 by lgertrud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_cmd(t_block *blocks, t_shell *shell, t_block *head)
 		path = ft_found_path(blocks->args[0], shell->env);
 		if (!path)
 		{
+			ft_putstr_fd(blocks->args[0], STDERR_FILENO);
+			ft_putendl_fd(": command not found", STDERR_FILENO);
 			ft_free_all(head, shell);
 			exit(127);
 		}
