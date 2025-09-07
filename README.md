@@ -270,11 +270,9 @@ make
 
 # Contact
 
-If you have any question or suggestion feel free to contact me!
+If you have any question or suggestion feel free to contact us!
 
-- E-mail: ghrb2811@gmail.com
-
-- LinkedIn: [gabrielhdb](https://www.linkedin.com/in/gabrielhdb/)
+- LinkedIn: [lgertrud](https://www.linkedin.com/in/leandro-gertrudes/) && [gabrielhdb](https://www.linkedin.com/in/gabrielhdb/)
 
 ---
 
