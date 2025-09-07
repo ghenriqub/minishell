@@ -2,11 +2,21 @@
 
 https://github.com/user-attachments/assets/ff6314d9-79b4-4986-8d2a-62db47b2b8fd
 
+![42](https://img.shields.io/badge/-42-black?style=for-the-badge&logo=42&logoColor=white)
+
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+
+---
+
+*As a student, always be curious. Curiosity is essential in every field, and tech is no exception. Don't just follow guidelines and expect to understand things deeply! Experiment, fail, try again, fail once more, and then, you will learn something new. This repository will be another tool in your studies, but remember, the key is to stay curious!*
+
+---
+
 **Authors:** [lgertrud](https://github.com/Leandro-Gertrudes) && [ghenriqub](https://github.com/ghenriqub)
 
 **Project:** Minishell - 42 School
 
-**Objectiv:** Implement a command interpreter (*shell*) with a similar behavior of *bash*.
+**Expected result:** Implement a command interpreter (*shell*) with a similar behavior of *bash*.
 
 ---
 
@@ -249,5 +259,25 @@ a
 make
 ./minishell
 ```
+
+---
+
+# Feedback
+
+<img width="658" height="317" alt="Screenshot from 2025-09-07 14-19-03" src="https://github.com/user-attachments/assets/d3603672-4c51-4cc4-8230-6f2ce78c50d7" />
+
+---
+
+# Contact
+
+If you have any question or suggestion feel free to contact me!
+
+- E-mail: ghrb2811@gmail.com
+
+- LinkedIn: [gabrielhdb](https://www.linkedin.com/in/gabrielhdb/)
+
+---
+
+Made with 🫀 by ghenriqu and lgertrud!
 
 ---
